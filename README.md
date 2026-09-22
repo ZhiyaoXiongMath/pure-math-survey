@@ -1,31 +1,48 @@
-# Pure Mathematics Systematic Review
+# Pure Math Survey
 
-Version 1.0.1. An installable skill for source-grounded English mathematical reviews in five parts and two depths. New projects default to ten PDF/TeX reader documents; any nonempty requested subset is supported, including V-only. Part V is an independently organized thematic review, not a requirement to reproduce I–IV.
+**Version 1.0.0.** A Codex skill for evidence-grounded English surveys of pure-mathematics topics, result families and proof methods.
 
-## Installable directory
+## What it produces
 
-The exact installation subtree is `skills/pure-math-systematic-review/`. Use that directory with a compatible skill host, or extract the installation ZIP, which contains one `pure-math-systematic-review/` root. This repository contains no installation hooks, remote configuration or automatic publishing. The user chooses the repository owner, license and remote destination; no repository URL or license grant is implied.
+The skill supports five parts, each in concise and standard editions:
 
-Runtime instructions, references, templates, registry formats and the project validator are self-contained in the skill subtree. A real manuscript build needs the TeX packages documented in the [writing guide](skills/pure-math-systematic-review/references/writing-style.md). Python tools require Python 3.10 or later; the runtime validator uses only the standard library. Full development metadata checking also uses PyYAML. A local `pdflatex` is needed for the required template compilation; `pdftotext` is used when available.
+| Part | Purpose |
+|---|---|
+| I. Foundations and Models | Explain the objects, questions and models leading to the general theory. |
+| II. Results and Relations | State the main conclusions precisely and explain their relationships. |
+| III. Proofs and Methods | Develop the agreed proof routes and selected decisive mechanisms. |
+| IV. Applications, Boundaries and Problems | Explain uses, established limits and precise open Problems. |
+| V. A Thematic Review | Present an independently readable account organized around its own central question. |
 
-## Development checks
+New projects default to all ten manuscripts, each delivered as PDF and rebuildable TeX. Any nonempty selection of parts and editions is supported. A request for V concise alone produces that manuscript without adding other parts or a standard edition.
+
+Concise editions select and organize the material needed to understand the chosen thread. Standard editions deepen that understanding. Part V explains selected results, method ideas and Problems without automatically taking on Part III's detailed proof obligations.
+
+The workflow verifies primary sources and relevant versions, preserves exact mathematical conditions, distinguishes established results from unresolved questions, and records what was actually checked. Delivery includes the TeX sources and dependencies needed to rebuild the requested manuscripts, together with research and verification records.
+
+## Install and use
+
+The installable skill is [skills/pure-math-survey/](skills/pure-math-survey/). Install that directory in your Codex skills location, then invoke `$pure-math-survey` and describe the topic, audience and requested parts or editions.
+
+For example:
+
+```text
+Use $pure-math-survey to write only Part V concise on [topic] for [audience].
+```
+
+See [SKILL.md](skills/pure-math-survey/SKILL.md) for the workflow. Python helpers require Python 3.10 or later and use the standard library. Manuscript builds require the TeX packages listed in the [writing guide](skills/pure-math-survey/references/writing-style.md).
+
+## Maintenance
 
 From the repository root:
 
 ```sh
-python -B dev/validate_skill.py skills/pure-math-systematic-review --require-yaml
-python -B dev/tests/test_validation.py
-python -B dev/run_regression.py --require-tex --keep-build ../pmsr-template-build
+cd skills/pure-math-survey
+python -B -m unittest discover -s tests -v
 ```
 
-The runner invokes the existing structural fixtures and compiles all ten short template entrypoints in an isolated copy with shell escape disabled. `--keep-build` must be outside the repository and installable tree. Its report leaves visual inspection pending: render the changed pages and inspect them separately. A missing TeX engine is not a passed build; `--require-tex` makes it a failure. The fixtures use synthetic metadata and PDF signatures, not mathematical evidence or finished PDFs.
+These tests check package and project structure using synthetic projects. They do not establish mathematical correctness, source coverage or exposition quality, and do not replace manuscript compilation or visual inspection.
 
-An explicit skill path can be passed to the runner. It forwards that path to the fixtures through `PMSR_SKILL_ROOT`, so an independently extracted installation tree can be checked without copying development tools into it. Real research-project checks are documented inside the skill and do not depend on `dev/`.
+## Packaging
 
-Keep validation proportionate: focused fixtures for changed behavior, ten short template builds, affected visual pages and a bounded content trial where writing behavior changes. Do not regenerate a full research corpus, enumerate every document subset, or add a testing or publishing platform. Automated checks are structural, never certification of mathematics, source coverage or exposition quality.
-
-## File-only packaging
-
-Use an ordinary ZIP tool. Archive only `skills/pure-math-systematic-review/` as a single `pure-math-systematic-review/` root for installation. For repository source, include this README, `.gitignore`, `skills/` and `dev/` under one repository root; omit `.git`, caches, preview PDFs, build output, trial material and private source collections. Do not put development verification or release stories inside the installation tree.
-
-Reopen each ZIP, compare the intended members, reject unsafe paths/duplicates/symlinks and compare bytes. Run `dev/validate_skill.py` on the installation ZIP. Compute each ZIP's SHA-256 externally after packaging. The developer's final verification report distinguishes fixture checks, template builds, bounded content review, independent-review limitations and any prior E2E evidence.
+For an installation ZIP, archive only `skills/pure-math-survey/` as a single `pure-math-survey/` root. Exclude repository metadata, caches and generated build files. Reopen the archive and verify its members and contents before distributing it.

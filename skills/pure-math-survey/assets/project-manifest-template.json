@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "language": "en",
+  "topic": "[topic]",
+  "literature_cutoff": "[YYYY-MM-DD]",
+  "documents": [
+    {
+      "part": 1,
+      "edition": "concise",
+      "tex_file": "[topic]-part1-foundations-concise.tex",
+      "pdf_file": "[topic]-part1-foundations-concise.pdf"
+    },
+    {
+      "part": 1,
+      "edition": "standard",
+      "tex_file": "[topic]-part1-foundations-standard.tex",
+      "pdf_file": "[topic]-part1-foundations-standard.pdf"
+    },
+    {
+      "part": 2,
+      "edition": "concise",
+      "tex_file": "[topic]-part2-results-concise.tex",
+      "pdf_file": "[topic]-part2-results-concise.pdf"
+    },
+    {
+      "part": 2,
+      "edition": "standard",
+      "tex_file": "[topic]-part2-results-standard.tex",
+      "pdf_file": "[topic]-part2-results-standard.pdf"
+    },
+    {
+      "part": 3,
+      "edition": "concise",
+      "tex_file": "[topic]-part3-methods-concise.tex",
+      "pdf_file": "[topic]-part3-methods-concise.pdf"
+    },
+    {
+      "part": 3,
+      "edition": "standard",
+      "tex_file": "[topic]-part3-methods-standard.tex",
+      "pdf_file": "[topic]-part3-methods-standard.pdf"
+    },
+    {
+      "part": 4,
+      "edition": "concise",
+      "tex_file": "[topic]-part4-boundaries-concise.tex",
+      "pdf_file": "[topic]-part4-boundaries-concise.pdf"
+    },
+    {
+      "part": 4,
+      "edition": "standard",
+      "tex_file": "[topic]-part4-boundaries-standard.tex",
+      "pdf_file": "[topic]-part4-boundaries-standard.pdf"
+    },
+    {
+      "part": 5,
+      "edition": "concise",
+      "tex_file": "[topic]-part5-integrated-concise.tex",
+      "pdf_file": "[topic]-part5-integrated-concise.pdf"
+    },
+    {
+      "part": 5,
+      "edition": "standard",
+      "tex_file": "[topic]-part5-integrated-standard.tex",
+      "pdf_file": "[topic]-part5-integrated-standard.pdf"
+    }
+  ]
+}

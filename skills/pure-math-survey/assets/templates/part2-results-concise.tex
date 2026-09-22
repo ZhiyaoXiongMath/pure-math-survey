@@ -1,0 +1,37 @@
+% Compile beside math-review.sty; replace all visible insertion text for publication.
+% Rename and regroup functional headings around the actual mathematical thread.
+% Shared files do not determine section hierarchy; no environment/count quota applies.
+% Edition check: remove a side branch only when the selected explanation stays intact.
+% Copyedit: state a full result once locally; check the printed meaning of notation.
+\documentclass[12pt,reqno]{amsart}
+\usepackage{math-review}
+\title[Part II: Results (concise)]{[Review topic]\\
+Part II: Results and Relations (concise)}
+\author{[Author name]}
+\date{[Prepared date; literature cutoff date]}
+\begin{document}
+\begin{abstract}
+\placeholder{Identify the main question, selected established answers and the mathematical relationships that make them a coherent theory.}
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Introduction}\label{sec:introduction}
+\placeholder{State the central question, the perspective used to organize its known answers and the decisive distinctions among those answers. Introduce only the setting needed to make this question readable.}
+\placeholder{Explain which part of the question the result group in Section~\ref{sec:results} answers and how the comparisons in Section~\ref{sec:relations} refine that answer. Describe mathematical relationships, not a sequence of paper titles.}
+
+\section{The principal answers to the question}\label{sec:results}
+\placeholder{State the necessary objects and conventions, then organize selected results by the question they resolve. Merge technical variants that do not need separate top-level treatment.}
+\begin{theorem}[A principal result]\label{thm:principal}
+\placeholder{Give the verified complete statement: objects, assumptions, quantifiers, range, conclusion and qualifications. Use the canonical body for a shared full statement, and retain the exact source and controlling version.}
+\end{theorem}
+\placeholder{Explain the mathematical force of Theorem~\ref{thm:principal}. Give the decisive proof idea: what it changes or constructs, what this achieves and why it leads to the result. A method name alone is insufficient.}
+
+\subsection{The distinction needed to interpret the result}\label{subsec:distinction}
+\placeholder{Explain a necessary special case, neighboring conclusion or limitation of scope. Retain conditions while compressing secondary variants; remove this subsection if it serves no actual distinction.}
+
+\section{Relationships and consequences}\label{sec:relations}
+\placeholder{Compare the chosen answers by matching assumptions and conclusions. Prove or cite a claimed implication, improvement or equivalence; distinguish it from analogy. Derive the principal consequence and return to what the central question has and has not been answered within the selected scope.}
+
+\templatereferences
+\end{document}

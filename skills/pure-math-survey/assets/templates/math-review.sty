@@ -1,0 +1,46 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{math-review}[2026/09/23 v1.0.0 Pure Math Survey style]
+
+% Use with \documentclass[12pt,reqno]{amsart}. Keep this file beside the TeX.
+\RequirePackage[T1]{fontenc}
+\RequirePackage{amsmath,amssymb,amsthm,mathtools}
+\IfFileExists{stix2.sty}{\RequirePackage{stix2}}{%
+  \IfFileExists{lmodern.sty}{\RequirePackage{lmodern}}{}%
+  \PackageWarningNoLine{math-review}{STIX2 unavailable; using the installed fallback fonts}%
+}
+\IfFileExists{microtype.sty}{\RequirePackage{microtype}}{}
+\RequirePackage{geometry}
+\geometry{a4paper,textwidth=6.1in,top=1.2in,bottom=1.2in,
+  headheight=14pt,headsep=0.2in,footskip=0.5in}
+\RequirePackage{enumitem}
+\setlist[enumerate]{leftmargin=*,label=\textup{(\roman*)}}
+\setlist[itemize]{leftmargin=*}
+\RequirePackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,
+  linktocpage=true,bookmarksnumbered=true}
+\linespread{1.1}
+\setcounter{tocdepth}{1}
+\numberwithin{equation}{section}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{problem}[theorem]{Problem}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Visible scaffold content, never publication content. A published review contains
+% no \placeholder calls. Do not replace a placeholder with an invented result.
+\newcommand{\placeholder}[1]{\par\noindent[INSERT: #1]}
+\newcommand{\templatereferences}{%
+  \section*{References}%
+  \placeholder{Replace this paragraph with the bibliography of sources actually
+  cited in this part. Give exact versions when a result or proof depends on
+  them. Use real citation keys and verified bibliographic data.}%
+}

@@ -1,0 +1,40 @@
+% Compile beside math-review.sty; replace all visible insertion text for publication.
+% Rename and regroup functional headings around the actual mathematical thread.
+% Shared files do not determine section hierarchy; no environment/count quota applies.
+% Edition check: remove a side branch only when the selected explanation stays intact.
+% Copyedit: state a full result once locally; check the printed meaning of notation.
+\documentclass[12pt,reqno]{amsart}
+\usepackage{math-review}
+\title[Part III: Methods (concise)]{[Review topic]\\
+Part III: Proofs and Methods (concise)}
+\author{[Author name]}
+\date{[Prepared date; literature cutoff date]}
+\begin{document}
+\begin{abstract}
+\placeholder{Identify the main proof ideas, the routes they support and the selected decisive mechanisms explained substantively in this concise account.}
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Introduction}\label{sec:introduction}
+\placeholder{State the central conclusions to be explained and the large proof ideas that address their distinct difficulties. Explain how the method families relate; do not replace the overview with technical lemma names.}
+\placeholder{Identify the major route tasks in Section~\ref{sec:routes}, the local mechanism serving them, and how Section~\ref{sec:closure} closes the original targets. Adapt this organization to every family promised in the architecture; shared file boundaries do not decide section rank.}
+
+\section{The proof routes and their decisive ideas}\label{sec:routes}
+\placeholder{For each promised core family, state the usable target and assumptions, the main idea, actual intermediate outputs and their connections. State accurately located external inputs and verify their applicability. Explain why each output supplies the next input.}
+
+\subsection{A decisive mechanism within its route}\label{subsec:mechanism}
+\placeholder{Select a genuine bridge or bottleneck that this part promises to explain. Give enough of its reasoning to show why the method works; a short central argument is valid, while an unrelated easy lemma is not a substitute.}
+\begin{proposition}[A step supporting the route]\label{prop:bridge}
+\placeholder{State the exact claim needed in the route with all hypotheses. Use another form of argument if a separate proposition is unnecessary.}
+\end{proposition}
+\begin{proof}
+\placeholder{Supply the substantive argument at the declared scope, checking key choices, inputs and the final inference. Mark accurately cited technical inputs; do not recursively reprove background theorems.}
+\end{proof}
+\placeholder{Explain how Proposition~\ref{prop:bridge} supplies a necessary output of the route, rather than leaving its role implicit.}
+
+\section{Closure and the scope of the methods}\label{sec:closure}
+\placeholder{Assemble the outputs into the original conclusion for each core family and identify essential dependencies. Preserve necessary ideas in this edition rather than sending them all to standard. Distinguish demonstrated limitations from failures of the present proof or gaps in source access.}
+
+\templatereferences
+\end{document}

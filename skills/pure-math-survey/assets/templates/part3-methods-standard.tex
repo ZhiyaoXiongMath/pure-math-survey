@@ -1,0 +1,42 @@
+% Compile beside math-review.sty; replace all visible insertion text for publication.
+% Rename and regroup functional headings around the actual mathematical thread.
+% Shared files do not determine section hierarchy; no environment/count quota applies.
+% Edition check: identify what each substantial addition helps the reader understand.
+% Copyedit: state a full result once locally; check the printed meaning of notation.
+\documentclass[12pt,reqno]{amsart}
+\usepackage{math-review}
+\title[Part III: Methods (standard)]{[Review topic]\\
+Part III: Proofs and Methods (standard)}
+\author{[Author name]}
+\date{[Prepared date; literature cutoff date]}
+\begin{document}
+\begin{abstract}
+\placeholder{Identify the organizing proof ideas and the deeper mechanisms, dependencies and closure developed for the selected core routes.}
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Introduction}\label{sec:introduction}
+\placeholder{Present the central proof targets and the large ideas dividing the work. Explain which difficulties or structural changes make the families related or different.}
+\placeholder{Explain how Section~\ref{sec:routes} organizes the arguments, which central steps Section~\ref{sec:mechanisms} develops, and how Section~\ref{sec:closure} closes the targets. Make the assignment of local techniques to families explicit without listing every subsection.}
+
+\section{Routes from the main ideas to intermediate conclusions}\label{sec:routes}
+\placeholder{State exact targets, assumptions and conventions for every promised core family. Explain the decisive idea and the linked mathematical outputs, including where hypotheses enter. Identify selected explanation targets and precisely located background imports before developing them.}
+
+\section{The decisive arguments in the routes}\label{sec:mechanisms}
+\placeholder{Deepen the common central mechanisms through their key choices, constructions or derivations and the dependencies that make them valid. Do not pad a short complete bridge or substitute a peripheral proof for a promised target.}
+
+\subsection{A central bridge and its supporting argument}\label{subsec:bridge}
+\begin{proposition}[A decisive intermediate conclusion]\label{prop:bridge}
+\placeholder{State the complete verified intermediate claim at the strength used by its route, with its source or derivation status clear.}
+\end{proposition}
+\begin{proof}
+\placeholder{Develop the promised mechanism, verify the role and applicability of cited inputs, and check each transition through its conclusion. Include deeper support where it resolves a real explanatory need, not a fixed quota of technical lemmas.}
+\end{proof}
+\placeholder{Explain the output of Proposition~\ref{prop:bridge} and exactly where it enters the next step. Repeat this depth only for the mechanisms actually selected, using an appropriate hierarchy.}
+
+\section{Closing the targets and understanding transfer}\label{sec:closure}
+\placeholder{Complete the connected route for each family at the declared scope. Discuss dependencies, any unchecked steps and what permits transfer to other results. Compare useful alternate routes only after deepening the common core. Distinguish optional refinements from necessary missing interfaces.}
+
+\templatereferences
+\end{document}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Pure Math Survey"
+  short_description: "English math surveys in selected parts and editions"
+  default_prompt: "Use $pure-math-survey for an evidence-grounded English survey, defaulting to Parts I–V in concise and standard editions. Honor selected subsets; organize V as its own thematic review with main results, method ideas and precise Problems."
+policy:
+  allow_implicit_invocation: true

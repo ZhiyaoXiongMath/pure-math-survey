@@ -1,6 +1,0 @@
-interface:
-  display_name: "Pure Mathematics Systematic Review"
-  short_description: "English mathematics reviews in selected parts and editions"
-  default_prompt: "Use $pure-math-systematic-review for an evidence-grounded English review, defaulting to Parts I–V in concise and standard editions. Honor selected subsets; organize V as its own thematic review with main results, method ideas and precise Problems."
-policy:
-  allow_implicit_invocation: true

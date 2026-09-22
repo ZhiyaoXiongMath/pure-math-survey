@@ -1,0 +1,51 @@
+% Compile beside math-review.sty; replace all visible insertion text for publication.
+% Rename and regroup functional headings around the actual mathematical thread.
+% Shared files do not determine section hierarchy; no environment/count quota applies.
+% Edition check: identify what each substantial addition helps the reader understand.
+% Copyedit: state a full result once locally; check the printed meaning of notation.
+\documentclass[12pt,reqno]{amsart}
+\usepackage{math-review}
+\title[Part V: Thematic Review (standard)]{[Review topic]\\
+Part V: A Thematic Review (standard)}
+\author{[Author name]}
+\date{[Prepared date; literature cutoff date]}
+\begin{document}
+\begin{abstract}
+\placeholder{Describe the central problem, organizing mathematical perspective and deeper treatment of selected main results, key ideas and frontier developments in this independently readable review.}
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Introduction}\label{sec:introduction}
+\placeholder{Present the central mathematical question, its significance and the larger thematic relationships organizing this review. Develop necessary context or history only when it explains those relationships, not as a preliminary course.}
+\placeholder{Explain how Section~\ref{sec:setting} supplies the language for the answer groups in Section~\ref{sec:results}, how Section~\ref{sec:ideas} clarifies why those answers work, and how Section~\ref{sec:problems} emerges from their reach. Fill in the actual mathematical thread and section references rather than treating these functional titles as a finished organization.}
+
+\section{Setting and notation}\label{sec:setting}
+\placeholder{Define the objects, conventions and notation used in the selected results and Problems. Deepen the background by explaining a useful equivalent viewpoint or contextual relationship, not by restoring all foundations or models from another part.}
+
+\subsection{A viewpoint that clarifies the central question}\label{subsec:viewpoint}
+\placeholder{Justify a relevant reformulation or distinction and explain how it will be used. Keep it subordinate to the main task and omit it when it adds no understanding.}
+
+\section{Main results and their relations}\label{sec:results}
+\placeholder{Group the main conclusions by the mathematical questions they answer. Explain their relationship before local variants. Keep this review's independent selection even when other parts contain many more nodes.}
+\begin{theorem}[A principal answer]\label{thm:principal}
+\placeholder{State the verified complete main result with all assumptions, quantifiers, scope and qualifications. Reuse its canonical body where shared, and cite the exact source version.}
+\end{theorem}
+\placeholder{Deepen the interpretation of Theorem~\ref{thm:principal}, rather than restating it: explain the role of a significant condition or justify a comparison with a neighboring answer. Add a useful variant only after clarifying the common core; a different claim needs a separately justified statement.}
+
+\section{Ideas behind the results}\label{sec:ideas}
+\placeholder{Explain the key method ideas more fully: what change of viewpoint, construction or inference resolves the issue, what it produces and why that supports the selected conclusion. State accurate external inputs and their roles without recursively proving the supporting literature.}
+
+\subsection{A mechanism that clarifies the main idea}\label{subsec:mechanism}
+\placeholder{Where genuinely helpful, add a short derivation or revealing example that deepens the same idea. Declare its actual treatment. This is not an automatic Part III proof obligation, and no inventory of technical lemmas is required. Interweave this explanation with a result when that reads better.}
+
+\section{Problems and further directions}\label{sec:problems}
+\placeholder{Select the same core frontier needed for this review's central thread, with supplementary directions only where useful. The collection need not be all Problems of Part IV.}
+\begin{problem}[A direction arising from the main results]\label{prob:core}
+\placeholder{State the precise objects, hypotheses, quantifiers and unresolved target. Preserve the formulation of a shared sourced Problem, and clearly distinguish a review-proposed direction.}
+\end{problem}
+\placeholder{After Problem~\ref{prob:core}, identify formulation source and cutoff status. Deepen the account of significance, verified progress, decisive solved ranges, remaining scope and evidenced relationships or difficulties. Do not claim the complement of a known range is all open; disclose what could not be determined.}
+\placeholder{For a verified settled narrow scope, state that scope and its settlement evidence instead of manufacturing an open Problem. Close with a supported overall interpretation of the main answers, their ideas and worthwhile directions, not a recap of every subsection.}
+
+\templatereferences
+\end{document}
