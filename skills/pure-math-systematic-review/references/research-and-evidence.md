@@ -1,0 +1,39 @@
+# Research, sources, and evidence
+
+## Scope and search
+
+Record mathematical questions, reader, exclusions, cutoff, corpus and proof ambition. For comprehensive work, search mathematics-specific indexes where accessible, primary publications, preprint version histories, publisher/DOI records, backward and forward citations, author pages and corrections. Adapt channels to the subject and access; disclose missing channels instead of claiming exhaustive recall. For fixed-corpus work preserve that boundary.
+
+Log material searches verbatim: platform, exact query, filters/sort, retrieval time, result count or NOT_EXPOSED, purpose, disposition and saved evidence. Preserve record -> work -> version -> mathematical statement distinctions. The priority version and controlling statement version may differ.
+
+## Identity and conventions
+
+Use one bibliography identity registry for all requested documents. Cross-check central works against authoritative and independent metadata layers where available. Record complete authors, title, publication information, DOI/preprint identity and exact version. Resolve material identity conflicts before relying on the citation; never guess a missing DOI or page range. Record unavailable evidence honestly.
+
+Normalize conventions only after recording the original convention and justified translation. This includes terminology, equivalence notions, orientations, indexing, normalizations, signs and parameter ranges as relevant. Avoid requiring irrelevant domain-specific fields. Preserve exact locators for statements, proofs, corrections and historical assertions.
+
+## Verification and proof provenance
+
+Distinguish bibliographic verification, source-statement inspection, checked key proof chain, and full checked argument. A parsed registry establishes none of these. Record provenance (`SOURCE_EXPLICIT`, `SOURCE_RECONSTRUCTED_AND_VERIFIED`, or `REVIEW_DERIVED`) separately from treatment and closure (`SCHEMATIC`, a detailed route, a completed subargument, or a proof complete under its stated inputs). `DECLARED_EXTERNAL_INPUT` describes an imported step's treatment, not its verification or the provenance of the surrounding proof. Record treatment and provenance without substituting either for a closure or explanation assessment. Attribute a source's proof mechanism only after inspecting the evidence supporting that account.
+
+For a decisive step attributed to a source, open the actual proof location in the controlling version. Compare the manuscript's mechanism, required hypotheses, key choices and notation translation with that passage. Inspect the linked lemmas when the step depends on them. Title, abstract, theorem statement and a familiar proof pattern from the field cannot establish what this source's proof does. Record the exact version and proof locator, what was checked and any access limit in the existing source/provenance records or linked note. A bare preprint identifier or current-version URL is insufficient when versions differ; preserve the version actually inspected. Record metadata cross-check locators as well as the outcome, or state which independent record was unavailable.
+
+If the review supplies a different reconstruction, identify it as such and check its inferences; do not present it as the source's method. When proof evidence is inaccessible, retain the specific uncertainty and do not mark that mechanism verified merely because its theorem statement was inspected. Apply the core/supplementary completion distinction in [proofs and boundaries](proofs-and-boundaries.md#treatment-and-provenance).
+
+## Frontier and history
+
+For claims such as open, strongest known, no general theorem, equivalence, failed converse, corrected, or first, search specifically for resolutions, later versions, counterexamples, corrections, alternate terminology and forward citations. Retain candidate resolutions even when unverified. Distinguish verified theorem, frontier preprint, claimed resolution unverified, partial result, counterexample, superseded/corrected, out of scope, and no resolution located within protocol. The last is not an assertion of mathematical openness.
+
+When IV or V is requested, identifying core Problems is an active research duty within that part's own selection. Start from the scope's central objects and results, problems stated in primary works, significant special cases and limitations, then follow their backward and forward connections. Do not wait for a ready-made list or treat its absence as a waiver. Assess centrality through the question's mathematical role and connections, not scores or a quota. Inspect the source formulation separately from knowledge status: preserve objects, assumptions, quantifiers and the exact target. State each core target in a named, numbered, labelled Problem environment. After it, explain formulation source, cutoff status, importance, main verified advances, precise solved ranges, remaining scope and any evidenced obstacle. Do not replace a decisive known parameter range with a vague claim that more cases are known; when the full boundary cannot be verified, disclose the limitation. Do not force a proposed strategy or a definite obstruction when none is supported.
+
+Retain a question's core role, formulation source, progress, justified relations and manuscript locations in the existing `frontier-claim-registry.csv` descriptive fields or a linked note (for example through `review_wording` or `blocker`). `affected_theorem_ids` and `reverse_search_ids` link the relevant nodes and searches. `frontier_status` must review both core coverage and state of knowledge; no separate ranking or synonymous audit table is needed. Preserve candidate resolution claims as unverified until checked; do not erase them because they complicate an open-status assertion. A review-proposed question is explicitly so labeled and cannot replace an established core problem.
+
+For a sharply delimited subject settled by a full classification or sufficient theorems, give its scope and the verified settlement in the manuscript. This outcome follows an executed frontier review, not automatic non-applicability. Related neighboring problems may be discussed with their scope distinguished. An unsuccessful search, inaccessible text, fixed corpus or failed method proves neither openness nor settlement. Where further searching is forbidden by an explicit fixed-corpus instruction, respect it, actively examine that corpus, and disclose what current status cannot be checked; do not invent an exemption. A materially missing core-frontier account is incomplete. Local evidence uncertainty remains stated beside the Problem. IV and V may select different core collections; shared Problems retain the same conditions, sources and status across their actual placements.
+
+Historical relations identify what changed in hypotheses, conclusions, methods or concepts and retain supporting sources. Distinguish source-explicit history from review inference. Chronology alone is not theoretical development.
+
+## Updates and reproducibility
+
+Compare accepted baselines at work/version, result, proof, concept, boundary/frontier and publication levels. Record retained, superseded, corrected, excluded, downgraded or missing items with reasons. Unexplained disappearance or changed scope is unresolved. Store qualified theory/history relations rather than unqualified implication arrows. For a prospective holdout, record selection before architecture freeze and actual non-use; otherwise label the test retrospective or not tested.
+
+All records stay in the reproducibility bundle. Reader-facing appendices contain only source/version decisions needed for the mathematics. Do not distribute private reasoning, confidential materials or texts that cannot be redistributed; retain lawful locators and hashes instead.

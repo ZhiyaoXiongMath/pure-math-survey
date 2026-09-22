@@ -1,0 +1,13 @@
+check,status,evidence,note
+source_identity,PENDING,,
+statement_verification,PENDING,,
+proof_depth,PENDING,,Assess only the argument treatment actually given; a method account is not a full-proof claim.
+reader_outcomes,PENDING,,
+proof_framework,PENDING,,Required only when III is requested; otherwise omit or use reasoned NOT_APPLICABLE.
+decisive_mechanisms,PENDING,,Required only when III is requested; otherwise omit or use reasoned NOT_APPLICABLE.
+edition_depth,PENDING,,
+edition_semantic_consistency,PENDING,,
+frontier_status,PENDING,,Required for IV or V within its own scope; a settled scope still needs evidence.
+build_requested_documents,PENDING,,
+visual_requested_documents,PENDING,,
+archive_integrity,PENDING,,
