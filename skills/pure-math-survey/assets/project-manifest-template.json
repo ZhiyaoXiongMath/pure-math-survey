@@ -64,5 +64,48 @@
       "tex_file": "[topic]-part5-integrated-standard.tex",
       "pdf_file": "[topic]-part5-integrated-standard.pdf"
     }
-  ]
+  ],
+  "requested_documents": [
+    {
+      "part": 1,
+      "edition": "concise"
+    },
+    {
+      "part": 1,
+      "edition": "standard"
+    },
+    {
+      "part": 2,
+      "edition": "concise"
+    },
+    {
+      "part": 2,
+      "edition": "standard"
+    },
+    {
+      "part": 3,
+      "edition": "concise"
+    },
+    {
+      "part": 3,
+      "edition": "standard"
+    },
+    {
+      "part": 4,
+      "edition": "concise"
+    },
+    {
+      "part": 4,
+      "edition": "standard"
+    },
+    {
+      "part": 5,
+      "edition": "concise"
+    },
+    {
+      "part": 5,
+      "edition": "standard"
+    }
+  ],
+  "_template_note": "Explicit all-ten catalog. Runtime default is V concise; suite is I\u2013V concise. Use create_project.py."
 }

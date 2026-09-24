@@ -1,37 +1,56 @@
-% Compile beside math-review.sty; replace all visible insertion text for publication.
-% Rename and regroup functional headings around the actual mathematical thread.
-% Shared files do not determine section hierarchy; no environment/count quota applies.
-% Edition check: remove a side branch only when the selected explanation stays intact.
-% Copyedit: state a full result once locally; check the printed meaning of notation.
+% Edition check: concise; total-page review limit 6, including references.
+% Reader task: State the selected answers and their exact logical relations; separate existence, regularity and evolution claims.
+% Select one complete thread; remove genuine side branches before drafting.
+% In the Introduction state every selected principal conclusion, not only names.
+% Review body-to-introduction reverse coverage after changing any result or scope.
+% Style: delete trivial transitions; retain useful self-contained repetition;
+% use itemize/enumerate; put secondary consequences afterward.
+% An introduction consisting of definitions and theorems is valid:
+% definitions and theorems are valid without a narrative roadmap.
+% Two slots illustrate wiring, not a theorem-count requirement. Remove unused slots.
 \documentclass[12pt,reqno]{amsart}
 \usepackage{math-review}
-\title[Part II: Results (concise)]{[Review topic]\\
-Part II: Results and Relations (concise)}
-\author{[Author name]}
-\date{[Prepared date; literature cutoff date]}
+\title{\placeholder{Topic}: Results and Relations}
+\author{}
+\date{\placeholder{Checked literature cutoff}}
+\newcommand{\PrincipalStatement}{%
+\placeholder{Specify objects, all necessary hypotheses, quantifiers and ranges.}
+\begin{itemize}
+\item \placeholder{A necessary condition; omit this list if there is no real list.}
+\item \placeholder{A second independent condition, only when needed.}
+\end{itemize}
+\placeholder{State the actual mathematical conclusion and exact source/status.}
+}
+\newcommand{\SecondStatement}{%
+\placeholder{State another selected principal answer with its own data, necessary conditions and actual conclusion; remove this slot when outside scope.}
+}
 \begin{document}
 \begin{abstract}
-\placeholder{Identify the main question, selected established answers and the mathematical relationships that make them a coherent theory.}
+\placeholder{Give the question and selected answers or boundary in two or three sentences. The abstract does not replace the main statements below.}
 \end{abstract}
 \maketitle
-\tableofcontents
 
 \section{Introduction}\label{sec:introduction}
-\placeholder{State the central question, the perspective used to organize its known answers and the decisive distinctions among those answers. Introduce only the setting needed to make this question readable.}
-\placeholder{Explain which part of the question the result group in Section~\ref{sec:results} answers and how the comparisons in Section~\ref{sec:relations} refine that answer. Describe mathematical relationships, not a sequence of paper titles.}
-
-\section{The principal answers to the question}\label{sec:results}
-\placeholder{State the necessary objects and conventions, then organize selected results by the question they resolve. Merge technical variants that do not need separate top-level treatment.}
-\begin{theorem}[A principal result]\label{thm:principal}
-\placeholder{Give the verified complete statement: objects, assumptions, quantifiers, range, conclusion and qualifications. Use the canonical body for a shared full statement, and retain the exact source and controlling version.}
+\placeholder{Define the minimum necessary notation. State fixed data, unknowns and branch conditions before using them. Give actual answers with quantifiers, parameter ranges and source/status qualifications. Delete transitions that merely announce what follows.}
+\begin{theorem}\label{thm:principal}
+\PrincipalStatement
 \end{theorem}
-\placeholder{Explain the mathematical force of Theorem~\ref{thm:principal}. Give the decisive proof idea: what it changes or constructs, what this achieves and why it leads to the result. A method name alone is insufficient.}
+\begin{theorem}\label{thm:second}
+\SecondStatement
+\end{theorem}
+\placeholder{Keep a precise remaining question or negative boundary here when it is a principal commitment. Change theorem to proposition, sourced claim or Problem as mathematically appropriate. No invented optional titles.}
 
-\subsection{The distinction needed to interpret the result}\label{subsec:distinction}
-\placeholder{Explain a necessary special case, neighboring conclusion or limitation of scope. Retain conditions while compressing secondary variants; remove this subsection if it serves no actual distinction.}
+\section{Answers and their relations}\label{sec:mechanism}
+\begin{theoremrecall}{thm:principal}
+\PrincipalStatement
+\end{theoremrecall}
+\placeholder{Compare hypotheses and show the implication, equivalence, strict strengthening or failed converse. Explain a decisive proof interface rather than list papers chronologically. A recall is optional if it adds backtracking rather than removing it. Reuse the canonical body whenever a full repetition is retained.}
 
-\section{Relationships and consequences}\label{sec:relations}
-\placeholder{Compare the chosen answers by matching assumptions and conclusions. Prove or cite a claimed implication, improvement or equivalence; distinguish it from analogy. Derive the principal consequence and return to what the central question has and has not been answered within the selected scope.}
+\section{The second answer and the boundary}\label{sec:boundary}
+\begin{theoremrecall}{thm:second}
+\SecondStatement
+\end{theoremrecall}
+\placeholder{Use a mathematical heading. Explain the second answer or boundary without bundling secondary consequences into its main statement. Define a precise sourced Problem only if the selected scope needs one. Do not manufacture a fixed number of Problems.}
 
 \templatereferences
 \end{document}

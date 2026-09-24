@@ -1,0 +1,178 @@
+#!/usr/bin/env python3
+"""Compile maintenance scaffolds and the frozen v6; not a survey-quality grader.
+
+Requires pdfLaTeX and its document packages. Uses no shell escape, works only on
+copied inputs, and reports final log problems separately from PDF rendering.
+"""
+from __future__ import annotations
+import argparse
+import hashlib
+import json
+import re
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+BLOCKING_PATTERNS = {
+    "undefined_reference": r"(?:Reference|Citation) .+? undefined|There were undefined references",
+    "duplicate_label": r"multiply[- ]defined|destination with the same identifier",
+    "missing_glyph": r"Missing character:",
+    "overflow": r"Overfull \\[hv]box",
+    "fatal": r"^! |Fatal error|Emergency stop",
+    "unstable_references": r"Rerun to get|Rerun LaTeX|Please \(re\)run",
+}
+
+def log_issues(text: str) -> dict[str, list[str]]:
+    return {kind: [line for line in text.splitlines() if re.search(pattern, line)]
+            for kind, pattern in BLOCKING_PATTERNS.items()
+            if any(re.search(pattern, line) for line in text.splitlines())}
+
+def shared_style_source(source: str) -> str:
+    """Replace only the frozen sample's known preamble, or fail closed.
+
+The original remains immutable. Metadata and subject macros are preserved. This
+is a fixed-reference adapter, not a generic TeX parser or source transformer.
+"""
+    start = source.find(r"\usepackage[T1]{fontenc}")
+    end = source.find(r"\newcommand{\ddbar}")
+    if start < 0 or end <= start or source.count(r"\newcommand{\ddbar}") != 1:
+        raise ValueError("Reference preamble markers do not match the frozen v6 adapter")
+    preamble = source[start:end]
+    match = re.search(r"\\hypersetup\{(.*?)\}\s*\\linespread", preamble, re.S)
+    if not match:
+        raise ValueError("Reference PDF metadata block is missing")
+    replacement = ("% Maintenance-only shared-style regression; original body unchanged.\n"
+                   "\\usepackage{math-review}\n\\hypersetup{" + match.group(1) + "}\n\n")
+    return source[:start] + replacement + source[end:]
+
+def auxiliary_digest(folder: Path, stem: str) -> str:
+    h = hashlib.sha256()
+    for suffix in (".aux", ".toc", ".out"):
+        p = folder / (stem + suffix)
+        h.update(suffix.encode())
+        if p.exists():
+            h.update(p.read_bytes())
+    return h.hexdigest()
+
+def compile_one(folder: Path, entrypoint: str, engine: str, timeout: int = 120) -> dict:
+    path = folder / entrypoint
+    if not path.is_file() or path.suffix != ".tex":
+        raise ValueError(f"Missing TeX entrypoint: {path}")
+    command = [engine, "-no-shell-escape", "-interaction=nonstopmode",
+               "-halt-on-error", "-file-line-error", entrypoint]
+    previous = None
+    stable = False
+    passes = 0
+    for passes in range(1, 6):
+        proc = subprocess.run(command, cwd=folder, text=True, encoding="utf-8",
+                              errors="replace", capture_output=True, timeout=timeout)
+        (folder / f"build-pass-{passes}.txt").write_text(proc.stdout + proc.stderr, encoding="utf-8")
+        if proc.returncode:
+            raise RuntimeError(f"TeX failed for {entrypoint} on pass {passes}; see {folder}")
+        digest = auxiliary_digest(folder, path.stem)
+        if passes >= 2 and previous == digest:
+            stable = True
+            break
+        previous = digest
+    log = (folder / (path.stem + ".log")).read_text(encoding="utf-8", errors="replace")
+    issues = log_issues(log)
+    if not stable:
+        issues["unstable_auxiliary_files"] = ["Auxiliary files changed through five passes"]
+    pdf = folder / (path.stem + ".pdf")
+    if not pdf.is_file() or not pdf.read_bytes().startswith(b"%PDF-"):
+        issues["missing_pdf"] = [str(pdf)]
+    pages = re.search(r"Output written on .*?\((\d+) pages?", log, re.S)
+    recalls = {}
+    for key in ("PMS-RECALL", "PMS-GRADIENT-RECALL"):
+        before = re.findall(re.escape(key) + r"-BEFORE=(\d+)", log)
+        after = re.findall(re.escape(key) + r"-AFTER=(\d+)", log)
+        if before or after:
+            recalls[key] = {"before": before, "after": after}
+            if before != after:
+                issues.setdefault("recall_counter", []).append(key + " changed its theorem counter")
+    return {"entrypoint": entrypoint, "passes": passes, "auxiliary_stable": stable,
+            "pages_from_log": int(pages.group(1)) if pages else None,
+            "pdf": str(pdf), "pdf_sha256": hashlib.sha256(pdf.read_bytes()).hexdigest() if pdf.exists() else None,
+            "blocking_log_issues": issues,
+            "font_fallback": "STIX2 unavailable" in log,
+            "underfull_box_count": len(re.findall(r"Underfull \\[hv]box", log)),
+            "recall_counters": recalls,
+            "status": "PASS" if not issues else "FAIL"}
+
+def run_checks(output: Path, engine: str = "pdflatex") -> dict:
+    engine_path = shutil.which(engine)
+    if not engine_path:
+        raise FileNotFoundError(f"TeX engine not found: {engine}")
+    if output.exists() and any(output.iterdir()):
+        raise FileExistsError("Output directory must be new or empty; prior evidence is not overwritten")
+    if output.resolve().is_relative_to(ROOT):
+        raise ValueError("Build output must be outside the installed skill tree")
+    output.mkdir(parents=True, exist_ok=True)
+    version = subprocess.run([engine_path, "--version"], capture_output=True, text=True,
+                             check=True, timeout=20).stdout.splitlines()[0]
+    report = {"scope": "maintenance builds; not new research-survey generation or mathematical review",
+              "engine": version, "command_flags": ["-no-shell-escape", "-interaction=nonstopmode",
+                                                    "-halt-on-error", "-file-line-error"],
+              "visual_review": "NOT_PERFORMED_BY_THIS_SCRIPT", "builds": []}
+    style = ROOT / "assets/templates/math-review.sty"
+    tasks: list[tuple[Path, str]] = []
+    for template in sorted((ROOT / "assets/templates").glob("part*.tex")):
+        folder = output / template.stem
+        folder.mkdir()
+        shutil.copy2(template, folder / template.name)
+        shutil.copy2(style, folder / style.name)
+        tasks.append((folder, template.name))
+    folder = output / "exposition-smoke"
+    folder.mkdir()
+    for fixture in (ROOT / "tests/fixtures").glob("*.tex"):
+        shutil.copy2(fixture, folder / fixture.name)
+    shutil.copy2(style, folder / style.name)
+    tasks.append((folder, "exposition-smoke.tex"))
+    reference = ROOT / "assets/reference-samples/dhym-v6/dhym-survey-polished-v6.tex"
+    text = reference.read_text(encoding="utf-8")
+    for name, content in (("v6-original-preamble", text), ("v6-shared-style", shared_style_source(text))):
+        folder = output / name
+        folder.mkdir()
+        (folder / (name + ".tex")).write_text(content, encoding="utf-8")
+        shutil.copy2(style, folder / style.name)
+        tasks.append((folder, name + ".tex"))
+    folder = output / "dhym-compact"
+    folder.mkdir()
+    compact = ROOT / "assets/reference-samples/dhym-compact/dhym-surface-compact.tex"
+    shutil.copy2(compact, folder / compact.name)
+    shutil.copy2(style, folder / style.name)
+    tasks.append((folder, compact.name))
+    for folder, entry in tasks:
+        print(f"Building {entry}", flush=True)
+        try:
+            result = compile_one(folder, entry, engine_path)
+        except (OSError, ValueError, subprocess.SubprocessError, RuntimeError) as exc:
+            result = {"entrypoint": entry, "status": "FAIL", "error": str(exc)}
+        result["artifact_kind"] = ("instructional_scaffold" if entry.startswith("part") else
+                                   "elementary_maintenance_fixture" if entry.startswith("exposition") else
+                                   "compact_reference_adaptation" if entry.startswith("dhym-surface") else
+                                   "frozen_reference_rebuild")
+        report["builds"].append(result)
+        (output / "build-report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    report["status"] = "PASS" if all(x["status"] == "PASS" for x in report["builds"]) else "FAIL"
+    (output / "build-report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    return report
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--engine", default="pdflatex", choices=["pdflatex"])
+    args = parser.parse_args()
+    try:
+        report = run_checks(args.output.resolve(), args.engine)
+    except (OSError, ValueError, subprocess.SubprocessError) as exc:
+        print(f"Build checks unavailable: {exc}", file=sys.stderr)
+        return 2
+    print(json.dumps({"status": report["status"], "build_count": len(report["builds"]),
+                      "report": str(args.output / "build-report.json")}, indent=2))
+    return 0 if report["status"] == "PASS" else 1
+
+if __name__ == "__main__":
+    raise SystemExit(main())

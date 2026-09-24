@@ -329,8 +329,10 @@ def validate(root: Path, template_mode: bool = False) -> tuple[list[str], list[s
                 errors.append(f"{node}: canonical component assigned to multiple nodes")
             components.add(component)
             body = strip_comments(component.read_text(encoding="utf-8-sig"))
-            if re.search(r"\\documentclass\b|\\begin\{(?:document|theorem|lemma|proposition|corollary|definition|example|counterexample|conjecture|question|problem)\}", body):
+            if re.search(r"\\documentclass\b|\\begin\{(?:document|theorem|lemma|proposition|corollary|definition|example|counterexample|conjecture|question|problem|theoremrecall|mathreviewrecalledtheorem)\}", body):
                 errors.append(f"{node}: canonical component must contain mathematical body only")
+            if LABEL_RE.search(body):
+                errors.append(f"{node}: canonical component must be label-free; put labels in the primary manuscript wrapper")
             if public_leaks(body):
                 errors.append(f"{node}: canonical component contains audit metadata or internal coordinates")
             if not template_mode and PLACEHOLDER_RE.search(body):
@@ -381,9 +383,13 @@ def validate(root: Path, template_mode: bool = False) -> tuple[list[str], list[s
             if not label or LABEL_RE.findall(text).count(label) != 1:
                 errors.append(f"{node}: {prefix} semantic label {label!r} must occur exactly once")
             count = counts[component] if component else 0
-            expected_count = 1 if treatment == "FULL_STATEMENT" else 0
-            if count != expected_count:
-                errors.append(f"{node}: {prefix} canonical component input count {count}; expected {expected_count}")
+            if treatment == "FULL_STATEMENT":
+                if count < 1:
+                    errors.append(f"{node}: {prefix} canonical component input count {count}; expected at least 1")
+                elif count > 1:
+                    notes.append(f"{node}: {prefix} reuses its canonical body {count} times; useful local recalls are allowed. Review their purpose and printed numbering; repetition alone is not a defect.")
+            elif count != 0:
+                errors.append(f"{node}: {prefix} canonical component input count {count}; expected 0")
         if not has_requested_placement:
             errors.append(f"{node}: no public placement in a requested document")
 
@@ -424,6 +430,7 @@ def validate(root: Path, template_mode: bool = False) -> tuple[list[str], list[s
     notes.append("Completed release-audit statuses are declared review records; this checker does not perform those human/build/archive reviews.")
     notes.append("Reader-outcome, proof-framework, decisive-mechanism, and edition-depth checks inspect record presence/status/evidence only, not explanatory quality or whether evidence covers the requested scope.")
     notes.append("Only requests including Part III require proof_framework and decisive_mechanisms. Part V methods are reviewed under reader_outcomes and edition_depth; Part V still requires frontier_status within its own selected scope. Substantive adequacy is not machine-checked.")
+    notes.append("Writing quality is not machine-certified: assess trivial transitions, theorem focus, formula use, hypothesis lists and useful repetition in the existing substantive reviews.")
     notes.append("TeX parsing covers literal braced input/include and labels only; compile logs and PDF inspection remain required.")
     notes.append("Internal-ID leakage checks target headings and audit fields; legitimate mathematical symbols are not rejected merely for matching T/P/S digits.")
     return errors, notes

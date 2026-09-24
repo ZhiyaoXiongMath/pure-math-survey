@@ -1,42 +1,59 @@
-% Compile beside math-review.sty; replace all visible insertion text for publication.
-% Rename and regroup functional headings around the actual mathematical thread.
-% Shared files do not determine section hierarchy; no environment/count quota applies.
-% Edition check: identify what each substantial addition helps the reader understand.
-% Copyedit: state a full result once locally; check the printed meaning of notation.
+% Edition check: standard; total-page review limit 10, including references.
+% Reader task: Explain the selected proof routes and complete their decisive mechanisms with explicit external inputs.
+% Develop the selected thread with deeper derivations and comparisons; do not add filler or automatically restore every omitted side branch.
+% In the Introduction state every selected principal conclusion, not only names.
+% Review body-to-introduction reverse coverage after changing any result or scope.
+% Style: delete trivial transitions; retain useful self-contained repetition;
+% use itemize/enumerate; put secondary consequences afterward.
+% An introduction consisting of definitions and theorems is valid:
+% definitions and theorems are valid without a narrative roadmap.
+% Two slots illustrate wiring, not a theorem-count requirement. Remove unused slots.
 \documentclass[12pt,reqno]{amsart}
 \usepackage{math-review}
-\title[Part III: Methods (standard)]{[Review topic]\\
-Part III: Proofs and Methods (standard)}
-\author{[Author name]}
-\date{[Prepared date; literature cutoff date]}
+\title{\placeholder{Topic}: Proofs and Methods}
+\author{}
+\date{\placeholder{Checked literature cutoff}}
+\newcommand{\PrincipalStatement}{%
+\placeholder{Specify objects, all necessary hypotheses, quantifiers and ranges.}
+\begin{itemize}
+\item \placeholder{A necessary condition; omit this list if there is no real list.}
+\item \placeholder{A second independent condition, only when needed.}
+\end{itemize}
+\placeholder{State the actual mathematical conclusion and exact source/status.}
+}
+\newcommand{\SecondStatement}{%
+\placeholder{State another selected principal answer with its own data, necessary conditions and actual conclusion; remove this slot when outside scope.}
+}
 \begin{document}
 \begin{abstract}
-\placeholder{Identify the organizing proof ideas and the deeper mechanisms, dependencies and closure developed for the selected core routes.}
+\placeholder{Give the question and selected answers or boundary in two or three sentences. The abstract does not replace the main statements below.}
 \end{abstract}
 \maketitle
-\tableofcontents
 
 \section{Introduction}\label{sec:introduction}
-\placeholder{Present the central proof targets and the large ideas dividing the work. Explain which difficulties or structural changes make the families related or different.}
-\placeholder{Explain how Section~\ref{sec:routes} organizes the arguments, which central steps Section~\ref{sec:mechanisms} develops, and how Section~\ref{sec:closure} closes the targets. Make the assignment of local techniques to families explicit without listing every subsection.}
+\placeholder{Define the minimum necessary notation. State fixed data, unknowns and branch conditions before using them. Give actual answers with quantifiers, parameter ranges and source/status qualifications. Delete transitions that merely announce what follows.}
+\begin{theorem}\label{thm:principal}
+\PrincipalStatement
+\end{theorem}
+\begin{theorem}\label{thm:second}
+\SecondStatement
+\end{theorem}
+\placeholder{Keep a precise remaining question or negative boundary here when it is a principal commitment. Change theorem to proposition, sourced claim or Problem as mathematically appropriate. No invented optional titles.}
 
-\section{Routes from the main ideas to intermediate conclusions}\label{sec:routes}
-\placeholder{State exact targets, assumptions and conventions for every promised core family. Explain the decisive idea and the linked mathematical outputs, including where hypotheses enter. Identify selected explanation targets and precisely located background imports before developing them.}
+\section{The mechanism and its closure}\label{sec:mechanism}
+\begin{theoremrecall}{thm:principal}
+\PrincipalStatement
+\end{theoremrecall}
+\placeholder{Derive the decisive identity or estimate and explain how the global argument closes. Identify each imported theorem and check its hypotheses. A method name or arrow is not a proof. A recall is optional if it adds backtracking rather than removing it. Reuse the canonical body whenever a full repetition is retained.}
 
-\section{The decisive arguments in the routes}\label{sec:mechanisms}
-\placeholder{Deepen the common central mechanisms through their key choices, constructions or derivations and the dependencies that make them valid. Do not pad a short complete bridge or substitute a peripheral proof for a promised target.}
+\section{The second answer and the boundary}\label{sec:boundary}
+\begin{theoremrecall}{thm:second}
+\SecondStatement
+\end{theoremrecall}
+\placeholder{Use a mathematical heading. Explain the second answer or boundary without bundling secondary consequences into its main statement. Define a precise sourced Problem only if the selected scope needs one. Do not manufacture a fixed number of Problems.}
 
-\subsection{A central bridge and its supporting argument}\label{subsec:bridge}
-\begin{proposition}[A decisive intermediate conclusion]\label{prop:bridge}
-\placeholder{State the complete verified intermediate claim at the strength used by its route, with its source or derivation status clear.}
-\end{proposition}
-\begin{proof}
-\placeholder{Develop the promised mechanism, verify the role and applicability of cited inputs, and check each transition through its conclusion. Include deeper support where it resolves a real explanatory need, not a fixed quota of technical lemmas.}
-\end{proof}
-\placeholder{Explain the output of Proposition~\ref{prop:bridge} and exactly where it enters the next step. Repeat this depth only for the mechanisms actually selected, using an appropriate hierarchy.}
-
-\section{Closing the targets and understanding transfer}\label{sec:closure}
-\placeholder{Complete the connected route for each family at the declared scope. Discuss dependencies, any unchecked steps and what permits transfer to other results. Compare useful alternate routes only after deepening the common core. Distinguish optional refinements from necessary missing interfaces.}
+\section{Closure and transfer of the proof}\label{sec:standard-depth}
+\placeholder{Develop the declared difficult step beyond the concise account: state its input and output, derive the decisive estimate or construction, track uniform constants or functorial conditions where relevant, and show how the next step closes. An imported theorem is legitimate only when the promised mechanism is not hidden inside it. State the exact obstruction to transferring the route to the proposed wider setting.}
 
 \templatereferences
 \end{document}

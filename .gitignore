@@ -10,6 +10,7 @@ __pycache__/
 *.fdb_latexmk
 *.synctex.gz
 *.pdf
+!skills/pure-math-survey/assets/reference-samples/**/*.pdf
 *.zip
 build/
 dist/

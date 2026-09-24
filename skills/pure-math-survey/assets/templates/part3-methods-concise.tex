@@ -1,40 +1,56 @@
-% Compile beside math-review.sty; replace all visible insertion text for publication.
-% Rename and regroup functional headings around the actual mathematical thread.
-% Shared files do not determine section hierarchy; no environment/count quota applies.
-% Edition check: remove a side branch only when the selected explanation stays intact.
-% Copyedit: state a full result once locally; check the printed meaning of notation.
+% Edition check: concise; total-page review limit 6, including references.
+% Reader task: Explain the selected proof routes and complete their decisive mechanisms with explicit external inputs.
+% Select one complete thread; remove genuine side branches before drafting.
+% In the Introduction state every selected principal conclusion, not only names.
+% Review body-to-introduction reverse coverage after changing any result or scope.
+% Style: delete trivial transitions; retain useful self-contained repetition;
+% use itemize/enumerate; put secondary consequences afterward.
+% An introduction consisting of definitions and theorems is valid:
+% definitions and theorems are valid without a narrative roadmap.
+% Two slots illustrate wiring, not a theorem-count requirement. Remove unused slots.
 \documentclass[12pt,reqno]{amsart}
 \usepackage{math-review}
-\title[Part III: Methods (concise)]{[Review topic]\\
-Part III: Proofs and Methods (concise)}
-\author{[Author name]}
-\date{[Prepared date; literature cutoff date]}
+\title{\placeholder{Topic}: Proofs and Methods}
+\author{}
+\date{\placeholder{Checked literature cutoff}}
+\newcommand{\PrincipalStatement}{%
+\placeholder{Specify objects, all necessary hypotheses, quantifiers and ranges.}
+\begin{itemize}
+\item \placeholder{A necessary condition; omit this list if there is no real list.}
+\item \placeholder{A second independent condition, only when needed.}
+\end{itemize}
+\placeholder{State the actual mathematical conclusion and exact source/status.}
+}
+\newcommand{\SecondStatement}{%
+\placeholder{State another selected principal answer with its own data, necessary conditions and actual conclusion; remove this slot when outside scope.}
+}
 \begin{document}
 \begin{abstract}
-\placeholder{Identify the main proof ideas, the routes they support and the selected decisive mechanisms explained substantively in this concise account.}
+\placeholder{Give the question and selected answers or boundary in two or three sentences. The abstract does not replace the main statements below.}
 \end{abstract}
 \maketitle
-\tableofcontents
 
 \section{Introduction}\label{sec:introduction}
-\placeholder{State the central conclusions to be explained and the large proof ideas that address their distinct difficulties. Explain how the method families relate; do not replace the overview with technical lemma names.}
-\placeholder{Identify the major route tasks in Section~\ref{sec:routes}, the local mechanism serving them, and how Section~\ref{sec:closure} closes the original targets. Adapt this organization to every family promised in the architecture; shared file boundaries do not decide section rank.}
+\placeholder{Define the minimum necessary notation. State fixed data, unknowns and branch conditions before using them. Give actual answers with quantifiers, parameter ranges and source/status qualifications. Delete transitions that merely announce what follows.}
+\begin{theorem}\label{thm:principal}
+\PrincipalStatement
+\end{theorem}
+\begin{theorem}\label{thm:second}
+\SecondStatement
+\end{theorem}
+\placeholder{Keep a precise remaining question or negative boundary here when it is a principal commitment. Change theorem to proposition, sourced claim or Problem as mathematically appropriate. No invented optional titles.}
 
-\section{The proof routes and their decisive ideas}\label{sec:routes}
-\placeholder{For each promised core family, state the usable target and assumptions, the main idea, actual intermediate outputs and their connections. State accurately located external inputs and verify their applicability. Explain why each output supplies the next input.}
+\section{The mechanism and its closure}\label{sec:mechanism}
+\begin{theoremrecall}{thm:principal}
+\PrincipalStatement
+\end{theoremrecall}
+\placeholder{Derive the decisive identity or estimate and explain how the global argument closes. Identify each imported theorem and check its hypotheses. A method name or arrow is not a proof. A recall is optional if it adds backtracking rather than removing it. Reuse the canonical body whenever a full repetition is retained.}
 
-\subsection{A decisive mechanism within its route}\label{subsec:mechanism}
-\placeholder{Select a genuine bridge or bottleneck that this part promises to explain. Give enough of its reasoning to show why the method works; a short central argument is valid, while an unrelated easy lemma is not a substitute.}
-\begin{proposition}[A step supporting the route]\label{prop:bridge}
-\placeholder{State the exact claim needed in the route with all hypotheses. Use another form of argument if a separate proposition is unnecessary.}
-\end{proposition}
-\begin{proof}
-\placeholder{Supply the substantive argument at the declared scope, checking key choices, inputs and the final inference. Mark accurately cited technical inputs; do not recursively reprove background theorems.}
-\end{proof}
-\placeholder{Explain how Proposition~\ref{prop:bridge} supplies a necessary output of the route, rather than leaving its role implicit.}
-
-\section{Closure and the scope of the methods}\label{sec:closure}
-\placeholder{Assemble the outputs into the original conclusion for each core family and identify essential dependencies. Preserve necessary ideas in this edition rather than sending them all to standard. Distinguish demonstrated limitations from failures of the present proof or gaps in source access.}
+\section{The second answer and the boundary}\label{sec:boundary}
+\begin{theoremrecall}{thm:second}
+\SecondStatement
+\end{theoremrecall}
+\placeholder{Use a mathematical heading. Explain the second answer or boundary without bundling secondary consequences into its main statement. Define a precise sourced Problem only if the selected scope needs one. Do not manufacture a fixed number of Problems.}
 
 \templatereferences
 \end{document}

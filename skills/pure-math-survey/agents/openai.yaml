@@ -1,6 +1,4 @@
 interface:
   display_name: "Pure Math Survey"
-  short_description: "English math surveys in selected parts and editions"
-  default_prompt: "Use $pure-math-survey for an evidence-grounded English survey, defaulting to Parts I–V in concise and standard editions. Honor selected subsets; organize V as its own thematic review with main results, method ideas and precise Problems."
-policy:
-  allow_implicit_invocation: true
+  short_description: "Compact, source-checked mathematical surveys"
+  default_prompt: "Use $pure-math-survey. Identify the organizing problem, check current primary sources, state actual main conclusions early, and deliver a compact rebuildable TeX/PDF survey. Default to Part V concise; an explicitly requested suite uses I–V concise. Preserve all necessary hypotheses and mark fresh preprint claims. Follow the length review limits, generic templates and compact dHYM example."

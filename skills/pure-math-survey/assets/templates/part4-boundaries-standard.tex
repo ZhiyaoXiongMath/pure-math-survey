@@ -1,44 +1,69 @@
-% Compile beside math-review.sty; replace all visible insertion text for publication.
-% Rename and regroup functional headings around the actual mathematical thread.
-% Shared files do not determine section hierarchy; no environment/count quota applies.
-% Edition check: identify what each substantial addition helps the reader understand.
-% Copyedit: state a full result once locally; check the printed meaning of notation.
+% Edition check: standard; total-page review limit 8, including references.
+% Reader task: Locate the organizing problem, strongest relevant progress and precise boundary before local refinements.
+% Develop the selected thread with deeper derivations and comparisons; do not add filler or automatically restore every omitted side branch.
+% In the Introduction state every selected principal conclusion, not only names.
+% Review body-to-introduction reverse coverage after changing any result or scope.
+% Style: delete trivial transitions; retain useful self-contained repetition;
+% use itemize/enumerate; put secondary consequences afterward.
+% An introduction consisting of definitions and theorems is valid:
+% definitions and theorems are valid without a narrative roadmap.
+% Two slots illustrate wiring, not a theorem-count requirement. Remove unused slots.
 \documentclass[12pt,reqno]{amsart}
 \usepackage{math-review}
-\title[Part IV: Boundaries (standard)]{[Review topic]\\
-Part IV: Applications, Boundaries and Problems (standard)}
-\author{[Author name]}
-\date{[Prepared date; literature cutoff date]}
+\title{\placeholder{Topic}: Boundaries and Problems}
+\author{}
+\date{\placeholder{Checked literature cutoff}}
+\newcommand{\PrincipalStatement}{%
+\placeholder{Specify objects, all necessary hypotheses, quantifiers and ranges.}
+\begin{itemize}
+\item \placeholder{A necessary condition; omit this list if there is no real list.}
+\item \placeholder{A second independent condition, only when needed.}
+\end{itemize}
+\placeholder{State the actual mathematical conclusion and exact source/status.}
+}
+\newcommand{\SecondStatement}{%
+\placeholder{State another selected principal answer with its own data, necessary conditions and actual conclusion; remove this slot when outside scope.}
+}
+% Optional unresolved-core slot, not a Problem quota. Remove it when the scope
+% has no selected unresolved question; explain any settled organizing question instead.
+\newcommand{\CoreProblemStatement}{%
+\placeholder{State the core unresolved target with its objects, assumptions, quantifiers and exact conclusion to prove. Use the sourced formulation, not a vague research direction.}
+}
 \begin{document}
 \begin{abstract}
-\placeholder{Identify the applications, boundaries and core Problems, emphasizing the deeper explanations of progress, remaining ranges and mathematical relationships.}
+\placeholder{Give the question and selected answers or boundary in two or three sentences. The abstract does not replace the main statements below.}
 \end{abstract}
 \maketitle
-\tableofcontents
 
 \section{Introduction}\label{sec:introduction}
-\placeholder{Explain the central question about the theory's applicability and remaining frontier. Present the larger mathematical themes linking its achievements, limits and unresolved goals.}
-\placeholder{Explain how the applications in Section~\ref{sec:applications} illuminate the boundaries in Section~\ref{sec:boundaries}, and how these lead to the Problems in Section~\ref{sec:problems}. Identify what deeper analysis of uses and progress will add.}
-
-\section{Applications that reveal the force of the results}\label{sec:applications}
-\placeholder{Develop meaningful uses or constructions with their exact settings. Verify assumptions, derive conclusions and explain why the result is useful. Deepen core examples before adding variants.}
-
-\subsection{A structural feature behind the application}\label{subsec:feature}
-\placeholder{Explain what makes the application work and which part of the argument transfers. Retain this local development only when it supports the larger application question.}
-
-\section{Established boundaries and unsettled extensions}\label{sec:boundaries}
-\placeholder{Explain exact limitations, exceptional cases or known counterexamples where available. Compare changed hypotheses carefully. Separate failure of a method from impossibility and state the precise gap that motivates the next section.}
-
-\section{Core Problems, progress and relationships}\label{sec:problems}
-\placeholder{Group the agreed frontier around its mathematical targets. Explain the common issue before treating local Problems; do not substitute an exhaustive list for a theory of their relationships.}
-\begin{problem}[A core unresolved target]\label{prob:core}
-\placeholder{Give the exact objects, domain, hypotheses, quantifiers and goal from the source formulation. Retain decisive conditions and distinguish a source Problem from a review-proposed direction.}
+\placeholder{Define the minimum necessary notation. State fixed data, unknowns and branch conditions before using them. Give actual answers with quantifiers, parameter ranges and source/status qualifications. Delete transitions that merely announce what follows.}
+\begin{theorem}\label{thm:principal}
+\PrincipalStatement
+\end{theorem}
+\begin{theorem}\label{thm:second}
+\SecondStatement
+\end{theorem}
+\begin{problem}\label{prob:core-target}
+\CoreProblemStatement
 \end{problem}
-\placeholder{Give the source and cutoff status after Problem~\ref{prob:core}. Develop its importance, verified advances, exact solved parameter ranges and the remaining scope. Explain relevant difficulties or reductions with evidence; do not invent a strategy or claim every unmentioned case is open.}
+\placeholder{Keep a precise remaining question or negative boundary here when it is a principal commitment. Change theorem to proposition, sourced claim or Problem as mathematically appropriate. No invented optional titles.}
 
-\subsection{What progress changes about the Problem}\label{subsec:progress}
-\placeholder{Compare a significant verified partial result with the full target and explain what it resolves and leaves. Justify relationships with other core Problems, and distinguish sourced deductions from speculation. Use the same conditions and status wherever this Problem is shared.}
-\placeholder{A narrow settled topic needs an explicit, verified settlement account rather than invented open Problems. Discuss neighboring questions only with their different scope identified.}
+\section{Progress, boundaries and the remaining target}\label{sec:mechanism}
+\begin{theoremrecall}{thm:principal}
+\PrincipalStatement
+\end{theoremrecall}
+\placeholder{Give the exact solved range, counterexample or obstruction; then formulate the unresolved target with objects and quantifiers. Separate a method obstruction from nonexistence. Check current status. A recall is optional if it adds backtracking rather than removing it. Reuse the canonical body whenever a full repetition is retained.}
+
+\section{The second answer and the boundary}\label{sec:boundary}
+\begin{theoremrecall}{thm:second}
+\SecondStatement
+\end{theoremrecall}
+\placeholder{Use a mathematical heading. Explain the second answer or boundary without bundling secondary consequences into its main statement. Define a precise sourced Problem only if the selected scope needs one. Do not manufacture a fixed number of Problems.}
+
+\placeholder{For Problem~\ref{prob:core-target}, give its primary source, checked cutoff status, strongest relevant solved range and exact remaining range. Do not infer openness from a failed search. Remove this paragraph with the optional Problem slot when it is outside the selected scope.}
+
+\section{Applications and the remaining range}\label{sec:standard-depth}
+\placeholder{Complete a substantive application by verifying the hypotheses and deriving the actual conclusion. Relate the core Problem to the strongest relevant positive and negative results, preserving all family and parameter quantifiers. Separate a sourced organizing question from a review-proposed local direction. Explain a real obstruction; do not claim that a literature gap proves an impossibility.}
 
 \templatereferences
 \end{document}

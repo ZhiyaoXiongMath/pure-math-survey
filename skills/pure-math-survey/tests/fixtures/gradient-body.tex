@@ -1,0 +1,17 @@
+Let $m\geq1$, let $A\in\mathbb R^{m\times m}$ be symmetric positive
+definite, and let $b\in\mathbb R^m$. Write $\lambda_{\max}(A)$ for its
+largest eigenvalue and set $x_*=A^{-1}b$. Suppose
+\[
+0<\tau<\frac{2}{\lambda_{\max}(A)}.
+\]
+For every $x_0\in\mathbb R^m$, define
+\[
+x_{j+1}=x_j-\tau(Ax_j-b),\qquad j=0,1,\ldots.
+\]
+Then
+\[
+\|x_j-x_*\|_2\leq q^j\|x_0-x_*\|_2,\qquad
+q=\max_{\lambda\in\operatorname{Spec}(A)}|1-\tau\lambda|<1.
+\]
+Here $\operatorname{Spec}(A)$ is the set of eigenvalues and $\|\cdot\|_2$
+is the Euclidean norm. In particular, $x_j\to x_*$.

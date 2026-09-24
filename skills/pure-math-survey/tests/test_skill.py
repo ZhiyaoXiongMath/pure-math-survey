@@ -117,13 +117,16 @@ def make_project(root: Path, selection: list[tuple[int, str]] | None = None,
 
 
 class SkillPackageTests(unittest.TestCase):
-    def test_package_identity_and_unified_version(self) -> None:
+    def test_package_identity_release_and_schema_versions(self) -> None:
         entry = (ROOT / "SKILL.md").read_text(encoding="utf-8")
         self.assertTrue(entry.startswith("---\nname: pure-math-survey\n"))
         version = re.search(r"\*\*Version:\*\* (\d+\.\d+\.\d+)", entry)
         self.assertIsNotNone(version)
-        self.assertEqual(version.group(1), "1.0.0")
-        self.assertEqual(validator.SCHEMA_VERSION, version.group(1))
+        self.assertEqual(version.group(1), "1.2.0")
+        # An editorial release does not force an unchanged data schema to migrate.
+        self.assertEqual(validator.SCHEMA_VERSION, "1.0.0")
+        style = (ROOT / "assets/templates/math-review.sty").read_text(encoding="utf-8")
+        self.assertIn("v" + version.group(1) + " Pure Math Survey style", style)
         metadata = (ROOT / "agents/openai.yaml").read_text(encoding="utf-8")
         display_name = re.search(r'^\s*display_name:\s*"([^"\n]+)"\s*$', metadata, re.M)
         self.assertIsNotNone(display_name)
@@ -195,6 +198,60 @@ class SkillPackageTests(unittest.TestCase):
             text = path.read_bytes().decode("utf-8")
             self.assertNotIn("\r", text, path.name)
             self.assertNotIn("\x00", text, path.name)
+
+
+    def test_writing_contract_covers_all_requested_preferences(self) -> None:
+        text = (ROOT / "references/writing-style.md").read_text(encoding="utf-8")
+        for phrase in ("deletion test", "self-contained", "itemize", "enumerate",
+                       "secondary consequences", "Repetition is allowed", "quantifiers",
+                       "An introduction may consist of definitions", "theoremrecall"):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
+        self.assertTrue((ROOT / "references/exposition-examples.md").is_file())
+
+    def test_all_templates_embed_editorial_contract(self) -> None:
+        for path in (ROOT / "assets/templates").glob("part*.tex"):
+            text = path.read_text(encoding="utf-8")
+            with self.subTest(template=path.name):
+                self.assertIn("delete trivial transitions", text)
+                self.assertIn("useful self-contained repetition", text)
+                self.assertIn("itemize/enumerate", text)
+                self.assertIn("put secondary consequences afterward", text)
+                self.assertIn("definitions and theorems are valid without a narrative roadmap", text)
+                self.assertNotIn("state a full result once locally", text)
+                introduction = text.split(r"\section{Introduction}", 1)[1].split(r"\section{", 1)[0]
+                self.assertIn("Delete transitions", introduction)
+                self.assertNotIn("Explain how Section~", introduction)
+                if re.search(r"\\begin\{(?:theorem|proposition|problem)\}", text):
+                    self.assertIn(r"\begin{itemize}", text)
+                    self.assertIn("quantifiers", text)
+
+    def test_no_compulsory_transition_or_single_occurrence_policy(self) -> None:
+        banned = ("Each section opens with a short transition",
+                  "Introductions must explain the central problem and perspective, then",
+                  "Give a full statement one local home",
+                  "exactly one input of the canonical body",
+                  "Reuse canonical full statements once",
+                  "Give each full statement one local home")
+        paths = [ROOT / "SKILL.md", *(ROOT / "references").glob("*.md")]
+        for path in paths:
+            for phrase in banned:
+                with self.subTest(file=path.name, phrase=phrase):
+                    self.assertNotIn(phrase, path.read_text(encoding="utf-8"))
+
+    def test_smoke_fixture_uses_one_body_and_original_number_recall(self) -> None:
+        path = ROOT / "tests/fixtures/exposition-smoke.tex"
+        text = path.read_text(encoding="utf-8")
+        self.assertEqual(text.count(r"\input{quadratic-body.tex}"), 2)
+        self.assertEqual(text.count(r"\label{thm:quadratic}"), 1)
+        self.assertIn(r"\begin{theoremrecall}{thm:quadratic}", text)
+        self.assertIn(r"\begin{enumerate}", text)
+        body = (path.parent / "quadratic-body.tex").read_text(encoding="utf-8")
+        self.assertIn(r"\begin{itemize}", body)
+        self.assertNotIn(r"\label", body)
+        style = (ROOT / "assets/templates/math-review.sty").read_text(encoding="utf-8")
+        self.assertIn(r"\newtheorem*{mathreviewrecalledtheorem}", style)
+        self.assertIn(r"\newenvironment{theoremrecall}[1]", style)
 
 
 class ProjectValidationTests(unittest.TestCase):
@@ -366,12 +423,64 @@ class ProjectValidationTests(unittest.TestCase):
         self.assertEqual(errors, [])
         self.assertTrue(any("PENDING" in note for note in notes))
 
-    def test_duplicate_label_and_duplicate_component_rejected(self) -> None:
+    def test_repeated_full_statement_is_allowed(self) -> None:
         self.valid()
-        self.edit_tex(r"\input{canonical/result.tex}")
-        self.rejected("canonical component input count 2; expected 1")
-        self.edit_tex(r"\label{thm:main}")
+        self.edit_tex(r"\begin{theoremrecall}{thm:main}\input{canonical/result.tex}\end{theoremrecall}")
+        errors, notes = validator.validate(self.root)
+        self.assertEqual(errors, [])
+        self.assertTrue(any("useful local recalls are allowed" in note for note in notes))
+
+    def test_repeated_full_statement_does_not_permit_duplicate_labels(self) -> None:
+        self.valid()
+        self.edit_tex(r"\label{thm:main}\input{canonical/result.tex}")
         self.rejected("duplicate labels")
+
+    def test_repeated_body_is_allowed_in_every_single_part_edition(self) -> None:
+        for part, edition in sorted(validator.COMBINATIONS):
+            with self.subTest(part=part, edition=edition):
+                root = Path(self.tmp.name) / f"recall-{part}-{edition}"
+                make_project(root, selection=[(part, edition)])
+                path = root / f"part{part}-{edition}.tex"
+                text = path.read_text(encoding="utf-8")
+                text = text.replace(r"\end{document}",
+                                    r"\input{canonical/result.tex}\end{document}")
+                path.write_text(text, encoding="utf-8")
+                self.assertEqual(validator.validate(root)[0], [])
+
+    def test_full_statement_still_requires_a_canonical_input(self) -> None:
+        self.valid()
+        path = self.root / "part5-standard.tex"
+        path.write_text(path.read_text(encoding="utf-8").replace(r"\input{canonical/result.tex}", ""),
+                        encoding="utf-8")
+        self.rejected("canonical component input count 0; expected at least 1")
+
+    def test_reference_only_still_rejects_full_body_inputs(self) -> None:
+        self.valid()
+        change_row(self.root / "publication-map.csv", "node_id", "T001",
+                   {"integrated_standard_treatment": "REFERENCE_ONLY",
+                    "limitation_note": "Not permission to include a full statement."})
+        self.rejected("canonical component input count 1; expected 0")
+        self.edit_tex(r"\input{canonical/result.tex}")
+        self.rejected("canonical component input count 2; expected 0")
+
+    def test_canonical_body_must_not_contain_labels(self) -> None:
+        self.valid()
+        (self.root / "canonical/result.tex").write_text(
+            r"\label{eq:unsafe}A body with a label.", encoding="utf-8")
+        self.rejected("canonical component must be label-free")
+
+    def test_canonical_body_must_not_contain_recall_wrapper(self) -> None:
+        self.valid()
+        (self.root / "canonical/result.tex").write_text(
+            r"\begin{theoremrecall}{thm:main}A body.\end{theoremrecall}", encoding="utf-8")
+        self.rejected("canonical component must contain mathematical body only")
+
+    def test_listed_hypotheses_in_canonical_body_are_allowed(self) -> None:
+        self.valid()
+        (self.root / "canonical/result.tex").write_text(
+            r"Assume both: \begin{itemize}\item $a>0$.\item $b>0$.\end{itemize}"
+            r"Then $a+b>0$.", encoding="utf-8")
+        self.assertEqual(validator.validate(self.root)[0], [])
 
     def test_v_standard_reference_only_is_valid(self) -> None:
         self.valid()

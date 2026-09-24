@@ -1,39 +1,59 @@
-% Compile beside math-review.sty; replace all visible insertion text for publication.
-% Rename and regroup functional headings around the actual mathematical thread.
-% Shared files do not determine section hierarchy; no environment/count quota applies.
-% Edition check: identify what each substantial addition helps the reader understand.
-% Copyedit: state a full result once locally; check the printed meaning of notation.
+% Edition check: standard; total-page review limit 8, including references.
+% Reader task: Define the objects and central question; complete a model that explains the general structure.
+% Develop the selected thread with deeper derivations and comparisons; do not add filler or automatically restore every omitted side branch.
+% In the Introduction state every selected principal conclusion, not only names.
+% Review body-to-introduction reverse coverage after changing any result or scope.
+% Style: delete trivial transitions; retain useful self-contained repetition;
+% use itemize/enumerate; put secondary consequences afterward.
+% An introduction consisting of definitions and theorems is valid:
+% definitions and theorems are valid without a narrative roadmap.
+% Two slots illustrate wiring, not a theorem-count requirement. Remove unused slots.
 \documentclass[12pt,reqno]{amsart}
 \usepackage{math-review}
-\title[Part I: Foundations (standard)]{[Review topic]\\
-Part I: Foundations and Models (standard)}
-\author{[Author name]}
-\date{[Prepared date; literature cutoff date]}
+\title{\placeholder{Topic}: Foundations and Models}
+\author{}
+\date{\placeholder{Checked literature cutoff}}
+\newcommand{\PrincipalStatement}{%
+\placeholder{Specify objects, all necessary hypotheses, quantifiers and ranges.}
+\begin{itemize}
+\item \placeholder{A necessary condition; omit this list if there is no real list.}
+\item \placeholder{A second independent condition, only when needed.}
+\end{itemize}
+\placeholder{State the actual mathematical conclusion and exact source/status.}
+}
+\newcommand{\SecondStatement}{%
+\placeholder{State another selected principal answer with its own data, necessary conditions and actual conclusion; remove this slot when outside scope.}
+}
 \begin{document}
 \begin{abstract}
-\placeholder{Identify the central problem, model structures and conceptual relationships developed here, including the deeper foundational explanation that supports the general theory.}
+\placeholder{Give the question and selected answers or boundary in two or three sentences. The abstract does not replace the main statements below.}
 \end{abstract}
 \maketitle
-\tableofcontents
 
 \section{Introduction}\label{sec:introduction}
-\placeholder{Explain the motivating problem and the larger structural questions that organize these foundations. Give relevant historical context only when it clarifies those relationships.}
-\placeholder{Explain how Section~\ref{sec:language} prepares the model reasoning in Section~\ref{sec:models}, and how Section~\ref{sec:general} extracts its general significance. State which conceptual relationships receive deeper treatment than a concise account.}
+\placeholder{Define the minimum necessary notation. State fixed data, unknowns and branch conditions before using them. Give actual answers with quantifiers, parameter ranges and source/status qualifications. Delete transitions that merely announce what follows.}
+\begin{theorem}\label{thm:principal}
+\PrincipalStatement
+\end{theorem}
+\begin{theorem}\label{thm:second}
+\SecondStatement
+\end{theorem}
+\placeholder{Keep a precise remaining question or negative boundary here when it is a principal commitment. Change theorem to proposition, sourced claim or Problem as mathematically appropriate. No invented optional titles.}
 
-\section{Objects and formulations of the question}\label{sec:language}
-\placeholder{Develop the objects, defining properties and conventions actually needed. Explain what each definition enables in the models.}
+\section{Objects and a completed model}\label{sec:mechanism}
+\begin{theoremrecall}{thm:principal}
+\PrincipalStatement
+\end{theoremrecall}
+\placeholder{Carry out the chosen model calculation to its conclusion. State exactly which feature survives in the general setting; do not list examples without calculations. A recall is optional if it adds backtracking rather than removing it. Reuse the canonical body whenever a full repetition is retained.}
 
-\subsection{Formulations that change the viewpoint}\label{subsec:formulations}
-\placeholder{Compare useful equivalent or neighboring formulations with the necessary justification and qualifications. Develop a preliminary argument only when it supports a later step; a separate foundations course is not required.}
+\section{The second answer and the boundary}\label{sec:boundary}
+\begin{theoremrecall}{thm:second}
+\SecondStatement
+\end{theoremrecall}
+\placeholder{Use a mathematical heading. Explain the second answer or boundary without bundling secondary consequences into its main statement. Define a precise sourced Problem only if the selected scope needs one. Do not manufacture a fixed number of Problems.}
 
-\section{Core models and their structural explanation}\label{sec:models}
-\placeholder{Develop the core model argument completely at the declared level. Explain why its key construction or choice works, identify dependencies and check the closing inference.}
-
-\subsection{A revealing variation}\label{subsec:variation}
-\placeholder{Where useful, change one feature to show what is essential or reusable. Deepen the same conceptual model before adding breadth; remove this subsection if no variation helps.}
-
-\section{The general question and the role of the models}\label{sec:general}
-\placeholder{Explain the exact bridge from the models to the central problem. Compare what persists and what needs a different input, without treating failure of one method as impossibility. State the general target and clarify why the developed language makes the main theory accessible.}
+\section{Equivalent formulations and their scope}\label{sec:standard-depth}
+\placeholder{Choose an equivalent formulation that changes what the reader can compute or prove. Derive the equivalence or identify the exact external result; explain the hypotheses at the point of use. Extend the completed model only when the extension reveals a new mechanism. Give a genuine failure at the boundary rather than a second decorative example.}
 
 \templatereferences
 \end{document}

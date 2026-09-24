@@ -2,7 +2,7 @@
 
 ## Manifest and source layout
 
-Pure Math Survey uses version `1.0.0` throughout its skill, project manifest, record templates and shared style. Set `schema_version` to `"1.0.0"` in the manifest and JSONL records. `project-manifest.json` has `language: "en"` and a `documents` array whose records contain integer `part` 1–5, `edition` (`concise` or `standard`), `tex_file` and `pdf_file`. Paths are safe project-relative POSIX paths.
+The skill and shared style release is `1.0.1`. The project/record schema remains `1.0.0`; this editorial update does not require an existing project to migrate its records. Set `schema_version` to `"1.0.0"` in the manifest and JSONL records. Skill release and data-schema version are distinct. `project-manifest.json` has `language: "en"` and a `documents` array whose records contain integer `part` 1–5, `edition` (`concise` or `standard`), `tex_file` and `pdf_file`. Paths are safe project-relative POSIX paths.
 
 Without `requested_documents`, the schema requires all ten part/edition combinations. Otherwise that field is a nonempty list of unique objects with exactly `part` and `edition`; `documents` must match it exactly. Record the user's selection before drafting, never infer it from finished files. Preserve the actual scope of an update. A V-only standard manifest is:
 
@@ -35,16 +35,20 @@ integrated_standard_file,integrated_standard_label,integrated_standard_treatment
 
 `owner_part` is 1–4 and identifies the mathematical role, not a demanded deliverable: elementary facts may be owned by I, main results by II, technical arguments by III and frontier Problems by IV. A node can appear only in V. The unprefixed concise/standard slots refer to the owner; each `integrated_*` slot refers to the corresponding V edition. Each file must match that actual manifest document. Locations use descriptive mathematical labels rather than internal IDs. Source/proof IDs link their registries; use semicolons for lists.
 
-A canonical component is body-only TeX: no document or theorem-like wrapper, including no `problem` wrapper. Put the environment, name, numbering and label around its `\input` in the manuscript. The same complete mathematical statement is reused wherever `FULL_STATEMENT` is selected. Other prose can be rewritten or reorganized.
+A canonical component is body-only TeX: no document or theorem-like wrapper, including no `problem` or recall wrapper, and no `\label` commands. Put the environment, name, numbering and primary label around its `\input` in the manuscript. Hypothesis lists and mathematical displays belong in the body. The same complete mathematical statement is reused wherever `FULL_STATEMENT` is selected. Other prose can be rewritten or reorganized.
 
 | Treatment | Valid requested placements | Coordinates and body |
 |---|---|---|
-| `FULL_STATEMENT` | All parts and editions | The actual document and a unique semantic label; exactly one input of the canonical body |
+| `FULL_STATEMENT` | All parts and editions | The actual document and one mapped primary semantic label; at least one input of the canonical body; useful local recalls may reuse it |
 | `REFERENCE_ONLY` | I–IV concise and both V editions | Actual document and unique label, accurate source/locator and independently usable local explanation; no body input; reason in `limitation_note` |
 | `OMITTED_WITH_REASON` | I–IV concise and both V editions | Empty file and label; no input of the component in this actual part/edition; substantive reason in `limitation_note` |
 | `NOT_REQUESTED` | Only an unrequested document | Empty file and label; never a substitute for treatment inside a requested document |
 
 I–IV standard placements retain `FULL_STATEMENT`. V may omit side branches, intermediate lemmas or minor examples outside its own core in either edition. It may reference accurately with the assumptions needed for independent reading, not delegate necessary content to an undelivered volume. Its own advertised main-result understanding and core Problems cannot be omitted to satisfy a parser. Explain reasons separately by placement in the existing note when they differ. Core selection and adequacy of reasons are human judgments.
+
+For a useful full recall within a document, input the same canonical body again rather than creating a second node or a divergent copy. The mapped primary label must still appear exactly once; the recall can use `theoremrecall` with that label. Keep wrapper labels unique and component bodies label-free. The validator allows repeated full-body inputs and reports them for substantive rereading; it still rejects inputs at `REFERENCE_ONLY` or omitted placements. No extra repetition ledger or schema is required. See the [worked example](exposition-examples.md#canonical-repetition-without-label-conflicts).
+
+A source theorem that bundles a principal answer with subsidiary claims may be represented by several supported nodes. Preserve the controlling source, hypotheses, original relationship and all conclusions retained in the review. A corollary needing extra hypotheses must state them; do not change an existing canonical node silently to make an overlong theorem look shorter.
 
 Every node needs at least one actual requested full or referenced placement; do not create unused placeholder nodes. Ordinary local cross-references are not additional map rows. Extra cross-part placements can use `canonical-crosswalk.csv`. After fixing a shared statement, check actual affected documents, their surrounding prose and status claims.
 
@@ -75,3 +79,13 @@ Include requested PDFs and TeX, actual rebuild dependencies, the manifest/map, s
 Record the TeX engine, bibliography procedure and exact build commands. Use ordinary ZIP and Python tools. Hash the explicit selected member set in `artifact-checksums.txt`, excluding the checksum file itself. Reopen the ZIP, reject unsafe paths, duplicates and symlinks, compare members and recompute hashes. Provide the archive SHA-256 outside it. An exit code does not certify mathematics.
 
 List all requested reader documents and disclose any absent requested item. Unrequested parts and editions are outside scope, not missing. Give a reasoned completion status and actual limitations.
+
+## Introduction coverage without a new registry
+
+Extend the existing architecture note, not the schema: identify each selected principal conclusion, its introduction and body locations, necessary local definitions, controlling source and any explicit special-case restriction. Keep precise statements in the master theorem matrix/canonical bodies and formal placements in the publication map. A body-to-introduction link is an ordinary local relationship, not an extra map row for every recall.
+
+`reader_outcomes` evidence records the introduction-only reading and the reverse body check with actual labels or passages. `edition_depth` records coherent concise selection and substantive standard development; `statement_verification` records scope/quantifier fidelity; `edition_semantic_consistency` records shared statement agreement. The existing build and visual rows cover [the presentation profile](layout-and-build.md), page inspection and any documented font fallback. Do not add `introduction-pass.csv`, another principal-result registry, new completed statuses or a separate V audit layer.
+
+Part V benchmark use is recorded as one short note in the same architecture/release evidence: which v6 passages were inspected, which quality features transfer and which subject-specific material does not. The frozen sample is not a newly verified source and does not change the manuscript's literature cutoff. The sample itself is a standalone historical deliverable, not a claim that its original package follows this project's manifest schema.
+
+The project schema remains `1.0.0` in skill `1.2.0`; fields and accepted statuses are unchanged. The structural validator still supports literal braced inputs. For a standalone export using inline canonical macros, retain the source project with its mapped components and validate that source project; then build and visually check the exported entrypoint too. Do not pretend that a literal-input parser validates arbitrary macro expansion.

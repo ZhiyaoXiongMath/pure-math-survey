@@ -1,41 +1,66 @@
-% Compile beside math-review.sty; replace all visible insertion text for publication.
-% Rename and regroup functional headings around the actual mathematical thread.
-% Shared files do not determine section hierarchy; no environment/count quota applies.
-% Edition check: remove a side branch only when the selected explanation stays intact.
-% Copyedit: state a full result once locally; check the printed meaning of notation.
+% Edition check: concise; total-page review limit 5, including references.
+% Reader task: Locate the organizing problem, strongest relevant progress and precise boundary before local refinements.
+% Select one complete thread; remove genuine side branches before drafting.
+% In the Introduction state every selected principal conclusion, not only names.
+% Review body-to-introduction reverse coverage after changing any result or scope.
+% Style: delete trivial transitions; retain useful self-contained repetition;
+% use itemize/enumerate; put secondary consequences afterward.
+% An introduction consisting of definitions and theorems is valid:
+% definitions and theorems are valid without a narrative roadmap.
+% Two slots illustrate wiring, not a theorem-count requirement. Remove unused slots.
 \documentclass[12pt,reqno]{amsart}
 \usepackage{math-review}
-\title[Part IV: Boundaries (concise)]{[Review topic]\\
-Part IV: Applications, Boundaries and Problems (concise)}
-\author{[Author name]}
-\date{[Prepared date; literature cutoff date]}
+\title{\placeholder{Topic}: Boundaries and Problems}
+\author{}
+\date{\placeholder{Checked literature cutoff}}
+\newcommand{\PrincipalStatement}{%
+\placeholder{Specify objects, all necessary hypotheses, quantifiers and ranges.}
+\begin{itemize}
+\item \placeholder{A necessary condition; omit this list if there is no real list.}
+\item \placeholder{A second independent condition, only when needed.}
+\end{itemize}
+\placeholder{State the actual mathematical conclusion and exact source/status.}
+}
+\newcommand{\SecondStatement}{%
+\placeholder{State another selected principal answer with its own data, necessary conditions and actual conclusion; remove this slot when outside scope.}
+}
+% Optional unresolved-core slot, not a Problem quota. Remove it when the scope
+% has no selected unresolved question; explain any settled organizing question instead.
+\newcommand{\CoreProblemStatement}{%
+\placeholder{State the core unresolved target with its objects, assumptions, quantifiers and exact conclusion to prove. Use the sourced formulation, not a vague research direction.}
+}
 \begin{document}
 \begin{abstract}
-\placeholder{Identify the uses and established boundaries of the theory and the core Problems that arise from the remaining mathematical gaps.}
+\placeholder{Give the question and selected answers or boundary in two or three sentences. The abstract does not replace the main statements below.}
 \end{abstract}
 \maketitle
-\tableofcontents
 
 \section{Introduction}\label{sec:introduction}
-\placeholder{State the central question about the theory's reach: what it lets us do, where established boundaries lie and which gaps form the frontier. Explain the mathematical relationship among these themes.}
-\placeholder{Explain how the uses and boundaries in Section~\ref{sec:reach} lead to the Problem group in Section~\ref{sec:problems}. Identify the relationship, not merely the names of applications or questions.}
-
-\section{What the theory achieves and where its reach ends}\label{sec:reach}
-\placeholder{Introduce only the setting needed for these uses. Choose applications and boundaries for their role in the central question rather than for equal coverage of categories.}
-
-\subsection{A use of the main results}\label{subsec:use}
-\placeholder{Verify the hypotheses of an actual result, derive its consequence and explain the significance. A construction or classification can replace a calculation; no particular proof technology is required.}
-
-\subsection{The boundary leading to further questions}\label{subsec:boundary}
-\placeholder{Explain a demonstrated limitation or unresolved extension. Do not infer failure of a conclusion from a failed assumption or method. Keep a counterexample, an open range and an evidence gap distinct.}
-
-\section{Core Problems and the remaining scope}\label{sec:problems}
-\placeholder{Organize the agreed core frontier by its relationship to the preceding results and boundaries. Give separate environments for genuinely different targets, without a number quota.}
-\begin{problem}[A core unresolved target]\label{prob:core}
-\placeholder{State the precise objects, assumptions, quantifiers and unresolved goal. Replace this scaffold with an accurately sourced Problem, not a fabricated conjecture.}
+\placeholder{Define the minimum necessary notation. State fixed data, unknowns and branch conditions before using them. Give actual answers with quantifiers, parameter ranges and source/status qualifications. Delete transitions that merely announce what follows.}
+\begin{theorem}\label{thm:principal}
+\PrincipalStatement
+\end{theorem}
+\begin{theorem}\label{thm:second}
+\SecondStatement
+\end{theorem}
+\begin{problem}\label{prob:core-target}
+\CoreProblemStatement
 \end{problem}
-\placeholder{After Problem~\ref{prob:core}, give its formulation source and cutoff status separately from the statement. Explain importance, main verified progress, decisive solved ranges and what remains or could not be verified. Keep this account brief but mathematically specific; label any review-proposed direction.}
-\placeholder{For a sharply delimited verified settled scope, replace the open-Problem scaffold with the exact settlement and its sources. A failed search or absent problem list does not justify this exception.}
+\placeholder{Keep a precise remaining question or negative boundary here when it is a principal commitment. Change theorem to proposition, sourced claim or Problem as mathematically appropriate. No invented optional titles.}
+
+\section{Progress, boundaries and the remaining target}\label{sec:mechanism}
+\begin{theoremrecall}{thm:principal}
+\PrincipalStatement
+\end{theoremrecall}
+\placeholder{Give the exact solved range, counterexample or obstruction; then formulate the unresolved target with objects and quantifiers. Separate a method obstruction from nonexistence. Check current status. A recall is optional if it adds backtracking rather than removing it. Reuse the canonical body whenever a full repetition is retained.}
+
+\section{The second answer and the boundary}\label{sec:boundary}
+\begin{theoremrecall}{thm:second}
+\SecondStatement
+\end{theoremrecall}
+\placeholder{Use a mathematical heading. Explain the second answer or boundary without bundling secondary consequences into its main statement. Define a precise sourced Problem only if the selected scope needs one. Do not manufacture a fixed number of Problems.}
+
+\placeholder{For Problem~\ref{prob:core-target}, give its primary source, checked cutoff status, strongest relevant solved range and exact remaining range. Do not infer openness from a failed search. Remove this paragraph with the optional Problem slot when it is outside the selected scope.}
 
 \templatereferences
 \end{document}

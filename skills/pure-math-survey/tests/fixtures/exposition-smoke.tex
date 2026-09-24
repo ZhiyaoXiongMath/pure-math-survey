@@ -1,0 +1,103 @@
+% Maintenance fixture; elementary calculations, not a research-survey evaluation.
+% Copy this file, both *-body.tex files and math-review.sty to one build directory.
+\documentclass[12pt,reqno]{amsart}
+\usepackage{math-review}
+\title[Minimizers and iteration]{Minimizers and iteration for a positive quadratic}
+\date{}
+\begin{document}
+\begin{abstract}
+A positive-definite quadratic has an explicit unique minimizer. A fixed-step
+gradient iteration converges from every initial point in a precise step-size
+range. Completing the square and the spectral decomposition prove these
+conclusions and identify the failure at the endpoint. This is an elementary
+maintenance fixture, not an independently researched survey.
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Introduction}\label{sec:introduction}
+For $m\geq1$, a real symmetric matrix $A\in\mathbb R^{m\times m}$ and
+$b\in\mathbb R^m$, consider
+\[
+Q(x)=\tfrac12 x^{\mathsf T}Ax-b^{\mathsf T}x,\qquad x\in\mathbb R^m.
+\]
+\begin{definition}
+The symmetric matrix $A$ is positive definite when
+$v^{\mathsf T}Av>0$ for every nonzero $v\in\mathbb R^m$.
+\end{definition}
+The two questions are to determine the minimizer and to construct it by
+iteration from arbitrary initial data.
+
+\begin{theorem}\label{thm:quadratic}
+\input{quadratic-body.tex}
+\end{theorem}
+With these hypotheses the minimum value is
+\begin{equation}\label{eq:minimum}
+Q(x_*)=-\tfrac12 b^{\mathsf T}A^{-1}b.
+\end{equation}
+
+\begin{theorem}\label{thm:gradient}
+\input{gradient-body.tex}
+\end{theorem}
+The step-size restriction is material. For $A=(1)$, $b=0$, $x_0=1$ and
+$\tau=2$, the iteration is $x_j=(-1)^j$, so it does not converge.
+
+\section{Completing the square}\label{sec:square}
+\typeout{PMS-RECALL-BEFORE=\arabic{theorem}}
+\begin{theoremrecall}{thm:quadratic}
+\input{quadratic-body.tex}
+\end{theoremrecall}
+\typeout{PMS-RECALL-AFTER=\arabic{theorem}}
+\begin{proof}[Proof of Theorem~\ref{thm:quadratic}]
+If $Av=0$, then $v^{\mathsf T}Av=0$. Positive definiteness gives $v=0$,
+so $A$ is invertible. Set $x_*=A^{-1}b$. Symmetry gives
+\[
+Q(x)-Q(x_*)=\tfrac12(x-x_*)^{\mathsf T}A(x-x_*).
+\]
+The right-hand side is strictly positive for $x\ne x_*$. Substitution of
+$x_*$ proves~\eqref{eq:minimum}.
+\end{proof}
+
+\section{The spectral contraction}\label{sec:contraction}
+\typeout{PMS-GRADIENT-RECALL-BEFORE=\arabic{theorem}}
+\begin{theoremrecall}{thm:gradient}
+\input{gradient-body.tex}
+\end{theoremrecall}
+\typeout{PMS-GRADIENT-RECALL-AFTER=\arabic{theorem}}
+\begin{proof}[Proof of Theorem~\ref{thm:gradient}]
+Let $e_j=x_j-x_*$. Since $Ax_*=b$,
+\[
+e_{j+1}=(I-\tau A)e_j,\qquad e_j=(I-\tau A)^j e_0.
+\]
+The spectral theorem gives an orthogonal matrix $U$ with
+$U^{\mathsf T}AU=\operatorname{diag}(\lambda_1,\ldots,\lambda_m)$.
+Each $\lambda_i>0$, and the step-size condition implies
+$-1<1-\tau\lambda_i<1$. Consequently
+\[
+\|I-\tau A\|_2=\max_i|1-\tau\lambda_i|=q<1.
+\]
+Taking norms in the error formula proves the estimate and convergence.
+\end{proof}
+For the one-dimensional data in the introduction, the error multiplier is
+$1-\tau=-1$. This proves the stated endpoint failure; it does not claim
+that every datum must fail outside the guaranteed range.
+
+\section{A checked example}\label{sec:example}
+Let
+\[
+A=\begin{pmatrix}2&0\\0&4\end{pmatrix},\qquad
+b=\begin{pmatrix}2\\8\end{pmatrix},\qquad \tau=\tfrac14.
+\]
+The hypotheses are directly verifiable:
+\begin{enumerate}
+\item $A=A^{\mathsf T}$ and $v^{\mathsf T}Av=2v_1^2+4v_2^2>0$ for $v\ne0$.
+\item $0<\tau=1/4<2/\lambda_{\max}(A)=1/2$.
+\end{enumerate}
+Thus
+\[
+x_*=\begin{pmatrix}1\\2\end{pmatrix},\qquad Q(x_*)=-9,\qquad
+q=\max\{|1-2\tau|,|1-4\tau|\}=\tfrac12.
+\]
+For every $x_0$, Theorem~\ref{thm:gradient} gives
+$\|x_j-x_*\|_2\leq2^{-j}\|x_0-x_*\|_2$.
+\end{document}

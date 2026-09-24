@@ -4,7 +4,7 @@ Match explanation to the requested part and declared promises. III owes connecte
 
 ## Route, mechanism and closure
 
-For each promised III core family, explain the target, mathematical issue, decisive idea, intermediate conclusions, hypotheses used and closing inference. State what a crucial step produces and why the next step can use it. A sequence of method names cannot replace this chain.
+For each promised III core family, explain the target, mathematical issue, decisive idea, intermediate conclusions, hypotheses used and closing inference. State what a crucial step produces and why the next step can use it. A sequence of method names cannot replace this chain. Use formulas and short numbered steps where they state the reasoning more clearly than a long paragraph. Delete editorial filler, not a necessary inference or a check of hypotheses.
 
 Separately develop selected decisive arguments. Selection reflects their role in a bottleneck, bridge or transferable idea, not their difficulty or length. A short linear or structural observation can be the decisive bridge; do not reject it merely because it admits further elaboration. An easy peripheral lemma cannot compensate for an unexplained central target. Concise retains substantive explanation; standard deepens the selected reasoning and its dependencies where the mathematics warrants it.
 
@@ -44,8 +44,16 @@ Check that a closing passage preserves the required objects and properties. Keep
 
 A worked application verifies assumptions, derives the conclusion and explains its significance. A counterexample verifies the relevant properties and the exact conclusion that fails. Failure of an assumption is not failure of a theorem's conclusion; failure of one method is not an impossibility result.
 
-IV and V use explicit named, numbered and labelled `problem` environments for core unresolved targets. State objects, hypotheses, quantifiers and goal in the environment, then give formulation source, cutoff status, importance, verified progress and precise remaining range. Split substantively different Problems; related subquestions may be grouped. Do not impose a count.
+IV and V use explicit numbered and labelled `problem` environments for core unresolved targets. State objects, hypotheses, quantifiers and the core goal in the environment, using short sentences and explicit hypothesis lists where clearer. Keep secondary conclusions and progress outside the target statement. Then give formulation source, cutoff status, importance, verified progress and precise remaining range, using formulas for ranges. Split substantively different Problems; related subquestions may be grouped. Do not impose a count.
 
 Check the source formulation separately from current status. Retain nonemptiness, strict inequalities, admissibility, dimensional and other decisive conditions. Specify important established parameter ranges rather than vague statements that more cases are known. When the full boundary cannot be verified, say exactly what was checked. No search result is not proof of openness.
 
 IV systematically covers its agreed frontier; V selects what its own thread needs. Keep shared Problems consistent without forcing identical collections across parts. A classic unsolved problem can be a worthwhile direction; an author's synthesis or proposed problem must be labelled as such without claiming priority or consensus. Neither invented obstacles nor speculative strategies are required. Verified settled narrow scopes use an explicit supported exception, not manufactured open Problems.
+
+## Principal knowledge and organizing boundaries
+
+The introduction must state the method's actual target/output or the decisive boundary whenever that is principal knowledge promised by this document. It is not a proof merely because it is accurately summarized there; the body must still supply the declared mechanism, argument or located external input.
+
+Before selecting Problems, identify the organizing question, important solved ranges and necessary reformulations. Keep the distinction between a representative's existence, an evolution theorem for specified initial data and continuation through singularities when it matters to the subject. Do not present an analogy as a theorem or a local problem as a substitute for the main question.
+
+Formal Problem and conjecture environments have no invented descriptive titles. Verified historical attribution is allowed. An overview whose necessary technical definitions have not been supplied must remain an explicitly limited overview, not an allegedly self-contained conjecture. In V, explain the chosen key mechanism's output and its use by the next conclusion; v6 is the completed-article benchmark, without imposing III's entire proof syllabus.
