@@ -10,7 +10,7 @@ A template must allow actual principal statements, optional canonical recalls an
 
 ## Required maintenance sequence
 
-Run `python scripts/validate_assets.py`, then `python scripts/build_checks.py --output /absolute/empty/directory`. The clean installation includes the reusable build fixtures; development unit tests and historical test outputs are distributed separately. Outputs must be outside the skill and existing evidence must not be overwritten. Inspect rendered pages separately; build success is not visual or mathematical approval.
+Run `python scripts/validate_assets.py`, then `python scripts/build_checks.py --output /absolute/empty/directory`. Outputs must be outside the skill and existing evidence must not be overwritten. Inspect rendered pages separately; build success is not visual or mathematical approval.
 
 The standard sample has two targets:
 

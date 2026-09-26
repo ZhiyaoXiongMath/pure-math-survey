@@ -64,6 +64,6 @@ A source-first reread is not independent review; checking a theorem is not check
 
 ## Skill maintenance and regression limits
 
-[Template maintenance](template-maintenance.md) owns current-style versus frozen-style staging and behavioral test requirements. Run `scripts/validate_assets.py`, then real `scripts/build_checks.py` builds. Run the development unit suite when working from a development distribution; it is not bundled with this clean installation. Neither synthetic assertions nor maintenance builds are a new research-survey evaluation. Retain [semantic adversarial cases](../assets/exposition-examples/semantic-cases.md) as reading tests, not an automatic semantic grader.
+[Template maintenance](template-maintenance.md) owns current-style versus frozen-style staging and behavioral test requirements. Run `scripts/validate_assets.py`, then real `scripts/build_checks.py` builds. Neither synthetic assertions nor maintenance builds are a new research-survey evaluation. Retain [semantic adversarial cases](../assets/exposition-examples/semantic-cases.md) as reading tests, not an automatic semantic grader.
 
 Use `scripts/compare_pdf.py` for optional same-toolchain page/text/pixel comparisons. Pixel identity establishes reproduction, not correctness. Report separately which source/math review, rendering, historical reproduction, mutation regression and cross-topic generation evaluations actually occurred. One dHYM case does not demonstrate generalization to other mathematics.

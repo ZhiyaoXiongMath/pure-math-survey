@@ -1,6 +1,6 @@
 # Pure Math Survey
 
-**Version 1.5.0 — clean distribution.** A skill for source-grounded English mathematical surveys and substantive revisions, delivered as rebuildable TeX and inspected PDFs.
+**Version 1.5.0.** A skill for source-grounded English mathematical surveys and substantive revisions, delivered as rebuildable TeX and inspected PDFs.
 
 Default to Part V concise. An explicitly requested series selects Parts I–V concise; any nonempty part/edition selection is supported. Both concise and standard preserve core statements and key lemmas. Concise compresses proof interiors and routine calculations; standard develops the same mathematical routes more fully.
 
@@ -12,20 +12,24 @@ Default to Part V concise. An explicitly requested series selects Parts I–V co
 | IV. Applications, Boundaries and Problems | Understand applications, established limits and verified open problems. |
 | V. A Thematic Review | Read one integrated account organized around a central question. |
 
-## Install and use
+## Install
 
-Copy [skills/pure-math-survey](skills/pure-math-survey/) into your local skills directory, then invoke:
+Download [pure-math-survey-1.5.0.zip](https://github.com/ZhiyaoXiongMath/Pure-Math-Survey/releases/download/v1.5.0/pure-math-survey-1.5.0.zip) from the [latest release](https://github.com/ZhiyaoXiongMath/Pure-Math-Survey/releases/latest). Extract it and copy the `pure-math-survey` folder into your local skills directory.
+
+Alternatively, copy [skills/pure-math-survey](skills/pure-math-survey/) from this repository.
+
+## Use
+
+Invoke the skill with your topic, audience and requested parts or editions:
 
 ```text
 Use $pure-math-survey to write Part V concise on [topic] for [audience].
 ```
 
-See [SKILL.md](skills/pure-math-survey/SKILL.md) for the workflow and the [skill README](skills/pure-math-survey/README.md) for commands and dependencies. Python 3.10+ is required; TeX builds use pdfLaTeX. PDF utilities additionally use PyMuPDF and, for pixel comparisons, Pillow.
+The skill organizes the survey around research questions, checks primary sources and their versions, states principal answers with necessary hypotheses, explains proof mechanisms, and distinguishes established results from verified open problems. It supports revisions of existing surveys while preserving the requested scope.
 
-## Contents
+See [SKILL.md](skills/pure-math-survey/SKILL.md) for the workflow and the [skill README](skills/pure-math-survey/README.md) for helper commands. Templates and optional reference samples support drafting and typesetting; source review and mathematical judgment remain essential.
 
-The installable directory contains functional instructions, scripts, templates, reusable exposition fixtures and optional reference samples. Development reports, change logs, historical verification outputs, unit-test source files and unrelated delivery artifacts are excluded. Samples retain their mathematical content and dated qualifications; they are not current mathematical authorities.
+## Requirements
 
-From the skill directory, run `python scripts/validate_assets.py` to check asset structure. Use `python scripts/build_checks.py --output /absolute/new/build-directory` to check template and sample compilation. Research, source review and visual inspection remain separate tasks; successful scripts do not certify mathematical correctness.
-
-To create a verified installation archive, run `python scripts/package_release.py --output /absolute/path/pure-math-survey-1.5.0-clean.zip` from the skill directory. Keep output outside the skill tree.
+Python 3.10+ is required for helper scripts. TeX builds use pdfLaTeX and the packages in `math-review.sty`. PDF utilities use PyMuPDF; pixel comparisons also use Pillow. STIX2 is the preferred font, with a reported Latin Modern fallback.

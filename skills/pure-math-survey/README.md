@@ -20,4 +20,4 @@ Python 3.10+ is required. TeX builds need pdfLaTeX and the packages in `assets/t
 
 Optional helpers include `scripts/bibliography.py` for reviewed bibliographic data, `scripts/build_checks.py` for stabilized TeX builds, and `scripts/package_release.py` for verified installation archives. See [layout and build](references/layout-and-build.md) and [template maintenance](references/template-maintenance.md).
 
-This clean distribution contains functional instructions, scripts, templates and reusable examples. Development reports, historical verification outputs and unit-test source files are excluded. Sample PDFs and TeX are optional, dated exposition references, not current mathematical authorities or independent proof certificates.
+Sample PDFs and TeX are optional, dated exposition references, not current mathematical authorities or independent proof certificates.

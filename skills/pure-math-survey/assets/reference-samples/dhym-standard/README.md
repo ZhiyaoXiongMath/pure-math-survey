@@ -6,4 +6,4 @@ Use the [PDF](dhym-standard.pdf) and [TeX](dhym-standard.tex) as optional exampl
 
 The example received a source-first author reread, not independent review or a reconstruction of all cited proofs. The full 1978 Yau proof and Chen's complete paper were not newly reviewed; Chen's input was read through the precise formulations in CLT and Sun. Public-version locators do not assert full journal/preprint concordance. Critical-phase preprint claims and all mathematical status must be checked again for a new survey. No cross-topic reliability is implied.
 
-Run `python build.py` to regenerate the bibliography from [references.json](references.json) and compile. The bundled historical style is used for frozen reproduction; `scripts/build_checks.py` also stages a separate build against the current shared style. Historical review logs are omitted from this clean distribution.
+Run `python build.py` to regenerate the bibliography from [references.json](references.json) and compile. The bundled historical style is used for frozen reproduction; `scripts/build_checks.py` also stages a separate build against the current shared style.
