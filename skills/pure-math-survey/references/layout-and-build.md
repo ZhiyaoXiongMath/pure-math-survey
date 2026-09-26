@@ -56,7 +56,7 @@ It uses PyMuPDF and Pillow, renders all pages, checks page boxes and reports exa
 ## Reproduce this skill's maintenance checks
 
 ```sh
-python -B -m unittest discover -s tests -v
+python scripts/validate_assets.py
 python scripts/build_checks.py --output /absolute/path/to/checks
 python scripts/compare_pdf.py \
   assets/reference-samples/dhym-v6/dhym-survey-polished-v6.pdf \
@@ -66,6 +66,6 @@ python scripts/compare_pdf.py \
 
 The build runner uses pdfLaTeX with no shell escape, checks stabilization and logs, and leaves sources unchanged. It compiles ten instructional scaffolds, the two-result fixture, the original-preamble sample and the shared-style sample. The scaffolds deliberately retain insertion text and are not publication deliverables. The sample's mathematical content and date are preserved.
 
-Python unit tests use the standard library. Real builds require a TeX distribution with AMS packages, `mathtools`, `geometry`, `enumitem`, `needspace` and `hyperref`; STIX2/Latin Modern and microtype are optional. The PDF comparator additionally requires PyMuPDF and Pillow and must report a missing dependency rather than pretend it rendered pages.
+Development tests are maintained separately; PDF-related tests additionally use PyMuPDF. Real builds require a TeX distribution with AMS packages, `mathtools`, `geometry`, `enumitem`, `needspace` and `hyperref`; STIX2/Latin Modern and microtype are optional. The PDF comparator additionally requires PyMuPDF and Pillow and must report a missing dependency rather than pretend it rendered pages.
 
 A style regression, source-structural test, full-page visual inspection, source-based mathematical review, independent review and new-topic generation evaluation are different activities. Report exactly which were executed. Do not call scaffold builds new research surveys or claim automatic v6-quality certification.

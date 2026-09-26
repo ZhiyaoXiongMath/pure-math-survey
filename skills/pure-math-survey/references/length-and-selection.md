@@ -33,3 +33,7 @@ Run `scripts/check_reading_budget.py PROJECT` after compiling. Review rendered p
 ## Scope is not a length-control variable
 
 Remove ancillary branches, duplicated statements and dispensable comparisons before reducing the agreed question. Do not replace a general problem with its simplest special case without the user changing the scope. A standard edition adds depth where a decisive inference occurs, not a mandatory final depth section. A manuscript below its target does not need padding.
+
+## Selection and discovery in 1.7.0
+
+An overrun triggers selection review, not smaller fonts, narrower margins or suppression of a core frontier. Record a retained overrun and its mathematical reason. Remove secondary branches before essential statements. Counts of results, Problems, searches or tests do not measure quality.

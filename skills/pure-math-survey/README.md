@@ -1,6 +1,8 @@
-# Pure Math Survey 1.5.0
+# Pure Math Survey 1.7.1
 
 A source-grounded English mathematical survey skill. Start with [SKILL.md](SKILL.md).
+
+Reconstruct the problem and ordered quantifiers before choosing answers. Research beyond the selected bibliography, distinguish mathematical status from editorial selection, and retain every principal answer in the shared core.
 
 Default to Part V concise; select other parts or standard editions when requested. Both editions preserve core statements and key lemmas. Concise compresses proof interiors and routine calculations; standard develops the same mathematical routes in greater depth.
 
@@ -9,6 +11,8 @@ Copy this folder into your local skills directory and invoke `$pure-math-survey`
 ```sh
 python scripts/create_project.py --output /absolute/new/project --topic my-topic --documents 5:concise
 python scripts/validate_assets.py
+python scripts/check_problem_formulation.py /absolute/new/project --stage plan
+python scripts/check_survey_selection.py /absolute/new/project --stage plan
 python scripts/check_reading_budget.py /absolute/new/project
 python scripts/check_mathematical_structure.py /absolute/new/project --tex my-topic-part5-integrated-concise.tex --inventory
 python scripts/validate_project.py /absolute/new/project

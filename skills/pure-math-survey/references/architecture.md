@@ -54,7 +54,7 @@ Standard deepens background relationships, comparisons, key method ideas and the
 
 The two V templates place local definitions and actual principal-statement slots in the Introduction, then use original-number recalls in the developed results/mechanism sections before boundary and Problem discussion. These are functional prompts, not a fixed section taxonomy. Replace them with mathematical titles and, where clearer, interweave results and method ideas. Each template allows a definition-and-theorem introduction without compulsory transitions or a section roadmap. Explain only the relationships needed to interpret the selected results. Concise includes its own selection and merging decisions; standard specifies where deeper understanding is added.
 
-Give V one abstract, introduction, notation system, contents, numbering and bibliography. Reuse one canonical body per full statement; useful local restatements may input that same body with a valid recall wrapper. Reuse, compress, rewrite or reorganize prose freely. A reference to an unproduced companion must not carry necessary assumptions. Reuse does not certify integration quality, imply a generation order or reveal token consumption.
+Give V one abstract, introduction, notation system, contents, numbering and bibliography. Reuse one canonical body per shared or repeated full statement; useful local restatements may input that same body with a valid recall wrapper. Reuse, compress, rewrite or reorganize prose freely. A reference to an unproduced companion must not carry necessary assumptions. Reuse does not certify integration quality, imply a generation order or reveal token consumption.
 
 ## Shared facts and different selections
 
@@ -73,3 +73,17 @@ After completing the body, check both directions. Inspect the body for principal
 I introduces the knowledge obtained from its chosen model or construction; it does not invent a research theorem. II gives actual main results and logical relations. III states what the promised methods output and how those outputs reach the target, not just method names. IV states decisive boundaries, known progress and precise remaining targets, distinguishing theorem from conjecture. V gives the selected thematic answers, necessary comparisons, method roles and core questions. Each part and edition is assessed independently.
 
 For V, use [the Part V guide](part-v-benchmark.md). No historical or topical example supplies a binding whole-article organization. Choose samples only for a stated local purpose.
+
+## Selection and discovery in 1.7.0
+
+## Result importance relative to the selected question
+
+Record `result_role`, `question_ids`, `selection_reason` and `consumer_ids` in the existing publication map. Keep editorial roles distinct from logical roles in the structure review:
+
+- `principal-answer`: directly answers an organizing question; its actual statement belongs in the opening.
+- `essential-bridge`: needed to understand or close the selected answer or precise remaining gap; identify its consumer.
+- `boundary-result`: determines a limit of the answer, with its own hypotheses; importance is not automatic.
+- `secondary-independent-result`: alternative method or independent result not required by the main chain; justify retained space.
+- `background-context`: supplies local language, provenance or an adjacent connection, not another main question.
+
+Beauty and technical difficulty do not make a result principal. An environment does not determine importance. Frontier questions have their own status/disposition, not a result role. Record excluded candidates and reasons in the existing reader evidence. Select the common concise/standard core before proof depth. Every core result and mechanism has a real placement in each requested edition; an unrequested edition is not a completed paired test. Once-used statements may remain inline; canonical bodies are required for actual shared/repeated statements. Delete empty transitions, not local definitions or proof input/output interfaces.

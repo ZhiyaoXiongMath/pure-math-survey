@@ -1,5 +1,8 @@
 # Part V guide: answers, mechanisms and bounded examples
 
+First audit definitions and natural parameter variations using [problem formulation](problem-formulation.md). An integrated survey must choose and explain the question rather than inherit every fixed object from its sources. Keep global parameter domains separate from a local analytic freeze. This applies equally to concise and standard.
+
+
 ## Required guide; optional samples
 
 For every Part V request, read this guide before drafting. Sample use is purpose-specific, not edition-specific. All samples are optional for both editions. When a sample guides exposition, read its introduction, one relevant body passage and the corresponding rendered pages. A README alone is not an exposition sample. No sample supplies a default outline, theorem count, Problem quota, topic breadth or page allocation.
@@ -29,3 +32,7 @@ Registration of a successor requires the final TeX/PDF, source and mathematical 
 Use [layout and build](layout-and-build.md), [length and selection](length-and-selection.md) and the existing release evidence. `reader_outcomes` covers answers and mechanism interfaces; `edition_depth` covers the located explanatory gain; source, statement, frontier, build and visual checks retain their own meanings. A missing promised mechanism, material hypothesis, essential lemma statement or recognizable proof boundary requires repair. Statement-only and dependency readings must both succeed; environment counts alone cannot supply either verdict. A separately disclosed limitation of reviewer independence does not become an independent review through an author PASS.
 
 Preserve immutable originals. Style regression is performed on copies and is not mathematical certification. Do not introduce another acceptance registry, fixed number of theorems or required subject-specific chapters.
+
+## Selection and discovery in 1.7.0
+
+Before consulting a sample outline, discover this topic's frontier and assess candidates against its question. A sample's flow, boundary theorem, conjecture or chapter proportions are not default requirements. Preserve principal answers and essential interfaces; compress proof interiors. Distinguish the solved criterion from a still missing structural or effective interpretation.

@@ -1,5 +1,8 @@
 # Introduction: mathematical answers before a roadmap
 
+Before selecting principal answers, recover the actual question using [problem formulation](problem-formulation.md). The opening fixes intrinsic data and the domains of permitted changes, not every representative by habit. Ask meaningful some/every or fixed/variable questions before asserting their relationship. A scope-defining equivalence must be answered as part of the main theorem, not relegated to a late remedial corollary. Compare against the input and user commitments as well as the completed body.
+
+
 ## Select before drafting
 
 Identify principal answers from the organizing question and promised reading outcome. Distinguish them from supporting theorems and contextual comparisons. There is no universal number of results. Do not promote every body lemma into an introduction theorem or demote a promised result merely to shorten the introduction.
@@ -25,3 +28,7 @@ Explain the result in the body rather than immediately printing the same theorem
 ## The introduction is not the body structure
 
 Principal-answer coverage is only one reading test. It does not authorize an essay-only body. Supporting propositions and key lemmas belong where their inputs are available and their outputs are used; they need not all be promoted into the introduction. Use the body-structure procedure in [writing style](writing-style.md), avoiding both introduction-only statements and a disconnected theorem catalog.
+
+## Selection and discovery in 1.7.0
+
+Before selecting principal results, complete question-relative selection and domain-native discovery. The opening is not a catalog of impressive results. Give a mathematically informative account of the selected frontier in Part V, without promising unverified equivalences; precise later definitions may carry the full formulation.

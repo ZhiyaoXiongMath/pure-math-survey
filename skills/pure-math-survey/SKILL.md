@@ -5,21 +5,37 @@ description: Develop source-grounded English mathematical surveys and substantiv
 
 # Pure Math Survey
 
-**Version:** 1.5.0
+**Version:** 1.7.1
 
 ## Scope and selection
 
-Write around a research question, not the union of available references. Fix objects, parameter range, prerequisites and depth before selecting sections. Preserve the user's mathematical scope. Both editions preserve the core statements and key lemmas. Concise compresses proof interiors and routine calculations, not mathematical structure. Standard expands the same proof routes and constructions for deeper study. Historical examples never override the request.
+Write around a research question, not the union of available references. Reconstruct the definitions and audit natural variations before deciding what to fix. Do not inherit a source's parameter freeze as the survey's problem definition. Preserve the user's mathematical scope. Both editions preserve the core statements and key lemmas. Concise compresses proof interiors and routine calculations, not mathematical structure. Standard expands the same proof routes and constructions for deeper study. Historical examples never override the request.
 
 For an ordinary single-topic survey, default to Part V concise. An explicitly requested five-part series selects I–V concise. An end-to-end **test** of a specified part does not request the whole series. Standard or paired editions require a request; any nonempty subset is valid. Mathematical manuscripts and skill instructions are English; discussion and delivery notes may follow the user's language.
 
 Read [length and selection](references/length-and-selection.md) and [editions](references/editions.md), then record the selection in the project manifest and existing architecture note. Use `scripts/create_project.py --documents 5:concise` for a V-only scaffold. All generated audit rows begin pending. Page limits include references and trigger editorial review; never shrink the shared readable typography to meet them.
 
+## Formulate the problem before selecting answers
+
+Read [problem formulation](references/problem-formulation.md) first. Identify intrinsic data, representatives, unknowns, gauge choices, admissible variations and excluded changes. Ask which apparent fixed choices are substantive, which are coordinates, and which can meaningfully vary while preserving the problem's invariants. Do not maximize generality indiscriminately. Record each material scope decision and why it matters in the existing architecture and reader evidence; unresolved questions may remain explicitly unresolved.
+
+Write the chosen variation domains and ordered quantifiers in the opening, **before** principal answers. Distinguish a fixed-parameter equation, existence for some parameter and existence for every parameter. Their equivalence requires evidence; it is not a definition. A scope-defining answer belongs in the organizing main theorem, not a late remedial corollary. Track local freezing for an estimate or flow separately from the global question. Constant dependence and uniformity are different questions from existence.
+
+Run `scripts/check_problem_formulation.py PROJECT --stage plan` before drafting; then check its source bindings at release. These are schema, order and evidence checks, not automated understanding. Read the opening without the bibliography: can the reader recover the objects, natural choices, scope and actual question? Trace user/input commitments into that opening and the answers, not just introduction-to-body agreement.
+
 ## Research before drafting
 
-Read [research and evidence](references/research-and-evidence.md) and [core problems](references/core-problems.md). Discover organizing questions, original formulations, principal theorems and counterexamples before choosing the bibliography. Search established alternative names. Trace claims to primary sources and check current versions when their status may have changed. Separate solved statements, refuted formulations, verified open problems, unverified status and out-of-scope material. Failed search proves neither openness nor settlement.
+Read [research and evidence](references/research-and-evidence.md) and [core problems](references/core-problems.md). Discover organizing questions, original formulations, principal theorems and counterexamples before choosing the bibliography. Search established alternative names. Trace claims to primary sources and check current versions when their status may have changed. Separate mathematical status (solved, refuted, verified open, unverified) from editorial disposition (include, context, omit). Split partially resolved claims into the proved range and the remaining target. Failed search proves neither openness nor settlement.
 
 An important neighboring problem may deserve a short sourced explanation without a new theory chapter. Do not invent an open problem to fill a template. For every V request, read [the Part V guide](references/part-v-benchmark.md) before drafting; every sample is optional for both editions. Part III owes its selected proof routes; Part V owes its own integrated explanation, not unrequested volumes.
+
+## Discover the frontier and justify selection
+
+Do not let the selected bibliography define the candidate universe. Before freezing the outline, reconstruct the field's own aims from primary introductions, original questions and current follow-up papers. Contrast the strongest established answer with what it does not explain, construct or make effectively testable. Search those gaps, including counterexamples and changes of formulation. A celebrated neighboring question cannot substitute for this task.
+
+Use [core problems](references/core-problems.md) for discovery, reverse search, stopping and omission challenges. Use [architecture](references/architecture.md) for result importance: principal answer, essential bridge, boundary result, secondary independent result, background/context. Importance is relative to the selected question, not technical difficulty. A frontier question is not a result role. No number of Problems, environments, references or tests is required.
+
+Extend the existing publication map, frontier records and reader evidence; do not make a second audit database. Run `scripts/check_survey_selection.py PROJECT --stage plan`, then its release check after the actual source-first review. These tests check declared traceability and source bindings, not whether all worthwhile questions were discovered. Concise and standard retain the same selected core; extra depth is not a license to select another mathematical spine.
 
 ## Introduction and statements
 
@@ -37,7 +53,7 @@ Prefer formulas to wordy paraphrases. Omit trivial transitions; a definition or 
 
 Use [records and delivery](references/records-and-delivery.md) for file/schema details and [validation](references/validation.md) for checks and finding dispositions. Reuse existing records rather than adding parallel audit tables. Canonical components serve actual reuse or export, not compulsory fragmentation of every lemma. Keep bibliography identity, controlling version, locator and status traceable. A changed bibliographic fingerprint requires source review; a matching fingerprint does not certify mathematics.
 
-Review twice: first read local definitions and statements without proofs to recover the knowledge; then follow proof inputs, intermediate outputs and closure. Record located answers in the existing reader/depth evidence, and run `scripts/check_mathematical_structure.py`. Its fingerprint and coverage checks do not certify those answers. Compile from clean inputs until references stabilize; inspect all rendered pages and recheck affected pages after repairs. Reopen archives, verify member hashes and exclude font files, private data and restricted source texts. Keep production notes out of the article. Distinguish source checking, mathematical review, compilation, rendering and reproduction. Disclose when independent review is unavailable; an author reread is not independent review.
+After a source-first omission challenge against the candidate universe, review in three passes: recover the question and variation domains from the opening; read local definitions and statements without proofs to recover the knowledge; then follow proof inputs, intermediate outputs, constant dependence and closure. Record located answers in the existing reader/depth evidence, and run `scripts/check_mathematical_structure.py`. Its fingerprint and coverage checks do not certify those answers. Compile from clean inputs until references stabilize; inspect all rendered pages and recheck affected pages after repairs. Reopen archives, verify member hashes and exclude font files, private data and restricted source texts. Keep production notes out of the article. Distinguish source checking, mathematical review, compilation, rendering and reproduction. Disclose when independent review is unavailable; an author reread is not independent review.
 
 Report the actual evidence, remaining limitations and requested deliverables using the statuses in validation. Stop after necessary checks and repairs; do not add unrequested volumes. A single successful topic is not evidence of general mathematical reliability.
 

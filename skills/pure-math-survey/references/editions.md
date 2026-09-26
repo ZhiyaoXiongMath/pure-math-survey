@@ -1,5 +1,8 @@
 # Concise and standard editions
 
+The shared mathematical core starts with the problem model: intrinsic data, variable domains, unknowns, quantifier order and evidence for relationships between formulations. Standard deepens the same question; concise does not silently freeze a variable or hide a scope-defining answer in an optional consequence.
+
+
 Both editions are English mathematical articles. The user's requested part/edition set governs delivery; a single edition is assessed against its own scope and sources, not against an invented counterpart. Paired editions share a part-specific mathematical core, not every supplementary topic.
 
 ## Invariants of common content
@@ -53,3 +56,9 @@ Every requested edition must state its own selected principal conclusions in its
 Both V editions use [the Part V guide](part-v-benchmark.md). Concise selects within the agreed question; standard deepens decisive mechanisms before adding breadth. No sample dictates the organization or topic coverage.
 
 Use the identical [layout profile](layout-and-build.md) across concise and standard and all five parts. Different pagination follows from real selection and exposition, never a reduced font, compressed line spacing or smaller margins. Recheck introduction/body coverage after edition-specific cuts. A single requested edition has its own complete review; do not invent a paired manuscript.
+
+## Selection and discovery in 1.7.0
+
+Record common question IDs, result IDs, mechanism IDs and frontier IDs in survey_selection. Paired editions agree on these including scope/status, not merely bibliography. Their depth and local organization may differ. Standard does not automatically restore an alternative method. An unrequested standard article is not a completed paired test.
+
+Every mapped principal answer belongs to `core_result_ids`; agreeing on an incomplete declaration is not shared-core agreement. The checker enforces this already declared role, not its mathematical importance. A standard-only secondary supplement is allowed when it does not replace or change the common questions, principal answers or decisive mechanisms.

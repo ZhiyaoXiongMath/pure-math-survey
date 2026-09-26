@@ -289,6 +289,12 @@ def validate(root: Path, template_mode: bool = False) -> tuple[list[str], list[s
     skill_version = str(manifest.get("skill_version", ""))
     vmatch = re.fullmatch(r"(\d+)\.(\d+)\.(\d+)", skill_version)
     new_contract = bool(vmatch and tuple(map(int, vmatch.groups())) >= (1, 5, 0))
+    scope_contract = bool(vmatch and tuple(map(int, vmatch.groups())) >= (1, 6, 0))
+    selection_contract = bool(vmatch and tuple(map(int, vmatch.groups())) >= (1, 7, 0))
+    if scope_contract:
+        scope_spec = importlib.util.spec_from_file_location("problem_scope_check", Path(__file__).with_name("check_problem_formulation.py"))
+        scope_check = importlib.util.module_from_spec(scope_spec)
+        scope_spec.loader.exec_module(scope_check)
     for doc in documents:
         if not isinstance(doc, dict):
             continue
@@ -301,6 +307,8 @@ def validate(root: Path, template_mode: bool = False) -> tuple[list[str], list[s
                 found, _ = structure.validate_document(root, name, expanded, str(doc.get("structure_review", "")))
             else:
                 found = structure.shape_issues(structure.inventory(expanded))
+            if scope_contract:
+                found.extend(scope_check.validate_document(root, doc, expanded))
             (notes if template_mode else errors).extend(f"{name}: {x}" for x in found)
         except (OSError, ValueError, TypeError) as exc:
             (notes if template_mode else errors).append(f"{name}: structure check: {exc}")
@@ -345,8 +353,9 @@ def validate(root: Path, template_mode: bool = False) -> tuple[list[str], list[s
                    for part in (owner, 5) for edition in EDITIONS):
             errors.append(f"{node}: owner_part has no requested document")
         component_name = row.get("canonical_component", "") or ""
-        component = checked_path(root, component_name, node, errors)
-        if not component_name.endswith(".tex"):
+        inline_statement = selection_contract and not component_name
+        component = None if inline_statement else checked_path(root, component_name, node, errors)
+        if not inline_statement and not component_name.endswith(".tex"):
             errors.append(f"{node}: canonical_component must be a .tex file")
         if component:
             if component in components:
@@ -408,14 +417,32 @@ def validate(root: Path, template_mode: bool = False) -> tuple[list[str], list[s
                 errors.append(f"{node}: {prefix} semantic label {label!r} must occur exactly once")
             count = counts[component] if component else 0
             if treatment == "FULL_STATEMENT":
-                if count < 1:
+                if inline_statement:
+                    pass  # One-off located statements need no artificial component file.
+                elif count < 1:
                     errors.append(f"{node}: {prefix} canonical component input count {count}; expected at least 1")
                 elif count > 1:
                     notes.append(f"{node}: {prefix} reuses its canonical body {count} times; useful local recalls are allowed. Review their purpose and printed numbering; repetition alone is not a defect.")
             elif count != 0:
                 errors.append(f"{node}: {prefix} canonical component input count {count}; expected 0")
+        if inline_statement:
+            full_placements = sum(row.get(p+"_treatment") == "FULL_STATEMENT"
+                                  for p in ("concise","standard","integrated_concise","integrated_standard"))
+            if full_placements > 1:
+                errors.append(f"{node}: shared statements require a canonical body")
         if not has_requested_placement:
             errors.append(f"{node}: no public placement in a requested document")
+
+    if selection_contract:
+        selection_spec = importlib.util.spec_from_file_location("survey_selection_check", Path(__file__).with_name("check_survey_selection.py"))
+        selection_check = importlib.util.module_from_spec(selection_spec)
+        selection_spec.loader.exec_module(selection_check)
+        try:
+            selected_errors, selected_notes = selection_check.validate_selection(root, manifest, {name: value[0] for name, value in expanded_by_file.items()})
+            (notes if template_mode else errors).extend(selected_errors)
+            notes.extend(selected_notes)
+        except (OSError, ValueError, TypeError, KeyError, AttributeError) as exc:
+            (notes if template_mode else errors).append(f"selection check: {exc}")
 
     audit = root / "release-audit.csv"
     proof_explanation_requested = any(part == 3 for part, _ in requested)

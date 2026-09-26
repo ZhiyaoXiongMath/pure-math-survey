@@ -1,5 +1,8 @@
 # Validation of a research project
 
+Run the problem-formulation plan check before drafting and its release check on final expanded TeX. Read the opening for definitions, meaningful variations and ordered quantifiers before reading answers. Check user/input-to-opening-to-answer coverage, not only introduction/body consistency. Exact bindings and dependency checks detect specified regressions; they do not prove scope completeness or mathematical equivalence. See [problem formulation](problem-formulation.md).
+
+
 Structural validation, source review, mathematical reading, compilation, visual inspection and archive checks answer different questions. Keep their evidence separate; none certifies the others.
 
 ## Runtime structural check
@@ -36,7 +39,7 @@ Record located findings and repairs in `release-audit.csv`, linking a shared rev
 
 Under the existing `reader_outcomes`, `proof_depth` and `edition_depth` checks, perform two distinct readings: (a) local context plus statements, without proofs; (b) the dependency chain of the proofs and imported inputs. Record actual answers for each substantive body section. Inspect whether results are recoverable, hypotheses are nearby, statements have one logical role, proof boundaries are visible, imported inputs have exact sources, and every key output is used. A theorem wrapper around a mixed argument is a failed reading, not a repair.
 
-New scaffolds declare `skill_version: 1.5.0` and a per-document `structure_review` JSON path under `evidence/`. This is supporting evidence for the existing audit rows, not a second approval registry. Use `scripts/check_mathematical_structure.py PROJECT --tex FILE --review RECORD`. It checks literal-input expansion, real body environments (not comments or unused preamble macros), result and proof labels, coverage of the actual body results, section roles, citation-key presence and a fingerprint of the reviewed expanded source. A source edit invalidates the fingerprint; reread before updating it. The JSON format and machine limits are documented in [records and delivery](records-and-delivery.md).
+New scaffolds declare `skill_version: 1.7.1` and a per-document `structure_review` JSON path under `evidence/`. This is supporting evidence for the existing audit rows, not a second approval registry. Use `scripts/check_mathematical_structure.py PROJECT --tex FILE --review RECORD`. It checks literal-input expansion, real body environments (not comments or unused preamble macros), result and proof labels, coverage of the actual body results, section roles, citation-key presence and a fingerprint of the reviewed expanded source. A source edit invalidates the fingerprint; reread before updating it. The JSON format and machine limits are documented in [records and delivery](records-and-delivery.md).
 
 `validate_project.py` invokes these checks for 1.5+ manifests. Its legacy path also detects the known introduction-only/body-empty failure when actual sections and introductory results exist. A legitimate context-only section needs a located reason, not a forced theorem. Counts describe layout; they are not quality scores.
 
@@ -64,6 +67,12 @@ A source-first reread is not independent review; checking a theorem is not check
 
 ## Skill maintenance and regression limits
 
-[Template maintenance](template-maintenance.md) owns current-style versus frozen-style staging and behavioral test requirements. Run `scripts/validate_assets.py`, then real `scripts/build_checks.py` builds. Neither synthetic assertions nor maintenance builds are a new research-survey evaluation. Retain [semantic adversarial cases](../assets/exposition-examples/semantic-cases.md) as reading tests, not an automatic semantic grader.
+[Template maintenance](template-maintenance.md) owns current-style versus frozen-style staging and behavioral test requirements. Run `scripts/validate_assets.py`, then real `scripts/build_checks.py` builds. Run the development unit suite when working from a development distribution. Neither synthetic assertions nor maintenance builds are a new research-survey evaluation. Retain [semantic adversarial cases](../assets/exposition-examples/semantic-cases.md) as reading tests, not an automatic semantic grader.
 
 Use `scripts/compare_pdf.py` for optional same-toolchain page/text/pixel comparisons. Pixel identity establishes reproduction, not correctness. Report separately which source/math review, rendering, historical reproduction, mutation regression and cross-topic generation evaluations actually occurred. One dHYM case does not demonstrate generalization to other mathematics.
+
+## Selection and discovery in 1.7.0
+
+For version 1.7.0 and later, run check_survey_selection.py PROJECT --stage plan and --stage release. Project validation invokes the release check. The checker reads actual registries and bound source spans. Semantic mutations need explicitly recorded source-based review: keywords cannot grade meaning. Legal zero-Problem accounts and justified secondary methods remain admissible.
+
+Since 1.7.1 the declared shared core must contain every local principal answer, even when only one edition is requested. Synthetic paired tests allow additional secondary results while rejecting principal-answer omissions. They do not certify that the selected roles are mathematically appropriate.

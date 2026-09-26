@@ -1,6 +1,6 @@
 # Pure Math Survey
 
-**Version 1.5.0.** A skill for source-grounded English mathematical surveys and substantive revisions, delivered as rebuildable TeX and inspected PDFs.
+**Version 1.7.1.** A skill for source-grounded English mathematical surveys and substantive revisions, delivered as rebuildable TeX and inspected PDFs.
 
 Default to Part V concise. An explicitly requested series selects Parts I–V concise; any nonempty part/edition selection is supported. Both concise and standard preserve core statements and key lemmas. Concise compresses proof interiors and routine calculations; standard develops the same mathematical routes more fully.
 
@@ -14,7 +14,7 @@ Default to Part V concise. An explicitly requested series selects Parts I–V co
 
 ## Install
 
-Download [pure-math-survey-1.5.0.zip](https://github.com/ZhiyaoXiongMath/Pure-Math-Survey/releases/download/v1.5.0/pure-math-survey-1.5.0.zip) from the [latest release](https://github.com/ZhiyaoXiongMath/Pure-Math-Survey/releases/latest). Extract it and copy the `pure-math-survey` folder into your local skills directory.
+Download [pure-math-survey-1.7.1.zip](https://github.com/ZhiyaoXiongMath/Pure-Math-Survey/releases/download/v1.7.1/pure-math-survey-1.7.1.zip) from the [latest release](https://github.com/ZhiyaoXiongMath/Pure-Math-Survey/releases/latest). Extract it and copy the `pure-math-survey` folder into your local skills directory.
 
 Alternatively, copy [skills/pure-math-survey](skills/pure-math-survey/) from this repository.
 
@@ -26,7 +26,7 @@ Invoke the skill with your topic, audience and requested parts or editions:
 Use $pure-math-survey to write Part V concise on [topic] for [audience].
 ```
 
-The skill organizes the survey around research questions, checks primary sources and their versions, states principal answers with necessary hypotheses, explains proof mechanisms, and distinguishes established results from verified open problems. It supports revisions of existing surveys while preserving the requested scope.
+The skill reconstructs definitions and ordered quantifiers before selecting answers, researches beyond the selected bibliography, and distinguishes mathematical status from editorial selection. It checks primary sources and their versions, states principal answers with necessary hypotheses, retains them in the shared concise/standard core, and explains the proof mechanisms. It supports revisions of existing surveys while preserving the requested scope.
 
 See [SKILL.md](skills/pure-math-survey/SKILL.md) for the workflow and the [skill README](skills/pure-math-survey/README.md) for helper commands. Templates and optional reference samples support drafting and typesetting; source review and mathematical judgment remain essential.
 

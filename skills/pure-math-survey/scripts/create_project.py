@@ -57,9 +57,9 @@ def main() -> int:
     for doc in documents:
         review_path = 'evidence/' + Path(doc['tex_file']).stem + '-structure-review.json'
         doc['structure_review'] = review_path
-        (out / review_path).write_text(json.dumps({'schema_version':'1.0.0', 'tex_file':doc['tex_file'], 'source_sha256':'PENDING', 'reviewer_mode':'PENDING', 'reviewed_on':'PENDING', 'sections':[], 'results':[]}, indent=2) + '\n')
+        (out / review_path).write_text(json.dumps({'schema_version':'1.0.0', 'tex_file':doc['tex_file'], 'source_sha256':'PENDING', 'reviewer_mode':'PENDING', 'reviewed_on':'PENDING', 'sections':[], 'results':[], 'problem_formulation':json.loads((ROOT/'assets/problem-formulation-template.json').read_text()), 'survey_selection':json.loads((ROOT/'assets/survey-selection-template.json').read_text())}, indent=2) + '\n')
     shutil.copy2(ROOT / 'assets/templates/math-review.sty', out / 'math-review.sty')
-    manifest = {'schema_version': '1.0.0', 'skill_version': '1.5.0', 'language': 'en', 'topic': args.topic,
+    manifest = {'schema_version': '1.0.0', 'skill_version': '1.7.1', 'language': 'en', 'topic': args.topic,
                 'literature_cutoff': '[Set from actual source verification]',
                 'requested_documents': [{'part': p, 'edition': e} for p, e in selection],
                 'documents': documents}
@@ -75,7 +75,14 @@ def main() -> int:
     shutil.copy2(ROOT / 'assets/registries/release-audit-template.csv', out / 'release-audit.csv')
     (out / 'architecture.md').write_text(
         '# Unverified draft architecture\n\nRecord the actual task, scope, selected documents and sources.\n'
+        'First reconstruct definitions and meaningful variation domains; classify intrinsic data, representatives and gauges.\n'
+        'Complete problem_formulation in the existing reader evidence and run the plan check before drafting.\n'
+        'Put the selected domains and quantified questions before answers; justify relationships instead of assuming them.\n'
+        'Track input/user commitments and local freezes separately; a late scope corollary is not a repair.\n'
         'Identify organizing questions and principal conclusions before local refinements.\n'
+        'Discover domain-native frontier candidates before freezing the bibliography; challenge omissions from primary sources.\n'
+        'Classify results by question-relative importance; record roles and consumers in the publication map.\n'
+        'Complete survey_selection in the same reader evidence; distinguish actual searches from source reads.\n'
         'Set the page budget; remove side branches before drafting; do not omit selected core results.\n'
         'Map each principal body result to its substantive Introduction statement.\n'
         'Record Introduction-only reading, hypothesis consistency and actual verification.\n'
