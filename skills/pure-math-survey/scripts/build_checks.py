@@ -13,6 +13,7 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from typing import Literal
 
 ROOT = Path(__file__).resolve().parents[1]
 BLOCKING_PATTERNS = {
@@ -101,6 +102,24 @@ def compile_one(folder: Path, entrypoint: str, engine: str, timeout: int = 120) 
             "recall_counters": recalls,
             "status": "PASS" if not issues else "FAIL"}
 
+def stage_standard_sample(root: Path, destination: Path, *, mode: Literal["current", "frozen"]) -> Path:
+    """Stage explicit dependencies; do not confuse regression with reproduction."""
+    if mode not in ("current", "frozen"):
+        raise ValueError(f"Unsupported style mode: {mode}")
+    sample = root / "assets/reference-samples/dhym-standard"
+    style = (root / "assets/templates/math-review.sty" if mode == "current"
+             else sample / "math-review.sty")
+    inputs = [sample / "dhym-standard.tex", sample / "references.bbl", style]
+    for source in inputs:
+        if not source.is_file():
+            raise FileNotFoundError(source)
+    if destination.exists() and any(destination.iterdir()):
+        raise FileExistsError(f"Staging destination must be empty: {destination}")
+    destination.mkdir(parents=True, exist_ok=True)
+    for source in inputs:
+        shutil.copy2(source, destination / source.name)
+    return destination / "dhym-standard.tex"
+
 def run_checks(output: Path, engine: str = "pdflatex") -> dict:
     engine_path = shutil.which(engine)
     if not engine_path:
@@ -126,7 +145,7 @@ def run_checks(output: Path, engine: str = "pdflatex") -> dict:
         tasks.append((folder, template.name))
     folder = output / "exposition-smoke"
     folder.mkdir()
-    for fixture in (ROOT / "tests/fixtures").glob("*.tex"):
+    for fixture in (ROOT / "assets/exposition-examples").glob("*.tex"):
         shutil.copy2(fixture, folder / fixture.name)
     shutil.copy2(style, folder / style.name)
     tasks.append((folder, "exposition-smoke.tex"))
@@ -144,6 +163,10 @@ def run_checks(output: Path, engine: str = "pdflatex") -> dict:
     shutil.copy2(compact, folder / compact.name)
     shutil.copy2(style, folder / style.name)
     tasks.append((folder, compact.name))
+    for mode in ("current", "frozen"):
+        folder = output / f"dhym-standard-{mode}"
+        entry = stage_standard_sample(ROOT, folder, mode=mode)
+        tasks.append((folder, entry.name))
     for folder, entry in tasks:
         print(f"Building {entry}", flush=True)
         try:
@@ -153,7 +176,13 @@ def run_checks(output: Path, engine: str = "pdflatex") -> dict:
         result["artifact_kind"] = ("instructional_scaffold" if entry.startswith("part") else
                                    "elementary_maintenance_fixture" if entry.startswith("exposition") else
                                    "compact_reference_adaptation" if entry.startswith("dhym-surface") else
+                                   "shared_style_regression" if folder.name == "dhym-standard-current" else
+                                   "frozen_sample_reproduction" if folder.name == "dhym-standard-frozen" else
                                    "frozen_reference_rebuild")
+        result["target"] = folder.name
+        if entry == "dhym-standard.tex":
+            result["style_mode"] = folder.name.rsplit("-", 1)[-1]
+            result["style_sha256"] = hashlib.sha256((folder / "math-review.sty").read_bytes()).hexdigest()
         report["builds"].append(result)
         (output / "build-report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     report["status"] = "PASS" if all(x["status"] == "PASS" for x in report["builds"]) else "FAIL"

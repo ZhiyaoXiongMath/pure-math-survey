@@ -1,6 +1,8 @@
 # Architecture and mathematical hierarchy
 
-Plan from the requested reading task, not from a catalog of papers or files. The architecture note records the central question, audience, selected scope, major sections and their connections. It also records the core routes and selected explanation targets when III is requested. This is one editorial note, not an additional audit database or a mandatory printed chart.
+Plan from the requested reading task, not from a catalog of papers or files. Record the objects, organizing question, principal promises and exclusions. Distinguish principal answers, supporting inputs and background before drafting; a budget cannot silently replace the agreed question with a special case. The architecture note records the central question, audience, selected scope, major sections and their connections. It also records the core routes and selected explanation targets when III is requested. This is one editorial note, not an additional audit database or a mandatory printed chart.
+
+Related material belongs only when it supplies necessary data, an input, a decisive mechanism or a boundary of an asserted relationship. Shared terminology alone does not make another main thread. Use [the Part V guide](part-v-benchmark.md) for purpose-specific, optional samples.
 
 ## Three logical levels
 
@@ -70,4 +72,4 @@ After completing the body, check both directions. Inspect the body for principal
 
 I introduces the knowledge obtained from its chosen model or construction; it does not invent a research theorem. II gives actual main results and logical relations. III states what the promised methods output and how those outputs reach the target, not just method names. IV states decisive boundaries, known progress and precise remaining targets, distinguishing theorem from conjecture. V gives the selected thematic answers, necessary comparisons, method roles and core questions. Each part and edition is assessed independently.
 
-For V, use [the completed-output benchmark](part-v-benchmark.md). Its mathematical section organization, introduction coverage and developed body are binding quality references, not optional decoration. Its eight sections and twenty-one pages are properties of that example, not required counts for other subjects. The reference is not a prerequisite that users must read.
+For V, use [the Part V guide](part-v-benchmark.md). No historical or topical example supplies a binding whole-article organization. Choose samples only for a stated local purpose.

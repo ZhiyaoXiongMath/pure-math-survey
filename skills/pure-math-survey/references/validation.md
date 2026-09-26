@@ -1,114 +1,69 @@
 # Validation of a research project
 
-Use structural checks, mathematical/source review, compilation, visual inspection and archive checking for their distinct purposes. No one of these certifies the others.
+Structural validation, source review, mathematical reading, compilation, visual inspection and archive checks answer different questions. Keep their evidence separate; none certifies the others.
 
 ## Runtime structural check
 
-Run the installed `scripts/validate_project.py` with the project directory, for example from the directory containing the skill:
+Run `python pure-math-survey/scripts/validate_project.py PROJECT`. The standard-library parser requires Python 3.10+. It checks the requested document set, safe literal braced inputs (including explicit `.bbl`), mapped component placements, labels, identity links and required audit rows. It does not interpret arbitrary TeX macros, verify evidence content or prove semantic equivalence. `--template-mode` is only an instructional preview, never publication acceptance. The real build must also resolve all dependencies.
 
-```sh
-python pure-math-survey/scripts/validate_project.py review-project
-```
+Use [records and delivery](records-and-delivery.md) for the unchanged schema and conditional records. A file signature is not visual inspection. A completed audit row is a declared review outcome, not an independently discovered fact.
 
-The script requires Python 3.10 or later and only its standard library. It reads the manifest, requested files, literal braced TeX inputs, map/component placements, labels, identity links and the required audit status subset. `--template-mode` allows instructional placeholders for a structural preview, not a publishable review. It does not compile TeX, evaluate PDF layout, verify every registry or examine the mathematical content of an evidence note. Follow the [format reference](records-and-delivery.md) for schemas and conditional records.
+## Source and mathematical reading
 
-Unsupported dynamic input syntax needs explicit handling rather than a false assertion of parser coverage. Check source dependencies through the real build as well. A PDF signature is only a file-type check, not a readable-PDF or visual verdict.
+Follow [research and evidence](research-and-evidence.md) for source identity, exact controlling versions, theorem locators and search limits. Review hypotheses, quantifiers, phase or parameter ranges, regularity, conclusions and status against the source. Include surrounding comparisons and claimed implications: a correct canonical theorem can still sit beside false prose. When a source version changes, review affected claims again; a fingerprint only detects identity drift.
 
-## Reader and explanation review
+Read each requested document without undelivered parts. Check the selected question and its principal answers against the architecture fixed before drafting. Use the introduction-only and reverse-coverage tests in [introduction](introduction.md), the passage-level rules in [writing style](writing-style.md), and the depth tests in [editions](editions.md). These are substantive reading tests, not keyword, heading, theorem-count or page-ratio tests.
 
-Read each requested document independently for the declared audience. Necessary specialized objects, notation, main hypotheses and imported inputs must be understandable within it. Do not demand a prerequisite course where the reader contract assumes background.
+For each selected method, identify the precise input, the object constructed or estimated, and the output used next. Apply [proofs and boundaries](proofs-and-boundaries.md) to distinguish a local derivation, an imported theorem, a proof route and a complete-proof claim. Do not require recursively reproving the literature; do not accept technique names as a promised explanation. Review each claimed frontier status using [core problems](core-problems.md), even when no numbered Problem is printed.
 
-Start from the original task and architecture/proof promises, then inspect actual passages and entrypoints. Distinguish an absent promised explanation, a wrong location in a record and an optional elaboration. Content elsewhere in the series does not fulfill a standalone commitment. Review the introduction and major sections together: recover the central question, mathematical threads, their relationships and section duties, then verify that the body carries them out. A definition-and-theorem introduction is valid without a narrative preamble or section roadmap. A refined introduction pasted above a flat technical inventory does not repair incoherent selection, but no extra transition is needed when the mathematical order is clear.
+## Evidence in existing audit rows
 
-Assess statements and prose claims for exact objects, assumptions, quantifiers, ranges, conclusions, source versions and status. Check surrounding comparisons, inferred implications, history and limitations even when canonical statements match byte-for-byte. A closed local proof cannot establish overall understanding if a promised interface is missing.
+Record located findings and repairs in `release-audit.csv`, linking a shared review note where useful. Do not add a parallel approval table.
 
-Record the following judgments in existing audit rows with actual manuscript locations:
-
-| Check | Substantive scope |
+| Row | What its completed review actually covers |
 |---|---|
-| `reader_outcomes` | Each requested part's own reading task; independent readability; introduction/body organization; V's selected main-result understanding, relationships and method ideas |
-| `proof_framework` | Required only with III: connected routes for the core proof families in each requested III edition |
-| `decisive_mechanisms` | Required only with III: substantive explanation of the selected decisive arguments at the promised depth |
-| `edition_depth` | Actual depth in every requested document; concise selection/organization and standard's deeper treatment of the same part-specific core |
-| `proof_depth` | Arguments actually given versus their declared proof, route or schematic treatment; exact imported inputs and claims about closure |
-| `edition_semantic_consistency` | Shared body/source/prose meanings; paired comparison where present, source consistency for a single edition |
+| `source_identity`, `statement_verification` | Sources/versions and retained mathematical statements; disclose access limits beside the relevant source. |
+| `reader_outcomes`, `edition_depth` | Independent readability, introduction/body coverage and the requested depth of actual passages. For V use [the article guide](part-v-benchmark.md). |
+| `proof_depth` | Only the argument treatment actually promised and supplied, with exact imported inputs and unresolved steps. |
+| `edition_semantic_consistency` | Shared statement meanings and surrounding prose. In a single edition, compare against its sources; do not claim an absent companion was reviewed. |
+| `frontier_status` | Supported status within the selected scope, including settled or refuted formulations and version-qualified preprints. |
+| `build_requested_documents`, `visual_requested_documents` | Actual entrypoints, stable references, log findings and every rendered page. |
+| `archive_integrity` | Reopened archive membership, dependencies, safety and recomputed checksums. |
 
-V's method explanation does not activate III's proof rows. In V-only they may be absent or reasoned `NOT_APPLICABLE`; a mixed III/V request still requires the III reviews. Absence of technical proofs is not a V failure unless explicitly promised. Conversely, method names without their role cannot satisfy V. Do not record a fictitious complete-proof verification for an explanatory paragraph.
+`proof_framework` and `decisive_mechanisms` are required only when Part III is requested. For V-only they may be absent or reasoned `NOT_APPLICABLE`; V method explanations remain subject to reader/depth review. Paired editions need comparison of actual common content and deeper treatment, not a page-ratio verdict. Single-edition work needs no invented paired review.
 
-For paired editions, apply the [selection and depth tests](editions.md#depth-and-selection) to actual passages: read concise alone for its necessary understanding and inspect where standard deepens the common thread. Do not accept or reject a pair from shared headings, page ratios or the number of extra topics. Use the existing `edition_depth` evidence for located decisions and affected rechecks. For a single edition, do not create or claim a comparison with another document.
+## Body-structure review and regression
 
-During the same reread, apply the writing checks below to actual passages, not keywords or counts. Record relevant locations and repairs in `reader_outcomes`, `statement_verification`, `edition_semantic_consistency` and the existing visual review; do not add an audit table.
+Under the existing `reader_outcomes`, `proof_depth` and `edition_depth` checks, perform two distinct readings: (a) local context plus statements, without proofs; (b) the dependency chain of the proofs and imported inputs. Record actual answers for each substantive body section. Inspect whether results are recoverable, hypotheses are nearby, statements have one logical role, proof boundaries are visible, imported inputs have exact sources, and every key output is used. A theorem wrapper around a mixed argument is a failed reading, not a repair.
 
-- **Transitions:** delete a sentence that only announces the next topic or repeats a heading. Retain a needed mathematical inference, changed setting or nontrivial comparison. Do not demand transition text in a clear definition-and-theorem introduction.
-- **Formulas and sentences:** replace a wordy description of a mathematical condition or relationship with precise notation when clearer. Check every symbol, quantifier and arrow. Split long sentences without removing reasoning.
-- **Statements:** identify the theorem's core answer immediately. Check that necessary objects, hypotheses, exceptional cases and qualifications remain explicit. Move secondary consequences to the following prose or a separate supported result; keep an essential equivalence or other unified conclusion together.
-- **Lists:** use `itemize` for separable assumptions and `enumerate` for referenced conditions or cases. Check whether the items are jointly required, alternatives or equivalent. A simple condition need not be itemized; no list-count gate applies.
-- **Self-contained repetition:** retain a full recall or repeated setup when it reduces backtracking. Delete only repetitions that add burden without helping interpretation. Verify the recalled canonical body, source status and label safety. Repetition alone is not a defect.
+New scaffolds declare `skill_version: 1.5.0` and a per-document `structure_review` JSON path under `evidence/`. This is supporting evidence for the existing audit rows, not a second approval registry. Use `scripts/check_mathematical_structure.py PROJECT --tex FILE --review RECORD`. It checks literal-input expansion, real body environments (not comments or unused preamble macros), result and proof labels, coverage of the actual body results, section roles, citation-key presence and a fingerprint of the reviewed expanded source. A source edit invalidates the fingerprint; reread before updating it. The JSON format and machine limits are documented in [records and delivery](records-and-delivery.md).
 
-Check notation after macro expansion and preserve material scope and uncertainty beside the claim. The checker can detect missing inputs or duplicate labels, but cannot decide that a transition is trivial, a theorem is bloated, a list is clearer or a recall is useful.
+`validate_project.py` invokes these checks for 1.5+ manifests. Its legacy path also detects the known introduction-only/body-empty failure when actual sections and introductory results exist. A legitimate context-only section needs a located reason, not a forced theorem. Counts describe layout; they are not quality scores.
 
-## Problem formulation and frontier review
-
-IV and V require an executed `frontier_status` review within their own selections. Check that core unresolved targets appear as visible numbered and labelled **Problem** environments, with precise objects, assumptions and goals. Check their source formulation separately from knowledge status. The discussion after each Problem identifies source and cutoff, importance, verified progress, decisive solved ranges and the remaining scope or limits of verification.
-
-Compare shared IV/V Problems for meaning, sources and status, not identical collections. V need not reproduce IV's full frontier, but must fulfill its own advertised core. A verified settled narrow scope is a completed frontier review, not an automatic waiver. Failed searches, inaccessible sources and absent lists establish neither openness nor settlement. Do not invent Problems or claim that a review-proposed direction is a consensus conjecture.
-
-## Independent review and adjudication
-
-Use an available independent reviewing agent for source-based research review. Give the original task, reader contract, requested manuscripts and necessary primary sources in a fresh context, without author PASS judgments or proposed findings. Ask for located mathematical reasons and have the initial findings saved before revealing the author's self-assessment.
-
-Then adjudicate each material disagreement against the actual promise, argument and source. A blocking objection identifies a real error or reading break, the missing necessary idea/condition/interface and a minimal repair. Requests merely for more detail are optional. Correctly stated external inputs, checked hypotheses and an explanation of their role permit stopping; do not demand recursive proofs of all literature. A short but decisive bridge is not inadequate merely because it is short.
-
-Sustain valid defects, repair locally, and recheck affected passages, dependent conclusions and paired/shared statements. Reject unsupported objections with reasons rather than by vote. When no independent agent is available, perform a separate source-first author reread and disclose that it is not independent review. No additional approval gate, unlimited waiting or prearranged multi-round evaluation is required.
+Maintain negative tests for: introduction-only results; all body results removed; decorative/commented environments; a missing key-lemma wrapper; an argument left inside a statement with no proof boundary; a quoted input with no source; incomplete coverage despite an unchanged total count; stale review evidence; and unresolved draft records. Synthetic tests test the checker, not mathematical correctness. Run an actual old-manuscript regression and mutations of the final article as well.
 
 ## Findings and disposition
 
-Use existing review/adjudication notes and the `evidence`/`note` fields in `release-audit.csv`, not new status names or an extra review layer. Distinguish:
+Repair mathematical errors, missing necessary hypotheses, unsupported core status claims and absent promised explanations before completing the affected check. A disclaimer does not repair a broken core. Apply the same local repair/recheck discipline to bloated statements, trivial transitions, ambiguous conditions, misleading notation or rendered overflow. Useful self-contained repetition is not a defect.
 
-| Finding | Disposition |
-|---|---|
-| Mathematical error, missing necessary hypothesis, unsupported core status claim, or absent promised explanation | Repair and recheck the affected statements, passages and dependents before completing the relevant check. Disclosure alone cannot turn a broken core into a pass. |
-| Trivial transition, unnecessary prose paraphrase, bloated or mixed theorem, avoidable long condition sentence, misleading rendered notation or an actually burdensome duplicate | Repair the affected passage and recheck its printed location and uses. The requested writing contract is part of acceptance, not an optional polish pass. Useful repetition and a definition-and-theorem introduction are not defects. Missing hypotheses or changed logical force are mathematical defects. |
-| Limit of source access, reviewer independence, search coverage, build or visual inspection | State precisely what was and was not done. Use the permitted fallback where one exists. A missing mandatory check remains incomplete, while a supplementary limitation can coexist with a satisfied core. |
-
-Completed rows certify only their stated review scope. A source-first author reread is not independent review, inspecting a theorem is not checking its whole proof, a PDF signature is not visual inspection, and sampled pages are not an all-page check. Preserve the actual outcome and recheck locations, including rejected objections and their reasons where material. Do not introduce `PASS_WITH_WARNINGS` or change the existing schema to express these distinctions.
+Keep source-access, reviewer-independence and search-coverage limits precise. With no independent agent, perform a separate source-first author reread and disclose that it is not independent review. Do not invent a reviewer or an additional gate. Reject an unsupported objection with a reason; sustain valid defects and recheck their dependents. Retain material findings and their actual disposition, not just a PASS label.
 
 ## Build, visual inspection and archive
 
-Compile every requested entrypoint with an available TeX engine until references stabilize; include bibliography passes when needed. Check errors, undefined citations/references, duplicate labels, missing glyphs and substantive box overflow. Record engine, build commands and actual outcomes. Missing compilation is not a pass.
+Compile every requested entrypoint until references stabilize, including the required bibliography step. Inspect errors, undefined references/citations, duplicate labels, missing glyphs and substantive box overflow. Record commands, engine, dependency versions and actual results.
 
-Render and inspect every page of the actual requested research outputs for title/abstract, hierarchy, contents, theorem and Problem titles/numbering/spacing, hypothesis lists, recall headings, formulas, citations, running heads, bibliography and page boundaries. Fix local text or formula issues locally; change the shared style only for a reproduced shared defect, then recheck affected pages. Do not hide overflow or length by globally shrinking the type or margins. Instructional placeholders must not remain in finished work.
+Render and inspect every page: title, theorem conditions and numbering, notation, equation breaks, references, bibliography and page boundaries. Repair local issues locally. A genuine shared-style change requires affected regression builds. Never shrink type or margins merely to satisfy a length limit. Check standalone exports as actual additional entrypoints, not as assumed copies.
 
-Reopen the rebuildable archive, compare its intended member set and recompute its checksums. Confirm no unsafe paths, symlinks, unintended private material or omitted rebuild dependencies. Provide an external archive digest.
+Reopen the delivered archive, compare its intended member set and recompute hashes. Exclude unsafe paths, symlinks, font files, private data and omitted dependencies. Provide an external archive digest. Do not inherit an earlier archive or frozen-sample verdict.
 
 ## Honest conclusions and stopping
 
-Program acceptance means structural records are present and internally placed, not that claims, explanations, evidence or Problems are correct or complete. Do not substitute keywords, page counts, proof counts, Problem counts or CSV PASS entries for substantive review.
+Use `DELIVERABLE_WITHIN_PROTOCOL` when the requested core and necessary checks are completed within scope; use `DELIVERABLE_WITH_LIMITATIONS` for a satisfied core with disclosed supplementary limits or the permitted author-reread fallback. Unresolved core defects or missing mandatory checks require `INCOMPLETE`, or `BLOCKED` when input/capability prevents continuation. Do not introduce new audit status names or weaken the protocol to pass.
 
-Report the actual scope of source access, statement checking, argument treatment, reader/depth review, frontier checking, build, visual inspection and archive verification. Use the completion status justified by the requested core and disclose limitations. Use `DELIVERABLE_WITHIN_PROTOCOL` when requested outputs and required checks are satisfied within the agreed scope; use `DELIVERABLE_WITH_LIMITATIONS` for a satisfied core with disclosed supplementary limits or an explicitly permitted fallback. Unresolved core defects or unmet mandatory checks require `INCOMPLETE`, or `BLOCKED` when the missing input/capability prevents continuation. Do not weaken the protocol retroactively to pass. Concrete failures trigger local repair and affected rechecks. With necessary checks completed and no unresolved core defect, stop rather than expanding the task or creating a testing platform.
-
-## Skill maintenance
-
-When editing this skill, run `python -B -m unittest discover -s tests -v` from the skill root. The standard-library suite checks the package, document selections, placements and structural validation using temporary synthetic projects. It does not compile manuscripts or assess mathematics, writing quality or page layout. These maintenance checks are not extra deliverables for a survey request. Contract regression checks confirm that the instructions and examples retain the writing rules; they do not score generated prose. The optional `tests/fixtures/exposition-smoke.tex` demonstrates listed hypotheses, a definition-and-theorem introduction, secondary consequences outside the theorem and a canonical recall. Build it with the fixture body and `math-review.sty` beside it; compilation and visual review are separate from unit tests.
-
-## Introduction-only and reverse-coverage review
-
-First hide the body. For the declared audience, recover the central objects/problem and every selected conclusion from the introduction itself: objects, necessary conditions, quantifiers, parameters/branch, actual answer and material boundaries/status. Check that local symbols are defined and that no body reference carries indispensable mathematical content.
-
-Then open the body and compare against the title, abstract, organizing questions and actual mathematical emphasis. Every principal conclusion must have an actual introduction statement; every introduction conclusion must have a correct source and corresponding body treatment. A precise special case must state its restriction without concealing a material part of the selected scope. Do not demote a missing main thread retrospectively. Recheck affected introduction/abstract/body/shared statements after any scope or status change.
-
-Record findings and actual locations in existing `reader_outcomes`, `edition_depth`, `statement_verification` and semantic-consistency evidence. Missing principal knowledge, necessary hypotheses or logical restrictions fails the relevant check; adding a disclaimer does not fix the omission. Keyword presence, theorem counts and a successful parser run are not semantic acceptance.
-
-## Part V completed-article and presentation review
-
-Use [the v6 benchmark](part-v-benchmark.md) and [layout and build](layout-and-build.md). Read V as one article, without consulting undelivered parts. Check main conclusions, nontrivial comparisons, the actual input/output of selected method ideas, key boundaries and organizing Problems. Inspect the entire PDF for typography, mathematical reading order and layout. Correct style alone does not satisfy the content contract; an excellent introduction above undeveloped body sections also fails.
-
-Both concise and standard are subject to these checks. Concise can reduce scope but not mathematical completeness within that scope or the presentation floor. Standard must add located understanding, not just length. No automatic full-proof obligation, theorem count, section count or subject-specific chapter list is introduced. The compact page review limits trigger editorial revision, not content padding or hypothesis deletion.
+A source-first reread is not independent review; checking a theorem is not checking its entire proof. Structural acceptance, successful builds, page counts and CSV statuses do not establish mathematical quality. Once the necessary checks and local repairs are complete, stop rather than expanding the requested task.
 
 ## Skill maintenance and regression limits
 
-From the skill root run `python -B -m unittest discover -s tests -v`, then `python scripts/build_checks.py --output /absolute/path/to/build-checks`. The latter compiles all ten scaffolds, the two-principal-result fixture, and the frozen v6 with both its original preamble and the new shared style. Review its actual log and output files. Scaffolds remain instructional previews; their compilation is not a new survey-generation evaluation.
+[Template maintenance](template-maintenance.md) owns current-style versus frozen-style staging and behavioral test requirements. Run `scripts/validate_assets.py`, then real `scripts/build_checks.py` builds. Run the development unit suite when working from a development distribution; it is not bundled with this clean installation. Neither synthetic assertions nor maintenance builds are a new research-survey evaluation. Retain [semantic adversarial cases](../assets/exposition-examples/semantic-cases.md) as reading tests, not an automatic semantic grader.
 
-Use `python scripts/compare_pdf.py reference.pdf rebuilt.pdf --output /absolute/path/to/comparison` for an optional same-toolchain pixel comparison (PyMuPDF and Pillow required). It reports rendered differences, never mathematical quality. A toolchain/font change can alter pixels while preserving acceptable layout; inspect and document rather than forcing equality with local formatting hacks.
-
-The adversarial cases in [the semantic fixture guide](../tests/fixtures/semantic-cases.md) must retain their failure/pass expectations. Unit tests ensure the policy, template wiring, canonical-body reuse and fixture distinctions remain present. They do not infer mathematical main-result coverage in arbitrary articles. A release must report separately: structural tests, real TeX builds, rendered-page inspection, reference regression, source/math review and any cross-topic generation evaluation actually performed.
+Use `scripts/compare_pdf.py` for optional same-toolchain page/text/pixel comparisons. Pixel identity establishes reproduction, not correctness. Report separately which source/math review, rendering, historical reproduction, mutation regression and cross-topic generation evaluations actually occurred. One dHYM case does not demonstrate generalization to other mathematics.

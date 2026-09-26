@@ -1,6 +1,6 @@
 # Worked exposition examples
 
-These examples demonstrate writing and typesetting, not source evidence for a survey. The elementary quadratic example is proved in the [compilable fixture](../tests/fixtures/exposition-smoke.tex). Do not import it into an unrelated mathematical review. See [writing style](writing-style.md) for the governing rules.
+These examples demonstrate writing and typesetting, not source evidence for a survey. The elementary quadratic example is proved in the [compilable fixture](../assets/exposition-examples/exposition-smoke.tex). Do not import it into an unrelated mathematical review. See [writing style](writing-style.md) for the governing rules.
 
 ## Delete announcements, preserve mathematics
 
@@ -111,7 +111,7 @@ x_{j+1}=x_j-\tau(Ax_j-b),\qquad
 q=\max_{\lambda\in\operatorname{Spec}(A)}|1-\tau\lambda|<1.
 ```
 
-See the complete assumptions, separate theorem bodies and proofs in [the fixture](../tests/fixtures/exposition-smoke.tex). Naming both theorems fails; fully stating only the minimizer also fails this two-output scope. A genuinely one-result article can pass without inventing a second result. Copying the fixture's number of theorems into every survey is not the rule.
+See the complete assumptions, separate theorem bodies and proofs in [the fixture](../assets/exposition-examples/exposition-smoke.tex). Naming both theorems fails; fully stating only the minimizer also fails this two-output scope. A genuinely one-result article can pass without inventing a second result. Copying the fixture's number of theorems into every survey is not the rule.
 
 ## Structural identity before the equation
 

@@ -2,7 +2,7 @@
 
 ## Manifest and source layout
 
-The skill and shared style release is `1.0.1`. The project/record schema remains `1.0.0`; this editorial update does not require an existing project to migrate its records. Set `schema_version` to `"1.0.0"` in the manifest and JSONL records. Skill release and data-schema version are distinct. `project-manifest.json` has `language: "en"` and a `documents` array whose records contain integer `part` 1–5, `edition` (`concise` or `standard`), `tex_file` and `pdf_file`. Paths are safe project-relative POSIX paths.
+The skill release is `1.5.0`; the unchanged shared style release is `1.2.0`. The project/record schema remains `1.0.0`. Historical project records remain readable; new 1.5+ scaffolds additionally require source-bound, located body-structure reviews as described below. Set `schema_version` to `"1.0.0"` in the manifest and JSONL records. Skill release and data-schema version are distinct. `project-manifest.json` has `language: "en"` and a `documents` array whose records contain integer `part` 1–5, `edition` (`concise` or `standard`), `tex_file` and `pdf_file`. Paths are safe project-relative POSIX paths.
 
 Without `requested_documents`, the schema requires all ten part/edition combinations. Otherwise that field is a nonempty list of unique objects with exactly `part` and `edition`; `documents` must match it exactly. Record the user's selection before drafting, never infer it from finished files. Preserve the actual scope of an update. A V-only standard manifest is:
 
@@ -23,7 +23,7 @@ Names may follow `<topic>-part1-foundations-concise.tex` and the matching stems 
 
 ## Mathematical ownership and placements
 
-`publication-map.csv` defines each substantive selected statement's mathematical identity and principal public placements. Its fields are:
+`publication-map.csv` records selected identities requiring canonical reuse or export and their principal public placements. Nonrepeated local statements may stay inline; locate their sources and role in the architecture/review note rather than fragmenting every result into a component. Its fields are:
 
 ```text
 node_id,kind,owner_part,canonical_component,source_ids,proof_ids,
@@ -86,6 +86,16 @@ Extend the existing architecture note, not the schema: identify each selected pr
 
 `reader_outcomes` evidence records the introduction-only reading and the reverse body check with actual labels or passages. `edition_depth` records coherent concise selection and substantive standard development; `statement_verification` records scope/quantifier fidelity; `edition_semantic_consistency` records shared statement agreement. The existing build and visual rows cover [the presentation profile](layout-and-build.md), page inspection and any documented font fallback. Do not add `introduction-pass.csv`, another principal-result registry, new completed statuses or a separate V audit layer.
 
-Part V benchmark use is recorded as one short note in the same architecture/release evidence: which v6 passages were inspected, which quality features transfer and which subject-specific material does not. The frozen sample is not a newly verified source and does not change the manuscript's literature cutoff. The sample itself is a standalone historical deliverable, not a claim that its original package follows this project's manifest schema.
+When an optional example is used, record its purpose and inspected passages in the existing architecture/release evidence. No sample reading is mandatory beyond the generic Part V guide. The frozen sample is not a newly verified source and does not change the manuscript's literature cutoff. The sample itself is a standalone historical deliverable, not a claim that its original package follows this project's manifest schema.
 
-The project schema remains `1.0.0` in skill `1.2.0`; fields and accepted statuses are unchanged. The structural validator still supports literal braced inputs. For a standalone export using inline canonical macros, retain the source project with its mapped components and validate that source project; then build and visually check the exported entrypoint too. Do not pretend that a literal-input parser validates arbitrary macro expansion.
+The project schema remains `1.0.0` in skill `1.5.0`; existing record fields and accepted statuses are retained, with additive manifest fields for the body-structure review. The structural validator supports literal braced TeX inputs, including explicit `.bbl` inputs. For a standalone export using inline canonical macros, retain the source project with its mapped components and validate that source project; then build and visually check the exported entrypoint too. Do not pretend that a literal-input parser validates arbitrary macro expansion.
+
+## Located body-structure evidence (1.5+)
+
+The manifest keeps its existing schema and adds `skill_version` and `documents[].structure_review`. Each review file is a JSON object with `schema_version: "1.0.0"`, `tex_file`, `source_sha256` (SHA-256 of comment-stripped, literal-input-expanded TeX), `reviewer_mode`, `reviewed_on`, `sections`, and `results`. New scaffolds start with empty records and a pending fingerprint.
+
+Each section record has `label`, `role` (`introduction`, `results-and-mechanisms`, or `context-only`), `statement_reading`, `dependency_reading`, and, for context-only, `result_free_reason`. Reading fields contain located substantive answers, not booleans or PASS. Every actual numbered section is covered.
+
+Each body result record has `label`, `environment`, `logical_role`, `local_context` (a list of existing labels), `hypotheses`, `conclusion`, `consumer` (an existing label), `treatment` (`full-proof`, `proof-sketch`, or `quoted-input`), `proof_label` (required for local proofs/sketches), `source_keys`, and `source_locator` (required for quoted inputs). It also records `statement_reading` and `dependency_reading`. These are reviewer observations. The tool does not understand whether a mathematical hypothesis is true or sufficient. A quoted result may have an explanatory proof block, but that block must be labelled as an outline, not represented as a full proof.
+
+The checker prints the source digest and inventory with `--inventory`; this does not issue a completed review. Review the actual source/PDF before writing the matching digest. Ordinary comments are excluded from the digest; changes to visible formulas, statements, proofs, or included bibliography invalidate it. Typography and PDF inspection retain their separate checks.

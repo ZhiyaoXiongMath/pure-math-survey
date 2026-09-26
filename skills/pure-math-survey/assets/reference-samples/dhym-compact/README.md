@@ -6,4 +6,7 @@ The main equivalence is stated in full in the introduction and recalled from one
 
 The historical Thomas–Yau question is retained as context, with existence separated from smooth-flow convergence and surgery. It is not presented as a solved consequence of the surface criterion. No arbitrary new Problem is invented inside the already settled surface scope.
 
-Provenance: a new editorial adaptation of the supplied 1.1.0 dHYM v6 sample, using its established surface references. The frozen original remains unchanged in `../dhym-v6/`. This is a layout/exposition maintenance sample, not a fresh comprehensive dHYM literature-status audit. The separately delivered Griffiths suite is the new-topic end-to-end test.
+
+## Role in skill 1.3.0
+
+Retained as a surface-specific model of the two-way Monge--Ampere reduction and local layout. It is optional for both editions and is not a default dHYM or general Part V scope. Its TeX/PDF are preserved here, including the known adjacent recall and extra Thomas--Yau context; this release does not describe that unchanged text as a freshly accepted comprehensive survey. The new standard article is a separate successor, not a silent correction of this historical topical asset.

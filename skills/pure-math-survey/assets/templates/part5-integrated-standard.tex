@@ -4,15 +4,15 @@
 % In the Introduction state every selected principal conclusion, not only names.
 % Review body-to-introduction reverse coverage after changing any result or scope.
 % Style: delete trivial transitions; retain useful self-contained repetition;
-% use itemize/enumerate; put secondary consequences afterward.
+% use itemize/enumerate; put secondary consequences afterward, as corollaries when useful.
 % An introduction consisting of definitions and theorems is valid:
 % definitions and theorems are valid without a narrative roadmap.
-% Two slots illustrate wiring, not a theorem-count requirement. Remove unused slots.
+% One slot illustrates wiring, not a theorem-count requirement. Add or remove slots as needed.
 \documentclass[12pt,reqno]{amsart}
 \usepackage{math-review}
-\title{\placeholder{Topic}: A Thematic Review}
+\title{[INSERT: Topic]: A Thematic Review}
 \author{}
-\date{\placeholder{Checked literature cutoff}}
+\date{[INSERT: Checked literature cutoff]}
 \newcommand{\PrincipalStatement}{%
 \placeholder{Specify objects, all necessary hypotheses, quantifiers and ranges.}
 \begin{itemize}
@@ -20,9 +20,6 @@
 \item \placeholder{A second independent condition, only when needed.}
 \end{itemize}
 \placeholder{State the actual mathematical conclusion and exact source/status.}
-}
-\newcommand{\SecondStatement}{%
-\placeholder{State another selected principal answer with its own data, necessary conditions and actual conclusion; remove this slot when outside scope.}
 }
 % Optional unresolved-core slot, not a Problem quota. Remove it when the scope
 % has no selected unresolved question; explain any settled organizing question instead.
@@ -37,33 +34,42 @@
 
 \section{Introduction}\label{sec:introduction}
 \placeholder{Define the minimum necessary notation. State fixed data, unknowns and branch conditions before using them. Give actual answers with quantifiers, parameter ranges and source/status qualifications. Delete transitions that merely announce what follows.}
+% One illustrative slot, not a fixed result count. Add or remove slots as needed.
 \begin{theorem}\label{thm:principal}
 \PrincipalStatement
 \end{theorem}
-\begin{theorem}\label{thm:second}
-\SecondStatement
-\end{theorem}
-\begin{problem}\label{prob:core-target}
-\CoreProblemStatement
-\end{problem}
+% Optional, not printed by default; first authenticate formulation and status.
+% \begin{problem}\label{prob:core-target}
+% \CoreProblemStatement
+% \end{problem}
 \placeholder{Keep a precise remaining question or negative boundary here when it is a principal commitment. Change theorem to proposition, sourced claim or Problem as mathematically appropriate. No invented optional titles.}
 
 \section{Results through their mechanisms}\label{sec:mechanism}
-\begin{theoremrecall}{thm:principal}
-\PrincipalStatement
-\end{theoremrecall}
-\placeholder{Develop the selected results through their decisive mechanisms and boundaries. Retain definitions at first use. Do not import every proof from III or replace the article by a theorem catalog. A recall is optional if it adds backtracking rather than removing it. Reuse the canonical body whenever a full repetition is retained.}
+\placeholder{Define local notation and the object constructed or estimated before the result. Select genuine claims; these active slots demonstrate structure, not a result quota.}
+\begin{lemma}\label{lem:technical-input}
+\placeholder{Give the key input's exact hypotheses and usable conclusion. For an imported result give its source, version and theorem locator.}
+\end{lemma}
+\begin{proof}[Proof sketch]\label{prf:technical-input}
+\placeholder{At the decisive bottleneck, expand the same mechanism retained in concise: give the test quantity or construction, derive the controlling inequality, explain where each nontrivial hypothesis enters, and close the next step. Separate a quoted input from a locally supplied derivation. Omit no indispensable lemma; omit routine arithmetic only when the reader can reconstruct it.}
+\end{proof}
+\begin{proposition}\label{prop:reduction}
+\placeholder{State the independent reduction or intermediate conclusion, with local assumptions. It must be understandable without reading its proof.}
+\end{proposition}
+\begin{proof}\label{prf:reduction}
+\placeholder{Use Lemma~\ref{lem:technical-input}: identify its output and develop the next construction, parameter choices, limiting step and closure. Include a short checked comparison or failed converse when it explains a hypothesis. Replace the environment title by Proof sketch if substantial steps remain imported; standard is fuller, not a claim to reprove every cited paper.}
+\end{proof}
+% A useful distant full recall may reuse the principal body and original number.
+% Do not force a corollary, example, Problem or a fixed count of any environment.
 
-\section{The second answer and the boundary}\label{sec:boundary}
-\begin{theoremrecall}{thm:second}
-\SecondStatement
-\end{theoremrecall}
-\placeholder{Use a mathematical heading. Explain the second answer or boundary without bundling secondary consequences into its main statement. Define a precise sourced Problem only if the selected scope needs one. Do not manufacture a fixed number of Problems.}
+\section{Further answers and boundaries}\label{sec:boundary}
+% Optional distant recall; enable only to reduce genuine backtracking.
+\placeholder{Use a mathematical heading and define the boundary parameter or solution concept locally.}
+\begin{proposition}\label{prop:boundary}
+\placeholder{State a selected sourced boundary result with its actual hypotheses, regularity and conclusion. Delete this slot if no such independent result is in scope.}
+\end{proposition}
+\placeholder{Give the exact source and explain how its conclusion differs from the main theorem. A quoted result is not independently proved by this explanation.}
 
-\placeholder{For Problem~\ref{prob:core-target}, give its primary source, checked cutoff status, strongest relevant solved range and exact remaining range. Do not infer openness from a failed search. Remove this paragraph with the optional Problem slot when it is outside the selected scope.}
-
-\section{A deeper mechanism in the thematic argument}\label{sec:standard-depth}
-\placeholder{Develop the mechanism that gives the standard edition new explanatory value. Carry the key transformation or comparison to its actual output, with the hypotheses needed at each interface. Connect that output back to a selected principal result or the core remaining Problem. Do not expand V by concatenating I--IV or restoring every omitted subsidiary theorem.}
+% \placeholder{For Problem~\ref{prob:core-target}, give its primary source, checked cutoff status, strongest relevant solved range and exact remaining range. Do not infer openness from a failed search. Remove this paragraph with the optional Problem slot when it is outside the selected scope.}
 
 \templatereferences
 \end{document}

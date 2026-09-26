@@ -4,15 +4,15 @@
 % In the Introduction state every selected principal conclusion, not only names.
 % Review body-to-introduction reverse coverage after changing any result or scope.
 % Style: delete trivial transitions; retain useful self-contained repetition;
-% use itemize/enumerate; put secondary consequences afterward.
+% use itemize/enumerate; put secondary consequences afterward, as corollaries when useful.
 % An introduction consisting of definitions and theorems is valid:
 % definitions and theorems are valid without a narrative roadmap.
 % Two slots illustrate wiring, not a theorem-count requirement. Remove unused slots.
 \documentclass[12pt,reqno]{amsart}
 \usepackage{math-review}
-\title{\placeholder{Topic}: Results and Relations}
+\title{[INSERT: Topic]: Results and Relations}
 \author{}
-\date{\placeholder{Checked literature cutoff}}
+\date{[INSERT: Checked literature cutoff]}
 \newcommand{\PrincipalStatement}{%
 \placeholder{Specify objects, all necessary hypotheses, quantifiers and ranges.}
 \begin{itemize}
@@ -51,6 +51,15 @@
 \SecondStatement
 \end{theoremrecall}
 \placeholder{Use a mathematical heading. Explain the second answer or boundary without bundling secondary consequences into its main statement. Define a precise sourced Problem only if the selected scope needs one. Do not manufacture a fixed number of Problems.}
+
+% Replace, relocate or delete this structural model according to actual mathematics.
+% Do not leave core body results hidden inside the preceding explanatory paragraphs.
+\begin{lemma}\label{lem:body-input}
+\placeholder{State a necessary supporting input with local hypotheses and a usable output. No fixed lemma quota is imposed.}
+\end{lemma}
+\begin{proof}[Proof sketch]\label{prf:body-input}
+\placeholder{Separate the argument from the statement; give a decisive step and cite any imported estimate precisely. Standard deepens this proof, not the number of wrappers.}
+\end{proof}
 
 \templatereferences
 \end{document}

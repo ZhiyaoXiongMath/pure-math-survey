@@ -7,6 +7,7 @@ resolved relative to the main document directory, as when TeX runs there.
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import csv
 import json
 import re
@@ -143,7 +144,7 @@ def expand_tex(path: Path, project: Path, errors: list[str], main_dir: Path | No
 
     def replace(match: re.Match[str]) -> str:
         value = match.group(1).strip()
-        value = value if value.endswith(".tex") else value + ".tex"
+        value = value if Path(value).suffix in {".tex", ".bbl"} else value + ".tex"
         if not safe_relative(value):
             errors.append(f"{path.name}: unsafe or nonliteral TeX input {value!r}")
             return ""
@@ -281,6 +282,29 @@ def validate(root: Path, template_mode: bool = False) -> tuple[list[str], list[s
                 errors.append(f"{tex_name}: unresolved manuscript placeholder")
             if re.search(r"[\u3400-\u4dbf\u4e00-\u9fff]", expanded):
                 errors.append(f"{tex_name}: non-English CJK manuscript text")
+    # Load by absolute sibling path so importing this validator in tests is safe.
+    structure_spec = importlib.util.spec_from_file_location("math_structure_check", Path(__file__).with_name("check_mathematical_structure.py"))
+    structure = importlib.util.module_from_spec(structure_spec)
+    structure_spec.loader.exec_module(structure)
+    skill_version = str(manifest.get("skill_version", ""))
+    vmatch = re.fullmatch(r"(\d+)\.(\d+)\.(\d+)", skill_version)
+    new_contract = bool(vmatch and tuple(map(int, vmatch.groups())) >= (1, 5, 0))
+    for doc in documents:
+        if not isinstance(doc, dict):
+            continue
+        name = str(doc.get("tex_file", ""))
+        if name not in expanded_by_file:
+            continue
+        expanded = expanded_by_file[name][0]
+        try:
+            if new_contract:
+                found, _ = structure.validate_document(root, name, expanded, str(doc.get("structure_review", "")))
+            else:
+                found = structure.shape_issues(structure.inventory(expanded))
+            (notes if template_mode else errors).extend(f"{name}: {x}" for x in found)
+        except (OSError, ValueError, TypeError) as exc:
+            (notes if template_mode else errors).append(f"{name}: structure check: {exc}")
+
     if seen != requested or len(documents) != len(requested):
         contract = ("requested_documents" if "requested_documents" in manifest
                     else "the default ten part/edition combinations")

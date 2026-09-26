@@ -1,25 +1,34 @@
 # Template maintenance
 
-## Three different reference levels
+## Distinct roles and bounded evidence
 
-The ten files in `assets/templates/` are general-purpose, compilable writing scaffolds. Their two canonical statement slots illustrate wiring, not a minimum theorem count. Delete or change the environment to match the selected mathematical content; a historical problem or preprint claim must not become a theorem merely because the scaffold uses that environment.
-
-The frozen `assets/reference-samples/dhym-v6/` is the unmodified 1.1.0 baseline. Preserve its hashes and provenance. It demonstrates full statements, canonical repetition, proof interfaces and the Thomas–Yau program, but its 21-page extent is not a concise-page model.
-
-The `assets/reference-samples/dhym-compact/` adaptation is a narrow worked example of scope reduction. It is not an updated comprehensive dHYM literature review. Its README states what was omitted, why the main conclusion is still complete, and what remains a contextual rather than a selected proof commitment.
+The ten templates are instructional scaffolds, not completed articles or a theorem quota. The elementary fixture checks typesetting. Frozen examples preserve old evidence; current-style targets check current dependencies. One dHYM adaptation does not validate all topics.
 
 ## What every general template must demonstrate
 
-Use a label-free mathematical body in the preamble or a canonical component file. Put the selected principal statement in the Introduction. If a full body repetition helps, reuse the same body through `theoremrecall` and keep its original number. Do not introduce two independently editable copies or increment the theorem counter for a recall. A referenced statement alone does not discharge the introduction's reading contract.
-
-Each template must contain its part-specific reader task, a concrete prompt for the actual output, an explicit selection/budget reminder, and distinct concise/standard explanation ambitions. Do not solve cross-part readability by requiring the reader to open another part.
-
-For a real project, move shared mathematical statements to the existing canonical components and record their placements in `publication-map.csv`. Do not create a second introduction or knowledge registry. Bodies contain mathematics, source/status qualifications and necessary assumptions, not environment wrappers, labels or audit cards.
+A template must allow actual principal statements, optional canonical recalls and locally understood notation. Its insertion text is never publishable. Part V starts with one illustrative statement slot; copy or remove slots according to the selected answers. Unverified Problems and their references are commented out together. Test one and three principal statements, not a mandatory count of two.
 
 ## Required maintenance sequence
 
-After changing a rule, inspect all ten templates, the two-result fixture, the compact dHYM adaptation and affected reference instructions. Run all unit tests and the fourteen maintenance builds. Review representative rendered template pages and every page of the compact sample; inspect changed frozen-sample pages when the style changes. Then run a real topic through creation, source verification, writing, compilation, budget checking, semantic review, rendering, validation and clean-archive reconstruction.
+Run `python scripts/validate_assets.py`, then `python scripts/build_checks.py --output /absolute/empty/directory`. The clean installation includes the reusable build fixtures; development unit tests and historical test outputs are distributed separately. Outputs must be outside the skill and existing evidence must not be overwritten. Inspect rendered pages separately; build success is not visual or mathematical approval.
 
-Record what was actually run. A scaffolding build is not a new-topic test. A regex assertion is not a semantic judge. A source-level self-review is not an independent expert review. A correct-looking PDF does not validate a research proof.
+The standard sample has two targets:
 
-The IV and V templates include an actual optional, canonically defined Problem environment in the Introduction. Delete it when the selected scope has no unresolved core target; it is not a Problem quota. Standard templates contain part-specific substantive depth sections, not merely a different title or page limit.
+- `dhym-standard-current`: current `assets/templates/math-review.sty`, classified as shared-style regression.
+- `dhym-standard-frozen`: the bundled historical style, classified as frozen reproduction.
+
+`stage_standard_sample` is the preparation function used by the real `run_checks`. Mutation tests give the styles distinct contents, change only the shared dependency and check which staged target changes. Integration checks inspect the real staging path, not an unused helper. Each report names the dependency mode and style hash.
+
+## Carried-forward 1.4.0 behavior
+
+When maintaining a development test suite, cover a zero-Problem Part V build, one/three principal statements, canonical recalls after a condition change, current/frozen dependency propagation, source-version fingerprint invalidation and recursive template JSON classification. The source fingerprint detects stale review metadata; it cannot judge changed mathematical hypotheses.
+
+Asset JSON roles are explicit: recursively match `*-template.json` as templates; completed `references.json` lists follow bibliography rules. Do not classify all JSON as the project-manifest schema or stop recursion to avoid sample bibliographies.
+
+Historical verification files, when retained separately, remain historical. New reports must identify the actual release version and execution date. Preserve original samples unchanged; a new concise adaptation belongs in its own project. External-topic validation remains a separate, unperformed generalization test unless actually run.
+
+## Version 1.5.0 body-structure regressions
+
+Both V templates must demonstrate active body result and proof/outline boundaries, while leaving the actual number and logical roles to the mathematics. The standard prompt expands the same decisive estimates and construction; it does not merely add topics. Newly created projects carry the current skill version and pending located reading records. The agent default prompt must agree with these rules.
+
+Test the old introduction-only result pattern, removal of a key lemma while other results remain, equal-count label substitutions, missing or misattached proof blocks, stale visible-source fingerprints, imported results without locators, and generic PASS text in place of actual readings. Comments and unused preamble macros do not count as results. Permit genuinely context-only sections with stated reasons, rather than imposing theorem quotas. These checks inspect syntax and evidence linkage, never the truth of reviewer answers.

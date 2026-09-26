@@ -1,15 +1,31 @@
-# Organizing questions before local refinements
+# Core problems and verified boundaries
 
-Identify the established question that explains the requested subject's principal results. Start from the objects and their existence, classification, structure, stability, or evolution problem rather than only a preselected bibliography. These are possible mathematical roles, not mandatory headings or an author list.
+This file owns problem discovery and status selection. Presentation belongs to [writing style](writing-style.md); evidence details belong to [research and evidence](research-and-evidence.md).
 
-Inspect original formulations where accessible. Follow decisive positive results, counterexamples, corrections, version histories, and changes in definitions. Trace relevant developments backward and forward within the user's permitted source boundary. Do not equate a recent local refinement with the question that organizes the field, and do not omit a settled core question when its resolution explains the subject.
+## Discover before selecting
 
-Separate three judgments: what a source actually asks; what later results establish in precise ranges; and what the present search has verified. A source labelled Conjecture, the age of a question, or failure to find a resolution does not prove current openness. Retain candidate resolutions as unverified until inspected rather than suppressing them. Respect fixed-corpus instructions and disclose the resulting knowledge limits.
+Begin with the central objects and organizing questions, not a fixed bibliography. Search the user's terminology and established alternative names. Trace an influential conjecture to its original formulation; locate decisive theorems, counterexamples and later reformulations. A solved organizing problem can be central to the survey through its resolution.
 
-Record in the existing architecture/frontier notes the original question, its role, decisive results and counterexamples, actual connections to the chosen theorems, and reasons for material exclusions. No new synonymous registry or importance score is needed. A famous name without a mathematical role, a bibliography expansion without an actual connection, and a count of Problems are not coverage.
+A major neighboring problem may be indispensable context without requiring a theory chapter. Explain whether the relationship is a theorem, special-case correspondence, conjectural relation or analogy. For example, a scalar PDE criterion must not silently become an equivalence with an entire categorical stability theory.
 
-On the page, state whether the connection is a proved implication, equivalence, reduction, restricted model correspondence, or analogy. Match the object category, regularity, parameters, phase conventions, and equivalence relations. An existence criterion does not imply convergence of an arbitrary flow; a categorical isomorphism is not an isotopy. Use the actual distinctions of another subject instead of imposing geometry vocabulary everywhere.
+## Status and scope are separate
 
-A formal Problem must give the objects, assumptions, quantifiers, and target. Its source, checked status, precise known progress, and remaining scope belong afterward. A broad programme needing omitted definitions can receive an explicitly limited sourced account, not a fake self-contained conjecture with an undefined “stable.” Review-proposed directions are labelled as such and do not replace established core questions.
+Use the existing screening note to distinguish:
 
-Before delivery, review from the core question and decisive sources back to the manuscript. Identify missing roles, not missing name counts. Separately perform [introductory main-conclusion coverage](introduction.md): a good account of the problem does not substitute for displaying the known answers.
+- `SOLVED`: the exact selected formulation is covered by a located theorem, with its range.
+- `REFUTED`: a checked counterexample defeats that formulation; state the retained hypotheses.
+- `VERIFIED_OPEN`: a sourced precise target and current reverse search support the stated unresolved range.
+- `STATUS_UNVERIFIED`: the formulation is known but available evidence does not settle its present status.
+- `OUT_OF_SCOPE`: the relationship and reason for not developing it are recorded; this is not a claim about whether it is solved.
+
+A failed search proves neither openness nor settlement. A new preprint is identified as a preprint and checked at an exact version. Do not claim independent proof verification from its abstract or theorem statement.
+
+## Select reader-facing questions
+
+Retain only Problems serving the article's selected mathematical thread. There is no minimum count. A precise sourced resolution or counterexample is preferable to a fabricated unresolved question. When an optional Problem is disabled, its surrounding open-status claim, cross-reference and empty heading must also be absent.
+
+If an unresolved formulation is central but current status cannot be verified, disclose that limitation precisely; do not relabel it as verified open. Do not delete a central problem merely to avoid the research obligation. Research scope may exceed publication scope without extending the promised manuscript.
+
+## Recheck after change
+
+When a source version or hypothesis changes, revisit the selected formulation, introduction, abstract, body and canonical restatements. Automated identity checks can flag stale evidence, but mathematical applicability remains a source-based review task. Record the check date and its actual scope in existing evidence files.

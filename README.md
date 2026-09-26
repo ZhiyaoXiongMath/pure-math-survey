@@ -1,52 +1,31 @@
 # Pure Math Survey
 
-**Version 1.2.0.** A Codex skill for evidence-grounded English surveys of pure-mathematics topics, result families and proof methods.
+**Version 1.5.0 — clean distribution.** A skill for source-grounded English mathematical surveys and substantive revisions, delivered as rebuildable TeX and inspected PDFs.
 
-## What it produces
+Default to Part V concise. An explicitly requested series selects Parts I–V concise; any nonempty part/edition selection is supported. Both concise and standard preserve core statements and key lemmas. Concise compresses proof interiors and routine calculations; standard develops the same mathematical routes more fully.
 
-The skill supports five parts, each in concise and standard editions:
-
-| Part | Purpose |
+| Part | Reading task |
 |---|---|
-| I. Foundations and Models | Explain the objects, questions and models leading to the general theory. |
-| II. Results and Relations | State the main conclusions precisely and explain their relationships. |
-| III. Proofs and Methods | Develop the agreed proof routes and selected decisive mechanisms. |
-| IV. Applications, Boundaries and Problems | Explain uses, established limits and precise open Problems. |
-| V. A Thematic Review | Present an independently readable account organized around its own central question. |
-
-New projects default to Part V concise, delivered as PDF and rebuildable TeX. An explicitly requested suite produces Parts I–V concise. All ten templates remain available, and any nonempty selection of parts and editions is supported; standard editions are optional.
-
-Concise page review limits, including references, are I: 5, II: 6, III: 6, IV: 5 and V: 10. Shortening should reduce scope while preserving necessary hypotheses and readable mathematics.
-
-Concise editions select and organize the material needed to understand the chosen thread. Standard editions deepen that understanding. Part V explains selected results, method ideas and Problems without automatically taking on Part III's detailed proof obligations.
-
-The workflow verifies primary sources and relevant versions, preserves exact mathematical conditions, distinguishes established results from unresolved questions, and records what was actually checked. Delivery includes the TeX sources and dependencies needed to rebuild the requested manuscripts, together with research and verification records.
+| I. Foundations and Models | Understand the objects, questions and explanatory models. |
+| II. Results and Relations | Understand precise conclusions, conditions and relationships. |
+| III. Proofs and Methods | Understand selected proof routes and decisive mechanisms. |
+| IV. Applications, Boundaries and Problems | Understand applications, established limits and verified open problems. |
+| V. A Thematic Review | Read one integrated account organized around a central question. |
 
 ## Install and use
 
-The installable skill is [skills/pure-math-survey/](skills/pure-math-survey/). Install that directory in your Codex skills location, then invoke `$pure-math-survey` and describe the topic, audience and requested parts or editions.
-
-For example:
+Copy [skills/pure-math-survey](skills/pure-math-survey/) into your local skills directory, then invoke:
 
 ```text
-Use $pure-math-survey to write only Part V concise on [topic] for [audience].
+Use $pure-math-survey to write Part V concise on [topic] for [audience].
 ```
 
-See [SKILL.md](skills/pure-math-survey/SKILL.md) for the workflow and the [release notes](skills/pure-math-survey/CHANGELOG.md) for changes. Python helpers require Python 3.10 or later. PDF budget and visual utilities additionally use PyMuPDF; comparisons use Pillow. Manuscript builds require pdfLaTeX and the packages described in the [skill README](skills/pure-math-survey/README.md).
+See [SKILL.md](skills/pure-math-survey/SKILL.md) for the workflow and the [skill README](skills/pure-math-survey/README.md) for commands and dependencies. Python 3.10+ is required; TeX builds use pdfLaTeX. PDF utilities additionally use PyMuPDF and, for pixel comparisons, Pillow.
 
-## Maintenance
+## Contents
 
-From the repository root:
+The installable directory contains functional instructions, scripts, templates, reusable exposition fixtures and optional reference samples. Development reports, change logs, historical verification outputs, unit-test source files and unrelated delivery artifacts are excluded. Samples retain their mathematical content and dated qualifications; they are not current mathematical authorities.
 
-```sh
-cd skills/pure-math-survey
-python -B -m unittest discover -s tests -v
-```
+From the skill directory, run `python scripts/validate_assets.py` to check asset structure. Use `python scripts/build_checks.py --output /absolute/new/build-directory` to check template and sample compilation. Research, source review and visual inspection remain separate tasks; successful scripts do not certify mathematical correctness.
 
-These tests check package and project structure using synthetic projects. They do not establish mathematical correctness, source coverage or exposition quality, and do not replace manuscript compilation or visual inspection.
-
-For this installation on Windows, 111 tests passed with UTF-8 enabled; two symlink tests were skipped because the host lacks symlink creation privileges. The supplied archive's 92 member checksums and skill metadata validation passed. The skill files are unchanged from the supplied 1.2.0 archive. The [upstream release verification](skills/pure-math-survey/docs/release-verification.md) records its separate build and visual checks; those were not repeated during this installation.
-
-## Packaging
-
-For an installation ZIP, archive only `skills/pure-math-survey/` as a single `pure-math-survey/` root. Exclude repository metadata, caches and generated build files. Reopen the archive and verify its members and contents before distributing it.
+To create a verified installation archive, run `python scripts/package_release.py --output /absolute/path/pure-math-survey-1.5.0-clean.zip` from the skill directory. Keep output outside the skill tree.

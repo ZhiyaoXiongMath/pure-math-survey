@@ -1,8 +1,8 @@
 # Layout and build
 
-## Shared v6 profile
+## Shared presentation profile
 
-Use `assets/templates/math-review.sty` beside the selected entrypoints. This profile applies to all five parts and both editions; Part V is additionally calibrated against [the completed v6 reference](part-v-benchmark.md).
+Use `assets/templates/math-review.sty` beside the selected entrypoints. This profile applies to all five parts and both editions; [The Part V guide](part-v-benchmark.md) explains the optional, purpose-specific examples.
 
 | Setting | Profile |
 |---|---|

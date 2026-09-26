@@ -8,61 +8,71 @@
       "part": 1,
       "edition": "concise",
       "tex_file": "[topic]-part1-foundations-concise.tex",
-      "pdf_file": "[topic]-part1-foundations-concise.pdf"
+      "pdf_file": "[topic]-part1-foundations-concise.pdf",
+      "structure_review": "evidence/[topic]-part1-foundations-concise-structure-review.json"
     },
     {
       "part": 1,
       "edition": "standard",
       "tex_file": "[topic]-part1-foundations-standard.tex",
-      "pdf_file": "[topic]-part1-foundations-standard.pdf"
+      "pdf_file": "[topic]-part1-foundations-standard.pdf",
+      "structure_review": "evidence/[topic]-part1-foundations-standard-structure-review.json"
     },
     {
       "part": 2,
       "edition": "concise",
       "tex_file": "[topic]-part2-results-concise.tex",
-      "pdf_file": "[topic]-part2-results-concise.pdf"
+      "pdf_file": "[topic]-part2-results-concise.pdf",
+      "structure_review": "evidence/[topic]-part2-results-concise-structure-review.json"
     },
     {
       "part": 2,
       "edition": "standard",
       "tex_file": "[topic]-part2-results-standard.tex",
-      "pdf_file": "[topic]-part2-results-standard.pdf"
+      "pdf_file": "[topic]-part2-results-standard.pdf",
+      "structure_review": "evidence/[topic]-part2-results-standard-structure-review.json"
     },
     {
       "part": 3,
       "edition": "concise",
       "tex_file": "[topic]-part3-methods-concise.tex",
-      "pdf_file": "[topic]-part3-methods-concise.pdf"
+      "pdf_file": "[topic]-part3-methods-concise.pdf",
+      "structure_review": "evidence/[topic]-part3-methods-concise-structure-review.json"
     },
     {
       "part": 3,
       "edition": "standard",
       "tex_file": "[topic]-part3-methods-standard.tex",
-      "pdf_file": "[topic]-part3-methods-standard.pdf"
+      "pdf_file": "[topic]-part3-methods-standard.pdf",
+      "structure_review": "evidence/[topic]-part3-methods-standard-structure-review.json"
     },
     {
       "part": 4,
       "edition": "concise",
       "tex_file": "[topic]-part4-boundaries-concise.tex",
-      "pdf_file": "[topic]-part4-boundaries-concise.pdf"
+      "pdf_file": "[topic]-part4-boundaries-concise.pdf",
+      "structure_review": "evidence/[topic]-part4-boundaries-concise-structure-review.json"
     },
     {
       "part": 4,
       "edition": "standard",
       "tex_file": "[topic]-part4-boundaries-standard.tex",
-      "pdf_file": "[topic]-part4-boundaries-standard.pdf"
+      "pdf_file": "[topic]-part4-boundaries-standard.pdf",
+      "structure_review": "evidence/[topic]-part4-boundaries-standard-structure-review.json"
     },
     {
       "part": 5,
       "edition": "concise",
       "tex_file": "[topic]-part5-integrated-concise.tex",
-      "pdf_file": "[topic]-part5-integrated-concise.pdf"
+      "pdf_file": "[topic]-part5-integrated-concise.pdf",
+      "structure_review": "evidence/[topic]-part5-integrated-concise-structure-review.json"
     },
     {
       "part": 5,
       "edition": "standard",
       "tex_file": "[topic]-part5-integrated-standard.tex",
-      "pdf_file": "[topic]-part5-integrated-standard.pdf"
+      "pdf_file": "[topic]-part5-integrated-standard.pdf",
+      "structure_review": "evidence/[topic]-part5-integrated-standard-structure-review.json"
     }
   ],
   "requested_documents": [
@@ -107,5 +117,6 @@
       "edition": "standard"
     }
   ],
-  "_template_note": "Explicit all-ten catalog. Runtime default is V concise; suite is I\u2013V concise. Use create_project.py."
+  "_template_note": "Explicit all-ten catalog. Runtime default is V concise; suite is I\u2013V concise. Use create_project.py.",
+  "skill_version": "1.5.0"
 }

@@ -1,59 +1,43 @@
 # Explanation, proof treatment and boundaries
 
-Match explanation to the requested part and declared promises. III owes connected core routes and selected decisive mechanisms. V owes method ideas and their logical role for its chosen main results, not a technical proof syllabus. Other parts owe the ideas and verifications needed for their reading task.
+This file owns mechanism depth and the boundary between survey derivation and imported work. [Core problems](core-problems.md) owns frontier discovery and status.
 
 ## Route, mechanism and closure
 
-For each promised III core family, explain the target, mathematical issue, decisive idea, intermediate conclusions, hypotheses used and closing inference. State what a crucial step produces and why the next step can use it. A sequence of method names cannot replace this chain. Use formulas and short numbered steps where they state the reasoning more clearly than a long paragraph. Delete editorial filler, not a necessary inference or a check of hypotheses.
-
-Separately develop selected decisive arguments. Selection reflects their role in a bottleneck, bridge or transferable idea, not their difficulty or length. A short linear or structural observation can be the decisive bridge; do not reject it merely because it admits further elaboration. An easy peripheral lemma cannot compensate for an unexplained central target. Concise retains substantive explanation; standard deepens the selected reasoning and its dependencies where the mathematics warrants it.
-
-V usually explains an idea through the transformation it makes, the issue it resolves and how this leads to the main result. A precise imported theorem with a short account of its role may be enough. Complete proof families, technical approximation lemmas or auxiliary constructions are not automatically required. A short derivation may be retained when it genuinely clarifies the thread, not because of a proof quota.
+For each selected route identify input, transformation and usable output. State which later inference consumes that output. Part III develops its agreed proof routes and decisive mechanisms. Part V gives an integrated mathematical explanation at its declared depth, not the unrequested Part III contract.
 
 ### Try the explanation and follow its outputs
 
-Before broad drafting of a promised deep argument, retain an actual draft of its most consequential mechanism or bridge. Check each output against the next input through to the target. At a change of object, scope or strength, supply the actual construction or cited conversion: a list of desired properties is not a proof. For V without a deep-proof promise, perform this check at the scale of its main-result method explanation; do not create an extra technical target.
-
-At the first unsupported inference, record the draft location, consult the source or repair the reasoning and recheck the affected interface. Keep an unresolved core gap visible while continuing independent useful work. Use the existing architecture/proof note, not a new audit table or a fixed printed checklist. An editorial plan alone is not an executed explanation check.
+Read the argument without relying on method names. Can the reader identify what is estimated or constructed, why its hypotheses hold, and how the final limit or existence step closes? A sequence of “continuity, compactness, regularization” is not sufficient. A short decisive calculation may supply more understanding than a long inventory of techniques.
 
 ## Imported inputs and explanation targets
 
-An external input may be accepted after stating its exact usable conclusion, citing the controlling source and locator, checking its hypotheses and explaining its role. This is a legitimate stopping point: do not recursively demand proofs of all supporting literature.
+A precise cited interface is legitimate: give its objects, assumptions, conclusion, controlling version and theorem locator. Do not state an existence theorem with stronger scope than the source or silently replace an estimate depending on a gradient bound by a uniform one.
 
-An explicitly promised explanation target is different. Calling it external does not discharge the promise to explain its relevant idea and operation. Decide its role from the original question, reader and architecture, not by relabelling it after a difficulty appears. An input can be background for V and an explanation target for III without inconsistency.
-
-Compare the original architecture/proof commitments with the actual requested entrypoints and passages. Another part's treatment cannot discharge a standalone promise. Distinguish a missing explanation, a wrong location record and an optional deeper treatment. A blocking finding identifies the original promise, exact passage or missing location, necessary idea or interface, and smallest adequate repair. Merely saying that more detail would be helpful is an optional suggestion.
+Concise may compress the interior of a difficult construction while retaining its key lemma statement, assumptions, output and later use. Merely mentioning a construction in prose is not this interface. Standard should expose more of the construction, not copy every preliminary proof. If the abstract promises a mechanism, merely citing its name does not discharge that promise.
 
 ## Treatment and provenance
 
-A self-contained proof closes the promised claim within declared prerequisites. A proof complete modulo inputs states and cites those inputs and verifies their hypotheses. A detailed route can explain intermediate claims while citing technical steps. A schematic method account explains an idea without certifying full closure. Declare the actual scope; never mark a complete proof verified when only a method paragraph was written.
+Mark a full proof, proof sketch, worked derivation or quoted input accurately. Survey calculations need not receive invented names. Preserve original attribution even when a later proof is chosen. Explain altered conventions before transferring identities.
 
-These treatment judgments differ from provenance: source-explicit, source-reconstructed-and-verified and review-derived. Verify source-attributed decisive steps in the actual proof passages, not only a theorem statement, abstract or familiar method from memory. See [source verification](research-and-evidence.md#verification-and-proof-provenance).
-
-`proof_depth` checks the argument actually given against its claim. It remains applicable when the treatment is a short explanation with declared limits; it does not require V to invent a proof. `proof_framework` and `decisive_mechanisms` are required only for requested III documents. V's methods and result connections are assessed in `reader_outcomes` and `edition_depth`.
-
-A missing promised III core mechanism is incomplete even if an auxiliary proof closes. Missing V method meaning can also be incomplete under V's own contract, but absence of an unpromised technical lemma is not. Supplementary evidence limitations can support a limited delivery when the core is met. Do not silently reduce the original core to pass review.
+Canonical components prevent textual drift in actual recalls or exports. They do not prove equivalent surrounding explanations. A supporting result used only once may remain in the main TeX file; a key lemma still needs an explicit statement and a recognizable proof or quoted-input boundary.
 
 ## Dependencies and logical boundaries
 
-Track the dependencies the subject actually uses. In a quantitative argument these may include constants, uniformity, normalizations, norms and parameter order; avoid circular bounds. In other arguments they may include exactness, induction, choices, lifting, descent, constructions or compatibility. Do not translate every discipline into estimates.
+Check estimate dependencies, normalization, limiting topology and branch preservation. Distinguish long-time existence from convergence, weak convergence from smooth regularity, a conserved quantity from compactness, and a subsequential limit from convergence of the whole unknown.
 
-Check that a closing passage preserves the required objects and properties. Keep unresolved source ambiguities visible rather than silently strengthening conclusions. A source-access gap is neither a counterexample nor evidence that a claim is false. A completed final inference does not by itself explain an earlier promised bottleneck.
+Do not treat cohomological correctness as preservation of a nonlinear admissibility condition. If smoothing or gluing uses a strict reserve, identify its source rather than taking an unjustified minimum over infinitely many positive quantities. A local formula does not independently certify an entire cited construction.
 
 ## Applications and Problems
 
-A worked application verifies assumptions, derives the conclusion and explains its significance. A counterexample verifies the relevant properties and the exact conclusion that fails. Failure of an assumption is not failure of a theorem's conclusion; failure of one method is not an impossibility result.
-
-IV and V use explicit numbered and labelled `problem` environments for core unresolved targets. State objects, hypotheses, quantifiers and the core goal in the environment, using short sentences and explicit hypothesis lists where clearer. Keep secondary conclusions and progress outside the target statement. Then give formulation source, cutoff status, importance, verified progress and precise remaining range, using formulas for ranges. Split substantively different Problems; related subquestions may be grouped. Do not impose a count.
-
-Check the source formulation separately from current status. Retain nonemptiness, strict inequalities, admissibility, dimensional and other decisive conditions. Specify important established parameter ranges rather than vague statements that more cases are known. When the full boundary cannot be verified, say exactly what was checked. No search result is not proof of openness.
-
-IV systematically covers its agreed frontier; V selects what its own thread needs. Keep shared Problems consistent without forcing identical collections across parts. A classic unsolved problem can be a worthwhile direction; an author's synthesis or proposed problem must be labelled as such without claiming priority or consensus. Neither invented obstacles nor speculative strategies are required. Verified settled narrow scopes use an explicit supported exception, not manufactured open Problems.
+Use a model when it computes the mechanism or reveals a necessary condition. State both directions of an equivalence when promised. For counterexamples, check every retained hypothesis and the exact failed conclusion. Weak boundary results must state their regularity and the sense in which products and equations are defined.
 
 ## Principal knowledge and organizing boundaries
 
-The introduction must state the method's actual target/output or the decisive boundary whenever that is principal knowledge promised by this document. It is not a proof merely because it is accurately summarized there; the body must still supply the declared mechanism, argument or located external input.
+The introduction exposes the selected main answers; supporting proof inputs need not be duplicated there. Keep solved questions and precise failure mechanisms visible even when no verified open Problem is selected. Use the existing architecture note for depth and selection decisions, not a new per-paragraph audit.
 
-Before selecting Problems, identify the organizing question, important solved ranges and necessary reformulations. Keep the distinction between a representative's existence, an evolution theorem for specified initial data and continuation through singularities when it matters to the subject. Do not present an analogy as a theorem or a local problem as a substitute for the main question.
+## Edition-invariant proof skeleton
 
-Formal Problem and conjecture environments have no invented descriptive titles. Verified historical attribution is allowed. An overview whose necessary technical definitions have not been supplied must remain an explicitly limited overview, not an allegedly self-contained conjecture. In V, explain the chosen key mechanism's output and its use by the next conclusion; v6 is the completed-article benchmark, without imposing III's entire proof syllabus.
+Preserve core statements; compress proof interiors. Preserve key lemmas; omit routine calculations. Preserve necessary local context; delete empty transitions. This principle applies to every part, not only Part V. Standard offers a more detailed learning path through the same dependencies. It does not reserve the theorem/lemma architecture for itself or require concise readers to borrow its definitions.
+
+For every selected difficult bridge, decide which assertion is imported, which local deduction is supplied, and which result consumes the output. Keep a supporting lemma visible even when its full proof is omitted. A source-first reread must check the statement independently from its proof sketch.

@@ -53,8 +53,13 @@ def main() -> int:
         stem = f'{args.topic}-{name}'
         shutil.copy2(ROOT / 'assets/templates' / (name + '.tex'), out / (stem + '.tex'))
         documents.append({'part': part, 'edition': edition, 'tex_file': stem + '.tex', 'pdf_file': stem + '.pdf', 'page_review_limit': ({1:5,2:6,3:6,4:5,5:10} if edition == 'concise' else {1:8,2:10,3:10,4:8,5:16})[part]})
+    (out / 'evidence').mkdir()
+    for doc in documents:
+        review_path = 'evidence/' + Path(doc['tex_file']).stem + '-structure-review.json'
+        doc['structure_review'] = review_path
+        (out / review_path).write_text(json.dumps({'schema_version':'1.0.0', 'tex_file':doc['tex_file'], 'source_sha256':'PENDING', 'reviewer_mode':'PENDING', 'reviewed_on':'PENDING', 'sections':[], 'results':[]}, indent=2) + '\n')
     shutil.copy2(ROOT / 'assets/templates/math-review.sty', out / 'math-review.sty')
-    manifest = {'schema_version': '1.0.0', 'language': 'en', 'topic': args.topic,
+    manifest = {'schema_version': '1.0.0', 'skill_version': '1.5.0', 'language': 'en', 'topic': args.topic,
                 'literature_cutoff': '[Set from actual source verification]',
                 'requested_documents': [{'part': p, 'edition': e} for p, e in selection],
                 'documents': documents}
@@ -74,6 +79,8 @@ def main() -> int:
         'Set the page budget; remove side branches before drafting; do not omit selected core results.\n'
         'Map each principal body result to its substantive Introduction statement.\n'
         'Record Introduction-only reading, hypothesis consistency and actual verification.\n'
+        'Plan explicit body results and key lemmas before prose; then perform statement-only and dependency readings.\n'
+        'Concise retains that structure; standard deepens proof interiors. Evidence starts pending.\n'
         'These are pending tasks, not completed research or PASS evidence.\n')
     (out / 'README.md').write_text(
         '# Unverified survey scaffold\n\nReplace all insertion text and metadata with actual mathematics.\n'
